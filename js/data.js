@@ -94,7 +94,7 @@ const CATEGORIES = [
 /* ---------- Home · Novedades ---------- */
 const NOVEDADES = [
   { name: 'Impresora Camon MX3 Serie 5000T', desc: 'Impresora de tinta inyectada multiformato A3 A4 A2 digital.', tag: 'Novedad', price: '59,99', icon: ICONS.printer },
-  { name: 'Teclado gamer RX500 Power Plus', desc: 'Teclado mecánico inalámbrico.', tag: 'Novedad', price: '29,99', icon: ICONS.keyboard },
+  { name: 'Teclado gamer RX500 Power Plus', desc: 'Teclado mecánico inalámbrico.', tag: 'Novedad', price: '29,99', icon: ICONS.keyboard, img: 'assets/products/teclado.jpg' },
   { name: 'Raton Gamer HERO T480', desc: 'Ratón inalámbrico hergonómico 36000 DPI 8 botones.', tag: 'Novedad', price: '25,99', icon: ICONS.mouse },
   { name: 'Waco pen digital S80', desc: 'Lápiz digital profesional para diseño gráfico y animación 3D.', tag: 'Novedad', price: '15', icon: ICONS.pen },
 ];
@@ -103,7 +103,7 @@ const NOVEDADES = [
 const SEGUIR = [
   { name: 'Cuadernos de contabilidad año 2027', desc: '3 Unidades de 200 páginas por ud.', price: '19,99', old: '25,99', discount: '-20%', icon: ICONS.notebook },
   { name: 'Bolsas papel craft personalizables', desc: 'Desde 100 unidades. Diferentes tamaños y colores.', price: '29,99', old: '35,99', discount: '-20%', icon: ICONS.bag },
-  { name: 'Pintura pared azul Klein P 286C', desc: 'Pintura anti-moho 500 ml.', price: '12,99', icon: ICONS.paint },
+  { name: 'Pintura pared azul Klein P 286C', desc: 'Pintura anti-moho 500 ml.', price: '12,99', icon: ICONS.paint, img: 'assets/products/pintura.jpg' },
   { name: 'Pack platos y cubiertos biodegradables', desc: '25 unidades de cada por paquete: plato, tenedor, cuchillo y cuchara.', price: '9', icon: ICONS.plate },
   { name: 'Bolígrafos Mapet punta fina', desc: 'Tinta azul. Disponibles en variedad de colores.', price: '5', icon: ICONS.ballpen },
 ];
@@ -158,9 +158,9 @@ function genProducts(n, opts = {}) {
 }
 
 const DESTACADOS = [
-  { name: 'Producto Ultra Power 3000', desc: 'Apto para uso profesional. Hay males peores que no saber cómo poner un texto.', price: '25,99', tag: 'Novedad', icon: ICONS.drill },
-  { name: 'Producto Ultra Power 3000', desc: 'Apto para uso profesional. Hay males peores que no saber cómo poner un texto.', price: '25,99', tag: 'Novedad', icon: ICONS.producto },
-  { name: 'Producto Ultra Power 3000', desc: 'Apto para uso profesional. Hay males peores que no saber cómo poner un texto.', price: '25,99', tag: 'Novedad', icon: ICONS.ruler },
+  { name: 'Multiherramienta Ultra Power 3000', desc: 'Rotativa apta para uso profesional. Corte, lijado y grabado de precisión.', price: '25,99', tag: 'Novedad', icon: ICONS.drill, img: 'assets/products/dremel.jpg' },
+  { name: 'Set de herramientas HomeMaster', desc: 'Kit completo para bricolaje y reparaciones del hogar.', price: '25,99', tag: 'Novedad', icon: ICONS.producto, img: 'assets/products/herramientas.jpg' },
+  { name: 'Teclado gamer RX500 Power Plus', desc: 'Teclado mecánico inalámbrico retroiluminado.', price: '25,99', tag: 'Novedad', icon: ICONS.keyboard, img: 'assets/products/teclado.jpg' },
 ];
 
 /* ---------- Carrito ---------- */
