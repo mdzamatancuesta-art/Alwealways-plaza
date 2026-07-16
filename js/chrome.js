@@ -42,6 +42,8 @@
     </div>
   </div>
 
+  <div class="h-[65px]" aria-hidden="true"></div>
+
   <header id="header" class="sticky top-0 z-40 bg-white transition-[top] duration-300" style="top:65px">
     <div class="mx-auto flex max-w-[1400px] items-center gap-4 px-4 py-3.5 md:px-8">
       <button id="mobileMenuBtn" class="grid h-10 w-10 shrink-0 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey lg:hidden" aria-label="Abrir menú">
