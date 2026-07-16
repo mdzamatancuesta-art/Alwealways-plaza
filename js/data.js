@@ -1,128 +1,127 @@
 /* ============================================================
-   Always Plaza — Datos de la interfaz
-   Estructura de categorías, subcategorías, productos de ejemplo
-   y mapa de códigos postales de La Habana → punto de recogida.
+   Always Plaza — Datos de la interfaz (replicando el diseño)
    ============================================================ */
 
-// Iconos SVG reutilizables (line-art minimalista, marca blanca).
+// Iconos SVG (line-art minimalista, marca blanca) para placeholders de producto.
 const ICONS = {
-  bricolaje: '<path d="M14 3l7 7-3 3-7-7zM11 8l-8 8v3h3l8-8"/>',
-  envases: '<path d="M6 3h12l-1 4H7zM7 7l1 13h8l1-13"/>',
-  papeleria: '<path d="M5 3h10l4 4v14H5zM15 3v4h4"/><path d="M8 12h7M8 16h7"/>',
-  hogar: '<path d="M4 11l8-6 8 6M6 10v9h12v-9"/>',
-  servicios: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
-  suelos: '<path d="M3 6h18M3 12h18M3 18h18M9 6v12M15 6v12"/>',
-  ventanas: '<rect x="4" y="4" width="16" height="16" rx="1"/><path d="M12 4v16M4 12h16"/>',
-  herramientas: '<path d="M14 7a4 4 0 0 0-5 5l-6 6 2 2 6-6a4 4 0 0 0 5-5l-2 2-2-2 2-2z"/>',
-  cocina: '<path d="M6 3v7a3 3 0 0 0 6 0V3M9 3v18M17 3c-2 0-3 2-3 5s1 4 3 4v9"/>',
-  bano: '<path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM7 12V6a2 2 0 0 1 4 0"/>',
-  fontaneria: '<path d="M7 3v6h4V3M9 9v6a3 3 0 0 0 3 3h5"/>',
-  electricidad: '<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>',
-  iluminacion: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/>',
-  pintura: '<path d="M4 4h13v5H4zM17 6h3v4h-8v3M11 13v3a2 2 0 0 0 4 0"/>',
-  construccion: '<path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-5h4v5"/>',
-  vaso: '<path d="M7 4h10l-1.5 16h-7z"/>',
-  cuenco: '<path d="M4 10h16a8 8 0 0 1-16 0z"/>',
-  plato: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>',
-  bolsa: '<path d="M6 8h12l-1 12H7zM9 8V6a3 3 0 0 1 6 0v2"/>',
-  producto: '<path d="M6 7h12l-1 13H7zM9 7V5a3 3 0 0 1 6 0v2"/>',
+  printer: '<path d="M6 9V3h12v6M6 18H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-2M6 14h12v7H6z"/><path d="M9 14h6"/>',
+  keyboard: '<rect x="2" y="7" width="20" height="11" rx="2"/><path d="M6 11h.01M10 11h.01M14 11h.01M18 11h.01M8 15h8"/>',
+  mouse: '<rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v3"/>',
+  pen: '<path d="M12 3l3 3-8 8-4 1 1-4z"/><path d="M12 3l4 4"/><path d="M6 21h14"/>',
+  notebook: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18M13 8h3M13 12h3"/>',
+  bag: '<path d="M6 8h12l-1 12H7zM9 8V6a3 3 0 0 1 6 0v2"/>',
+  paint: '<path d="M4 4h13v5H4zM17 6h3v4h-8v3M11 13v3a2 2 0 0 0 4 0"/>',
+  plate: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>',
+  ballpen: '<path d="M9 3l6 0 0 4-3 3-3-3zM12 10v11"/>',
+  hammer: '<path d="M14 7a4 4 0 0 0-5 5l-6 6 2 2 6-6a4 4 0 0 0 5-5l-2 2-2-2 2-2z"/>',
+  cup: '<path d="M7 4h10l-1.5 16h-7z"/>',
+  wrench: '<path d="M14 7a4 4 0 0 0-5 5l-6 6 2 2 6-6a4 4 0 0 0 5-5l-2 2-2-2 2-2z"/>',
+  helmet: '<path d="M4 15a8 8 0 0 1 16 0M2 15h20v2H2z"/>',
 };
 
-/* ---------- Categorías + subcategorías (Mega Menú) ---------- */
+/* ---------- Categorías del nav + mega menú (2 niveles) ----------
+   Cada categoría tiene subcategorías (columna izquierda). Una subcategoría
+   puede tener `actions` (enlaces destacados) y `groups` (columnas de enlaces)
+   que se muestran en el panel derecho al pasar el ratón. */
 const CATEGORIES = [
   {
-    id: 'bricolaje',
+    id: 'brico',
     name: 'Bricolaje y construcción',
-    icon: ICONS.bricolaje,
-    accent: 'night',
     subs: [
-      { name: 'Construcción', icon: ICONS.construccion },
-      { name: 'Suelos y revestimientos', icon: ICONS.suelos },
-      { name: 'Ventanas y puertas', icon: ICONS.ventanas },
-      { name: 'Herramientas', icon: ICONS.herramientas },
-      { name: 'Cocina', icon: ICONS.cocina },
-      { name: 'Baño', icon: ICONS.bano },
-      { name: 'Fontanería', icon: ICONS.fontaneria },
-      { name: 'Electricidad', icon: ICONS.electricidad },
-      { name: 'Iluminación', icon: ICONS.iluminacion },
-      { name: 'Pintura', icon: ICONS.pintura },
+      { name: 'Construcción' },
+      { name: 'Suelos y revestimientos' },
+      { name: 'Ventanas y puertas' },
+      {
+        name: 'Herramientas',
+        actions: ['Ver todo', 'Los más vendidos', 'Productos en oferta'],
+        groups: [
+          { title: 'Eléctricas', items: ['Kit herramientas eléctricas', 'Taladrar', 'Demoler', 'Cortar y lijar', 'De especialidad'] },
+          { title: 'Manuales', items: ['Martillos y mazas', 'Atornillar y apretar', 'Demolición manual', 'Construcción'] },
+          { title: 'Medición', items: ['Flexómetros', 'Niveles', 'Detectores y cintas'] },
+          { title: 'Accesorios de herramientas eléctricas', items: ['Baterías y cargadores', 'Accesorios maquinaria', 'Cableado'] },
+          { title: 'Equipos de seguridad', items: ['Cascos', 'Ropa de trabajo', 'Botas de trabajo'] },
+        ],
+      },
+      { name: 'Cocina' },
+      { name: 'Baño' },
+      { name: 'Fontanería' },
+      { name: 'Electricidad' },
+      { name: 'Iluminación' },
+      { name: 'Pintura' },
     ],
   },
   {
     id: 'envases',
     name: 'Envases y embalajes',
-    icon: ICONS.envases,
-    accent: 'novedad',
     subs: [
-      { name: 'Vasos', icon: ICONS.vaso },
-      { name: 'Cuencos', icon: ICONS.cuenco },
-      { name: 'Tarrinas', icon: ICONS.cuenco },
-      { name: 'Envases take away', icon: ICONS.envases },
-      { name: 'Platos', icon: ICONS.plato },
-      { name: 'Bolsas de papel', icon: ICONS.bolsa },
-      { name: 'Cubiertos de madera', icon: ICONS.herramientas },
-      { name: 'Cañitas de papel', icon: ICONS.fontaneria },
+      {
+        name: 'Vasos',
+        actions: ['Ver todo', 'Los más vendidos', 'Personalizar'],
+        groups: [
+          { title: 'Vasos papel blanco', items: ['Vaso sencillo blanco', 'Vaso sencillo E&E'] },
+          { title: 'Vasos papel kraft', items: ['Vaso sencillo kraft', 'Vaso kraft de doble capa', 'Vaso kraft corrugado de doble capa'] },
+        ],
+      },
+      { name: 'Cuencos' },
+      { name: 'Tarrinas' },
+      { name: 'Envases take away' },
+      { name: 'Platos' },
+      { name: 'Bolsas de papel' },
+      { name: 'Cubiertos de madera' },
+      { name: 'Cañitas de papel' },
     ],
   },
-  { id: 'papeleria', name: 'Papelería y ofimática', icon: ICONS.papeleria, accent: 'b2b', subs: [] },
-  { id: 'hogar', name: 'Hogar', icon: ICONS.hogar, accent: 'promo', subs: [] },
+  { id: 'papeleria', name: 'Papelería y ofimática', subs: [] },
+  { id: 'fotografia', name: 'Fotografía', subs: [] },
+  { id: 'hogar', name: 'Hogar', subs: [] },
   {
     id: 'servicios',
     name: 'Servicios',
-    icon: ICONS.servicios,
-    accent: 'b2b',
     subs: [
-      { name: 'Todos nuestros servicios', icon: ICONS.servicios },
-      { name: 'Always Market', icon: ICONS.envases },
-      { name: 'Always Sanguar', icon: ICONS.hogar },
+      {
+        name: 'Todos nuestros servicios',
+        links: ['Servicios para empresas', 'Planificación y asesoramiento', 'Reformas y construcciones', 'Personalización de productos', 'Envíos a domicilio y recogida'],
+      },
+      { name: 'Always Market' },
+      { name: 'Always Sanguar' },
     ],
   },
 ];
 
-/* ---------- Categorías destacadas (grid home) ---------- */
-const FEATURED_CATEGORIES = [
-  { name: 'Bricolaje y construcción', icon: ICONS.bricolaje, count: '1.240 productos', bg: 'bg-lowgrey', fg: 'text-night' },
-  { name: 'Envases y embalajes', icon: ICONS.envases, count: '860 productos', bg: 'bg-novedad/10', fg: 'text-novedad' },
-  { name: 'Papelería y ofimática', icon: ICONS.papeleria, count: '540 productos', bg: 'bg-b2b/10', fg: 'text-b2b' },
-  { name: 'Hogar', icon: ICONS.hogar, count: '980 productos', bg: 'bg-promo/15', fg: 'text-night' },
-  { name: 'Herramientas', icon: ICONS.herramientas, count: '420 productos', bg: 'bg-lowgrey', fg: 'text-darkgrey' },
-  { name: 'Iluminación', icon: ICONS.iluminacion, count: '310 productos', bg: 'bg-promo/15', fg: 'text-night' },
-  { name: 'Pintura', icon: ICONS.pintura, count: '260 productos', bg: 'bg-lowgrey', fg: 'text-darkgrey' },
-  { name: 'Servicios para empresas', icon: ICONS.servicios, count: 'B2B', bg: 'bg-b2b/10', fg: 'text-b2b' },
+/* ---------- Home · Novedades ---------- */
+const NOVEDADES = [
+  { name: 'Impresora Camon MX3 Serie 5000T', desc: 'Impresora de tinta inyectada multiformato A3 A4 A2 digital.', tag: 'Novedad', price: '59,99', icon: ICONS.printer },
+  { name: 'Teclado gamer RX500 Power Plus', desc: 'Teclado mecánico inalámbrico.', tag: 'Novedad', price: '29,99', icon: ICONS.keyboard },
+  { name: 'Raton Gamer HERO T480', desc: 'Ratón inalámbrico hergonómico 36000 DPI 8 botones.', tag: 'Novedad', price: '25,99', icon: ICONS.mouse },
+  { name: 'Waco pen digital S80', desc: 'Lápiz digital profesional para diseño gráfico y animación 3D.', tag: 'Novedad', price: '15', icon: ICONS.pen },
 ];
 
-/* ---------- Productos de ejemplo (Novedades) ---------- */
-const PRODUCTS = [
-  { name: 'Taladro percutor 750W', cat: 'Herramientas', price: '49,90', old: '64,90', tag: 'Oferta', tagColor: 'promo', icon: ICONS.herramientas },
-  { name: 'Vasos take away 350ml (50u)', cat: 'Envases', price: '8,50', tag: 'Nuevo', tagColor: 'novedad', icon: ICONS.vaso },
-  { name: 'Set de pintura mate 4L', cat: 'Pintura', price: '29,90', icon: ICONS.pintura },
-  { name: 'Lámpara LED colgante', cat: 'Iluminación', price: '34,90', old: '44,90', tag: 'Oferta', tagColor: 'promo', icon: ICONS.iluminacion },
-  { name: 'Bolsas de papel kraft (100u)', cat: 'Envases', price: '12,00', tag: 'Nuevo', tagColor: 'novedad', icon: ICONS.bolsa },
-  { name: 'Juego de destornilladores', cat: 'Herramientas', price: '19,90', icon: ICONS.herramientas },
-  { name: 'Grifo monomando cocina', cat: 'Fontanería', price: '42,00', icon: ICONS.fontaneria },
-  { name: 'Platos de caña (24u)', cat: 'Envases', price: '9,90', tag: 'Nuevo', tagColor: 'novedad', icon: ICONS.plato },
-  { name: 'Rollo de vinilo suelo 2m', cat: 'Suelos', price: '15,50', icon: ICONS.suelos },
-  { name: 'Organizador de escritorio', cat: 'Papelería', price: '11,90', old: '16,90', tag: 'Oferta', tagColor: 'promo', icon: ICONS.papeleria },
+/* ---------- Home · Seguir comprando ---------- */
+const SEGUIR = [
+  { name: 'Cuadernos de contabilidad año 2027', desc: '3 Unidades de 200 páginas por ud.', price: '19,99', old: '25,99', discount: '-20%', icon: ICONS.notebook },
+  { name: 'Bolsas papel craft personalizables', desc: 'Desde 100 unidades. Diferentes tamaños y colores.', price: '29,99', old: '35,99', discount: '-20%', icon: ICONS.bag },
+  { name: 'Pintura pared azul Klein P 286C', desc: 'Pintura anti-moho 500 ml.', price: '12,99', icon: ICONS.paint },
+  { name: 'Pack platos y cubiertos biodegradables', desc: '25 unidades de cada por paquete: plato, tenedor, cuchillo y cuchara.', price: '9', icon: ICONS.plate },
+  { name: 'Bolígrafos Mapet punta fina', desc: 'Tinta azul. Disponibles en variedad de colores.', price: '5', icon: ICONS.ballpen },
 ];
 
 /* ---------- Códigos postales de La Habana → punto de recogida ---------- */
 const HAVANA_PICKUPS = {
-  '10100': 'Punto de recogida 1 · Habana Vieja',
-  '10200': 'Punto de recogida 2 · Centro Habana',
-  '10300': 'Punto de recogida 2 · Centro Habana',
-  '10400': 'Punto de recogida 3 · Cerro',
-  '10500': 'Punto de recogida 3 · Cerro',
-  '10600': 'Punto de recogida 3 · Cerro',
-  '10700': 'Punto de recogida 4 · Vedado',
-  '10800': 'Punto de recogida 5 · Plaza de la Revolución',
-  '11300': 'Punto de recogida 6 · Playa',
-  '11900': 'Punto de recogida 7 · Diez de Octubre',
+  '10100': 'Punto 1 · Habana Vieja',
+  '10200': 'Punto 2 · Centro Habana',
+  '10300': 'Punto 2 · Centro Habana',
+  '10400': 'Punto 3 · Cerro',
+  '10500': 'Punto 3 · Cerro',
+  '10600': 'Punto 3 · Cerro',
+  '10700': 'Punto 4 · Vedado',
+  '10800': 'Punto 5 · Plaza de la Revolución',
+  '11300': 'Punto 6 · Playa',
+  '11900': 'Punto 7 · Diez de Octubre',
+  '28012': 'Tienda Artex · C/ Alegría 9',
 };
 
-// Devuelve el punto de recogida para un código postal de La Habana.
 function pickupForZip(zip) {
   if (HAVANA_PICKUPS[zip]) return HAVANA_PICKUPS[zip];
-  // La Habana usa el rango 10xxx–11xxx: asignamos el punto central por defecto.
-  if (/^1[01]\d{3}$/.test(zip)) return 'Punto de recogida 1 · Centro Habana';
+  if (/^1[01]\d{3}$/.test(zip)) return 'Punto 1 · Centro Habana';
   return null;
 }

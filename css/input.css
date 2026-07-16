@@ -3,26 +3,58 @@
 @tailwind utilities;
 
 /* ============================================================
-   Always Plaza — Estilos complementarios (se compilan en tailwind.css)
+   Always Plaza — Estilos complementarios (compilados en tailwind.css)
    ============================================================ */
 
-/* Jerarquía tipográfica según el descriptivo (Inter) */
-h1 { font-weight: 800; }   /* Extra Bold */
-h2 { font-weight: 700; }   /* Bold */
-h3 { font-weight: 500; }   /* Medium */
+h1 { font-weight: 800; }
+h2 { font-weight: 700; }
+h3 { font-weight: 600; }
 
-/* Slides del hero */
-.hero-slide {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .6s ease;
+/* ---- Logo "always plaza" ---- */
+.logo {
+  display: inline-flex;
+  align-items: flex-end;
+  line-height: 1;
+  text-decoration: none;
 }
-.hero-slide.is-active {
-  opacity: 1;
-  visibility: visible;
+.logo-always {
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+  color: #01A3F4;
+  transform: skewX(-6deg);
+}
+.logo-plaza {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: #070218;
+  margin-left: 2px;
+  padding-bottom: 3px;
 }
 
-/* Recorte a 2 líneas */
+/* ---- Placeholders de imagen (marca blanca) ---- */
+.hero-photo {
+  background:
+    radial-gradient(circle at 70% 40%, rgba(1,163,244,.10), transparent 55%),
+    linear-gradient(135deg, #ECEFF6 0%, #D3D9E8 100%);
+}
+.proj-paint {
+  background:
+    radial-gradient(circle at 40% 55%, rgba(209,0,55,.16), transparent 55%),
+    linear-gradient(135deg, #F5F5F7 0%, #ECEFF6 100%);
+}
+.proj-dark {
+  background: linear-gradient(135deg, #363F56 0%, #070218 100%);
+}
+.proj-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(1,163,244,.25), transparent 60%);
+}
+
+/* ---- Precio con superíndice ---- */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -30,22 +62,14 @@ h3 { font-weight: 500; }   /* Medium */
   overflow: hidden;
 }
 
-/* Barra de scroll sutil */
+/* ---- Barra de scroll ---- */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: #D3D9E8; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: #868795; }
 
-/* Foco accesible visible */
-:focus-visible {
-  outline: 2px solid #01A3F4;
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* Ocultar marcador por defecto de <summary> */
+:focus-visible { outline: 2px solid #01A3F4; outline-offset: 2px; border-radius: 6px; }
 summary::-webkit-details-marker { display: none; }
 
-/* Menos movimiento */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
