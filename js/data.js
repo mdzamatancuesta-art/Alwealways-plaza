@@ -17,6 +17,9 @@ const ICONS = {
   cup: '<path d="M7 4h10l-1.5 16h-7z"/>',
   wrench: '<path d="M14 7a4 4 0 0 0-5 5l-6 6 2 2 6-6a4 4 0 0 0 5-5l-2 2-2-2 2-2z"/>',
   helmet: '<path d="M4 15a8 8 0 0 1 16 0M2 15h20v2H2z"/>',
+  producto: '<path d="M6 7h12l-1 13H7zM9 7V5a3 3 0 0 1 6 0v2"/>',
+  ruler: '<path d="M3 8h18v8H3zM7 8v3M11 8v4M15 8v3M19 8v4"/>',
+  drill: '<path d="M3 8h9v5H3zM12 9h4l2 2M7 13v4M14 13l4 4"/>',
 };
 
 /* ---------- Categorías del nav + mega menú (2 niveles) ----------
@@ -125,3 +128,50 @@ function pickupForZip(zip) {
   if (/^1[01]\d{3}$/.test(zip)) return 'Punto 1 · Centro Habana';
   return null;
 }
+
+/* ---------- Categoría · subcategorías destacadas (Herramientas) ---------- */
+const SECTION_CARDS = [
+  { name: 'Herramientas eléctricas', icon: ICONS.drill },
+  { name: 'Herramientas manuales', icon: ICONS.hammer },
+  { name: 'Herramientas de medición', icon: ICONS.ruler },
+  { name: 'Equipos de seguridad', icon: ICONS.helmet },
+];
+
+/* ---------- Catálogo genérico para listados (estilo mockup) ---------- */
+function genProducts(n, opts = {}) {
+  const icons = opts.icons || [ICONS.hammer, ICONS.wrench, ICONS.drill, ICONS.ruler, ICONS.producto, ICONS.helmet];
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const disc = opts.discounts && i % 3 === 0;
+    const item = {
+      name: opts.names ? opts.names[i % opts.names.length] : 'Producto estupendo que no te puedes perder',
+      desc: 'Hay males peores que no saber cómo poner un texto.',
+      price: disc ? '19,99' : '25,99',
+      icon: icons[i % icons.length],
+    };
+    if (disc) { item.old = '25,99'; item.discount = '-20%'; }
+    else if (i % 4 === 1) item.tag = 'Novedad';
+    else if (i % 4 === 2) item.badge = 'Más vendido';
+    out.push(item);
+  }
+  return out;
+}
+
+const DESTACADOS = [
+  { name: 'Producto Ultra Power 3000', desc: 'Apto para uso profesional. Hay males peores que no saber cómo poner un texto.', price: '25,99', tag: 'Novedad', icon: ICONS.drill },
+  { name: 'Producto Ultra Power 3000', desc: 'Apto para uso profesional. Hay males peores que no saber cómo poner un texto.', price: '25,99', tag: 'Novedad', icon: ICONS.producto },
+  { name: 'Producto Ultra Power 3000', desc: 'Apto para uso profesional. Hay males peores que no saber cómo poner un texto.', price: '25,99', tag: 'Novedad', icon: ICONS.ruler },
+];
+
+/* ---------- Carrito ---------- */
+const CART_ITEMS = [
+  { name: 'Raton Gamer Hero T480', desc: 'Equipado con el sensor óptico PrecisionCore T3, el HERO T4…', seller: 'E&E', price: 25.99, qty: 10, icon: ICONS.mouse },
+  { name: 'Martillo Multiusos HomeMaster', desc: 'La herramienta maravilla adecuada para el uso doméstico…', seller: 'Alzan', price: 13.99, qty: 1, icon: ICONS.hammer },
+  { name: 'Pack platos y cubiertos biodegradables', desc: '12 piezas de platos de cartón craft, tenedores, cuchillos y c…', seller: 'E&E', price: 5.99, qty: 1, icon: ICONS.plate },
+];
+
+/* ---------- Favoritos ---------- */
+const FAV_LISTS = [
+  { name: 'Reforma de casa', count: 8 },
+  { name: 'Cumple de Ana', count: 5 },
+];

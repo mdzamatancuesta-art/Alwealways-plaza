@@ -10,28 +10,12 @@ h1 { font-weight: 800; }
 h2 { font-weight: 700; }
 h3 { font-weight: 600; }
 
-/* ---- Logo "always plaza" ---- */
-.logo {
-  display: inline-flex;
-  align-items: flex-end;
-  line-height: 1;
-  text-decoration: none;
-}
-.logo-always {
-  font-weight: 800;
-  font-size: 28px;
-  letter-spacing: -0.04em;
-  color: #01A3F4;
-  transform: skewX(-6deg);
-}
-.logo-plaza {
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  color: #070218;
-  margin-left: 2px;
-  padding-bottom: 3px;
-}
+/* ---- Logo oficial (SVG inline, recolorable por fill) ---- */
+.logo { display: inline-flex; align-items: center; text-decoration: none; }
+.logo .logo-svg { height: 30px; width: auto; display: block; }
+.logo--blue .logo-svg { fill: #01A3F4; }
+.logo--white .logo-svg { fill: #ffffff; }
+.logo--night .logo-svg { fill: #070218; }
 
 /* ---- Placeholders de imagen (marca blanca) ---- */
 .hero-photo {

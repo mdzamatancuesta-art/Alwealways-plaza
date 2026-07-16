@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi perfil — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+
+<body class="bg-main font-sans text-night antialiased" data-page="">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <header class="pt-8">
+      <h1 class="text-[28px] font-bold text-night">Mi perfil</h1>
+      <p class="mt-2 text-[15px] text-mediumgrey">¡Bienvenid@! Esta es tu área personal. Gestiona tus pedidos y preferencias desde aquí.</p>
+    </header>
+
+    <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px]">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <section class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <h2 class="text-[15px] font-bold text-night">Pedidos</h2>
+          <ul class="mt-4 space-y-3 text-[14px] text-darkgrey" id="listPedidos"></ul>
+        </section>
+        <section class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <h2 class="text-[15px] font-bold text-night">Configuración de mi cuenta</h2>
+          <ul class="mt-4 space-y-3 text-[14px] text-darkgrey" id="listConfig"></ul>
+        </section>
+        <section class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <h2 class="text-[15px] font-bold text-night">Atención al cliente</h2>
+          <ul class="mt-4 space-y-3 text-[14px] text-darkgrey" id="listAyuda"></ul>
+        </section>
+      </div>
+
+      <aside class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft lg:self-start">
+        <div class="flex items-center gap-4">
+          <span class="grid h-14 w-14 place-items-center rounded-full bg-secondary text-darkgrey">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+          </span>
+          <div>
+            <p class="text-[15px] font-bold text-night">Usuario Fantástico</p>
+            <p class="flex items-center gap-1 text-[12px] text-b2b"><span class="h-1.5 w-1.5 rounded-full bg-b2b"></span>Cuenta verificada</p>
+          </div>
+        </div>
+        <dl class="mt-5 space-y-3 text-[14px]">
+          <div><dt class="text-[12px] uppercase tracking-wide text-mediumgrey">E-mail</dt><dd class="text-night">mailito@gmail.com</dd></div>
+          <div><dt class="text-[12px] uppercase tracking-wide text-mediumgrey">Teléfono</dt><dd class="text-night">+56 123 457</dd></div>
+          <div><dt class="text-[12px] uppercase tracking-wide text-mediumgrey">Dirección</dt><dd class="text-night">C/ De la Alegría nº8 2º A</dd></div>
+          <div><dt class="text-[12px] uppercase tracking-wide text-mediumgrey">Método de pago</dt><dd class="text-night">GooglePay</dd></div>
+        </dl>
+        <button class="mt-6 w-full rounded-full bg-night py-3 text-[14px] font-semibold text-white hover:bg-b2b">Crear cuenta de empresa</button>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    const link = (t) => `<li><a href="#" class="flex items-center justify-between rounded-lg px-2 py-1 transition-colors hover:bg-secondary hover:text-night">${t}<svg class="h-4 w-4 text-lowvis" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></a></li>`;
+    document.getElementById('listPedidos').innerHTML = ['Mis pedidos', 'Suscripciones', 'Cambios y devoluciones'].map(link).join('');
+    document.getElementById('listConfig').innerHTML = ['Direcciones', 'Transacciones y métodos de pago', 'Seguridad y privacidad', 'Cerrar cuenta'].map(link).join('');
+    document.getElementById('listAyuda').innerHTML = ['Contáctanos', 'Preguntas frecuentes'].map(link).join('');
+  </script>
+</body>
+</html>

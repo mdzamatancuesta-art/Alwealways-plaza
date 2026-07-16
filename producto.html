@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martillo Multiusos HomeMaster — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+
+<body class="bg-main font-sans text-night antialiased" data-page="brico">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <nav class="pt-6 text-[13px] text-mediumgrey">
+      <a href="index.html" class="hover:text-night">Inicio</a> / <a href="categoria.html" class="hover:text-night">Bricolaje y construcción</a> / <a href="categoria.html" class="hover:text-night">Herramientas</a> / <span class="text-night">Martillo Multiusos</span>
+    </nav>
+
+    <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <!-- Galería -->
+      <div>
+        <p class="mb-3 text-[13px] text-mediumgrey">Vendido por <strong class="text-night">ALZAN</strong></p>
+        <div class="relative aspect-square overflow-hidden rounded-xl2 bg-secondary p-10">
+          <button class="absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full text-darkgrey hover:text-exito" aria-label="Favorito"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.6-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5C19 15.4 12 20 12 20Z"/></svg></button>
+          <div class="grid h-full w-full place-items-center text-nicegrey" id="mainImg"></div>
+        </div>
+        <div class="mt-3 flex gap-3" id="thumbs"></div>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <h1 class="text-[26px] font-bold leading-tight text-night">Martillo Multiusos HomeMaster</h1>
+        <p class="mt-3 text-[15px] text-mediumgrey">La herramienta indispensable para cualquier caja de herramientas doméstica, ideal para clavar y extraer clavos con facilidad. Diseño ligero pero resistente con cabezal pulido y agarre de alta tracción.</p>
+        <p class="mt-6 text-[24px] font-extrabold text-night">13<sup class="text-[13px]">,99</sup>€ <span class="text-[13px] font-normal text-mediumgrey">IVA incl.</span></p>
+
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Modelo</p>
+          <div class="flex gap-3">
+            <button class="model-opt flex items-center gap-2 rounded-full border border-night px-4 py-2 text-[14px] font-medium" data-sel="1"><span class="h-3 w-3 rounded-full" style="background:#a97142"></span>Madera</button>
+            <button class="model-opt flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2 text-[14px] text-darkgrey" data-sel="0"><span class="h-3 w-3 rounded-full bg-mediumgrey"></span>Metal</button>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Unidades</p>
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="flex items-center gap-4 rounded-full border border-nicegrey px-2 py-1.5">
+              <button id="minus" class="grid h-8 w-8 place-items-center rounded-full hover:bg-lowgrey" aria-label="Menos">–</button>
+              <span id="qty" class="w-8 text-center text-[15px] font-semibold">10</span>
+              <button id="plus" class="grid h-8 w-8 place-items-center rounded-full bg-night text-white hover:bg-b2b" aria-label="Más">+</button>
+            </div>
+            <button class="flex-1 rounded-full bg-night px-10 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-b2b">Añadir</button>
+          </div>
+        </div>
+
+        <div class="mt-8 divide-y divide-lowgrey border-y border-lowgrey">
+          <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between text-[15px] font-medium">Dimensiones y material<svg class="h-4 w-4 text-lowvis transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary><p class="mt-3 text-[14px] text-mediumgrey">Cabezal de acero al carbono, mango de madera de fresno. Longitud 33 cm. Peso 450 g.</p></details>
+          <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between text-[15px] font-medium">Más información<svg class="h-4 w-4 text-lowvis transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary><p class="mt-3 text-[14px] text-mediumgrey">Garantía de 2 años. Envío a domicilio en La Habana o recogida en punto Always Point.</p></details>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comprar en pack -->
+    <section class="mt-14">
+      <h2 class="mb-4 text-xl font-bold text-night">Comprar en pack</h2>
+      <div class="rounded-xl2 bg-[#e9ebf5] p-6 md:p-8">
+        <p class="mb-4 text-[13px] font-medium text-darkgrey">Tu producto</p>
+        <div class="grid items-center gap-4 lg:grid-cols-[1fr_auto_1fr_auto]">
+          <div class="flex items-center gap-4 rounded-xl2 bg-white p-4">
+            <div class="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-secondary text-nicegrey" id="packA"></div>
+            <div><p class="text-[14px] font-semibold">Martillo Multiusos HomeMaster</p><p class="text-[12px] text-mediumgrey">Información del martillo maravilloso</p><p class="mt-1 text-[16px] font-extrabold">13,99€</p></div>
+          </div>
+          <div class="hidden text-center text-2xl font-light text-mediumgrey lg:block">+</div>
+          <div class="flex items-center gap-4 rounded-xl2 bg-white p-4">
+            <div class="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-secondary text-nicegrey" id="packB"></div>
+            <div><p class="text-[14px] font-semibold">Llave inglesa con mango de silicona</p><p class="text-[12px] text-mediumgrey">Información sobre la llave inglesa maravillosa</p><p class="mt-1 text-[16px] font-extrabold">29,99€</p></div>
+          </div>
+          <div class="text-center lg:text-right">
+            <p class="text-[13px] text-mediumgrey">Ambos productos por:</p>
+            <p class="text-[22px] font-extrabold">55,99€</p>
+            <button class="mt-2 w-full rounded-full bg-night px-8 py-3 text-[14px] font-semibold text-white hover:bg-b2b lg:w-auto">Añadir</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="mb-5 text-xl font-bold text-night">Productos relacionados</h2>
+      <div id="rel1" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
+    </section>
+    <section class="mt-12">
+      <h2 class="mb-5 text-xl font-bold text-night">Otros clientes también vieron</h2>
+      <div id="rel2" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    document.getElementById('mainImg').innerHTML = AP.svg(ICONS.hammer, 'h-40 w-40');
+    document.getElementById('packA').innerHTML = AP.svg(ICONS.hammer, 'h-9 w-9');
+    document.getElementById('packB').innerHTML = AP.svg(ICONS.wrench, 'h-9 w-9');
+    document.getElementById('thumbs').innerHTML = [ICONS.hammer, ICONS.wrench].map((ic, i) =>
+      `<button class="grid h-16 w-16 place-items-center rounded-xl border ${i === 0 ? 'border-night' : 'border-lowgrey'} bg-secondary text-nicegrey">${AP.svg(ic, 'h-7 w-7')}</button>`).join('');
+    document.getElementById('rel1').innerHTML = genProducts(5, { discounts: true }).map(AP.productCard).join('');
+    document.getElementById('rel2').innerHTML = genProducts(5, { discounts: true }).map(AP.productCard).join('');
+
+    // Selector de modelo
+    AP.$$('.model-opt').forEach((b) => b.addEventListener('click', () => {
+      AP.$$('.model-opt').forEach((x) => { x.classList.remove('border-night'); x.classList.add('border-nicegrey', 'text-darkgrey'); });
+      b.classList.add('border-night'); b.classList.remove('border-nicegrey', 'text-darkgrey');
+    }));
+    // Stepper
+    let q = 10; const qEl = document.getElementById('qty');
+    document.getElementById('plus').addEventListener('click', () => { q++; qEl.textContent = q; });
+    document.getElementById('minus').addEventListener('click', () => { if (q > 1) { q--; qEl.textContent = q; } });
+  </script>
+</body>
+</html>

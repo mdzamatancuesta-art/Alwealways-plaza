@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrarse — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+
+<body class="bg-main font-sans text-night antialiased" data-page="">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-md px-4 py-14">
+    <div class="rounded-xl2 border border-lowgrey bg-white p-8 shadow-soft">
+      <h1 class="text-2xl font-bold text-night">¡Nos alegramos de verte!</h1>
+      <div class="mt-6 flex gap-2 rounded-full bg-secondary p-1">
+        <a href="login.html" class="flex-1 rounded-full py-2.5 text-center text-[14px] font-medium text-mediumgrey hover:text-night">Iniciar sesión</a>
+        <button class="flex-1 rounded-full bg-white py-2.5 text-[14px] font-semibold text-night shadow-soft">Registrarse</button>
+      </div>
+
+      <form class="mt-6 flex flex-col gap-4" onsubmit="event.preventDefault()">
+        <div class="grid grid-cols-2 gap-3">
+          <label class="text-[13px] font-medium text-darkgrey">Nombre:
+            <input placeholder="Usuario" class="mt-1.5 w-full rounded-xl border border-nicegrey px-4 py-3 text-[15px] focus:border-b2b focus:outline-none" />
+          </label>
+          <label class="text-[13px] font-medium text-darkgrey">Apellidos:
+            <input placeholder="Fantástico" class="mt-1.5 w-full rounded-xl border border-nicegrey px-4 py-3 text-[15px] focus:border-b2b focus:outline-none" />
+          </label>
+        </div>
+        <label class="text-[13px] font-medium text-darkgrey">Email:
+          <input type="email" placeholder="Usuario@alwaysmk.com" class="mt-1.5 w-full rounded-xl border border-nicegrey px-4 py-3 text-[15px] focus:border-b2b focus:outline-none" />
+        </label>
+        <label class="text-[13px] font-medium text-darkgrey">Contraseña:
+          <input type="password" placeholder="•••••••••" class="mt-1.5 w-full rounded-xl border border-nicegrey px-4 py-3 text-[15px] focus:border-b2b focus:outline-none" />
+        </label>
+
+        <details id="proToggle" class="rounded-xl border border-lowgrey p-4">
+          <summary class="flex cursor-pointer items-center justify-between text-[14px] font-medium text-night">Registrarse como profesional<svg class="h-4 w-4 text-lowvis transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="mt-4 flex flex-col gap-3">
+            <label class="text-[13px] font-medium text-darkgrey">Razón social
+              <input placeholder="Empresa S.L." class="mt-1.5 w-full rounded-xl border border-nicegrey px-4 py-3 text-[15px] focus:border-b2b focus:outline-none" />
+            </label>
+            <label class="text-[13px] font-medium text-darkgrey">Número de identificación de empresa
+              <input placeholder="B-12345678" class="mt-1.5 w-full rounded-xl border border-nicegrey px-4 py-3 text-[15px] focus:border-b2b focus:outline-none" />
+            </label>
+          </div>
+        </details>
+
+        <a href="perfil.html" class="rounded-full bg-night py-3.5 text-center text-[15px] font-semibold text-white transition-colors hover:bg-b2b">Registrarse</a>
+      </form>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datos del pedido — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+
+<body class="bg-main font-sans text-night antialiased" data-page="cart">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <h1 class="pt-8 text-[28px] font-bold text-night">Datos del pedido</h1>
+
+    <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px]">
+      <div class="flex flex-col gap-4">
+        <!-- Contacto -->
+        <section class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <div class="flex items-start justify-between">
+            <h2 class="text-[15px] font-bold text-night">Contacto</h2>
+            <button class="text-[13px] font-medium text-b2b hover:underline">Cambiar</button>
+          </div>
+          <div class="mt-3 space-y-1 text-[14px] text-darkgrey">
+            <p class="font-medium text-night">Usuario Fantástico</p>
+            <p>Calle del Aguacate, La Habana, Cuba · 28012</p>
+            <p>usuariofantastico@gmail.com</p>
+            <p>+54 12 34 57</p>
+          </div>
+        </section>
+        <!-- Dirección de entrega -->
+        <section class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <div class="flex items-start justify-between">
+            <h2 class="text-[15px] font-bold text-night">Dirección de entrega</h2>
+            <button class="text-[13px] font-medium text-b2b hover:underline">Cambiar</button>
+          </div>
+          <div class="mt-3 flex items-center gap-3 rounded-xl bg-secondary px-4 py-3">
+            <svg class="h-5 w-5 shrink-0 text-b2b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h18M6 9V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3M5 9l1 11h12l1-11"/></svg>
+            <div class="text-[14px]"><p class="font-medium text-night">Punto de recogida · Tienda Artex</p><p class="text-mediumgrey">Calle de la Alegría 9 con la 13 · 28012 Habana, Cuba</p></div>
+          </div>
+        </section>
+        <!-- Método de pago -->
+        <section class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <div class="flex items-start justify-between">
+            <h2 class="text-[15px] font-bold text-night">Método de pago</h2>
+            <button class="text-[13px] font-medium text-b2b hover:underline">Cambiar</button>
+          </div>
+          <div class="mt-3 flex items-center gap-3 text-[14px] text-darkgrey">
+            <span class="grid h-8 w-12 place-items-center rounded border border-lowgrey text-[10px] font-bold">MC</span>
+            MasterCard ···· 8654
+          </div>
+        </section>
+      </div>
+
+      <!-- Resumen -->
+      <aside class="lg:sticky lg:top-24 lg:self-start">
+        <div class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <h2 class="text-lg font-bold text-night">Resumen del pedido</h2>
+          <p class="mt-1 text-[12px] text-mediumgrey">Tiempo estimado de entrega de 7 a 15 días</p>
+          <div class="mt-4 space-y-2 text-[14px]">
+            <div class="flex justify-between"><span class="text-darkgrey">Ratón Gamer · 10 uds</span></div>
+            <div class="flex justify-between"><span class="text-darkgrey">Martillo Multiusos · 1 ud</span></div>
+            <div class="flex justify-between"><span class="text-darkgrey">Pack platos y cubiertos · 1 ud</span></div>
+          </div>
+          <div class="my-4 border-t border-lowgrey"></div>
+          <div class="flex justify-between text-[14px]"><span class="text-mediumgrey">Productos:</span><span class="font-semibold">279,93€</span></div>
+          <div class="mt-2 flex justify-between text-[14px]"><span class="text-mediumgrey">Gastos de envío:</span><span class="font-semibold">7€</span></div>
+          <div class="my-4 border-t border-lowgrey"></div>
+          <div class="flex items-center justify-between"><span class="text-[15px] font-bold">Total <span class="text-[12px] font-normal text-mediumgrey">IVA incl.</span></span><span class="text-[18px] font-extrabold">285,93€</span></div>
+        </div>
+        <a href="confirmacion.html" class="mt-4 flex items-center justify-between rounded-xl2 bg-b2b px-7 py-5 text-white shadow-soft transition-colors hover:bg-[#0089d1]">
+          <span class="text-[17px] font-bold">Comprar ahora</span>
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-white text-b2b"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+</body>
+</html>

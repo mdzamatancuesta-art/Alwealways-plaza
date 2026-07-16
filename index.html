@@ -6,120 +6,17 @@
   <title>Always Plaza — Marketplace · Envíos a La Habana</title>
   <meta name="description" content="Always Plaza: marketplace de bricolaje, envases, papelería, fotografía, hogar y servicios. Compra desde cualquier parte del mundo y envía a La Habana. Precios en euros." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tailwind.css" />
 </head>
 
-<body class="bg-main font-sans text-night antialiased">
+<body class="bg-main font-sans text-night antialiased" data-page="home">
+  <div id="site-header"></div>
 
-  <!-- ============ TOPBAR (65px, se oculta al hacer scroll) ============ -->
-  <div id="topbar" class="fixed inset-x-0 top-0 z-50 h-[65px] bg-night text-white transition-transform duration-300">
-    <div class="mx-auto flex h-full max-w-[1400px] items-center justify-between gap-4 px-4 md:px-8">
-      <!-- Izquierda: idioma -->
-      <div class="relative shrink-0">
-        <button id="langBtn" class="flex items-center gap-2 rounded-full py-1.5 text-[13px] transition-colors hover:text-white/70" aria-haspopup="true" aria-expanded="false">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15.5 0 18M12 3c-2.5 2.5-2.5 15.5 0 18"/></svg>
-          <span id="langLabel">Español</span>
-        </button>
-        <div id="langMenu" class="absolute left-0 top-full mt-2 hidden w-36 overflow-hidden rounded-xl bg-white text-night shadow-softlg">
-          <button data-lang="es" class="flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-lowgrey">🇪🇸 Español</button>
-          <button data-lang="en" class="flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-lowgrey">🇬🇧 English</button>
-        </div>
-      </div>
-
-      <!-- Centro: aviso -->
-      <div class="hidden min-w-0 flex-1 items-center justify-center gap-2 md:flex">
-        <svg class="h-4 w-4 shrink-0 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>
-        <p id="notice" class="truncate text-[13px] text-white/90">Envío a domicilio solo disponible en La Habana</p>
-      </div>
-
-      <!-- Derecha: Añadir CP + Punto recogida -->
-      <div class="flex shrink-0 items-center gap-4">
-        <button id="cpBtn" class="flex items-center gap-1.5 text-[13px] text-white/90 transition-colors hover:text-white">
-          <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-          <span id="cpLabel">Añadir CP</span>
-        </button>
-        <button id="pickupBtn" class="flex items-center gap-1.5 text-[13px] text-white/90 transition-colors hover:text-white">
-          <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h18M6 9V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3M5 9l1 11h12l1-11"/></svg>
-          <span id="pickupLabel" class="max-w-[160px] truncate">Punto recogida</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ HEADER ============ -->
-  <header id="header" class="sticky top-0 z-40 bg-white transition-[top] duration-300" style="top:65px">
-    <div class="mx-auto flex max-w-[1400px] items-center gap-4 px-4 py-3.5 md:px-8">
-      <!-- Menú móvil -->
-      <button id="mobileMenuBtn" class="grid h-10 w-10 shrink-0 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey lg:hidden" aria-label="Abrir menú">
-        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-
-      <!-- Logo -->
-      <a href="#" class="logo shrink-0" aria-label="Always Plaza — Inicio">
-        <span class="logo-always">always</span><span class="logo-plaza">plaza</span>
-      </a>
-
-      <!-- Buscador -->
-      <form id="searchForm" class="relative mx-auto hidden w-full max-w-xl md:block">
-        <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-mediumgrey">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        </span>
-        <input id="searchInput" type="search" placeholder="¿Qué estás buscando?" class="w-full rounded-full border border-nicegrey bg-white py-2.5 pl-12 pr-4 text-[15px] text-night placeholder:text-lowvis transition-shadow focus:border-b2b focus:shadow-soft focus:outline-none" aria-label="Buscar productos" />
-      </form>
-
-      <!-- Acciones -->
-      <div class="ml-auto flex shrink-0 items-center gap-2 sm:gap-4">
-        <button id="mobileSearchBtn" class="grid h-10 w-10 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey md:hidden" aria-label="Buscar">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        </button>
-        <a href="#" class="flex items-center gap-2 text-[14px] font-medium text-night transition-colors hover:text-b2b">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
-          <span class="hidden lg:inline">Inicia sesión</span>
-        </a>
-        <a href="#" class="relative grid h-10 w-10 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="Favoritos">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.6-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5C19 15.4 12 20 12 20Z"/></svg>
-        </a>
-        <a href="#" class="relative grid h-10 w-10 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="Cesta de la compra">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7zM9 8V6a3 3 0 0 1 6 0v2"/></svg>
-          <span class="absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-night px-1 text-[11px] font-bold leading-none text-white">10</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Buscador móvil -->
-    <form id="mobileSearch" class="hidden px-4 pb-3 md:hidden">
-      <div class="relative">
-        <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-mediumgrey">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        </span>
-        <input type="search" placeholder="¿Qué estás buscando?" class="w-full rounded-full border border-nicegrey bg-white py-2.5 pl-12 pr-4 text-[15px] placeholder:text-lowvis focus:border-b2b focus:outline-none" aria-label="Buscar productos" />
-      </div>
-    </form>
-
-    <!-- Nav con mega menú -->
-    <nav class="hidden border-y border-lowgrey lg:block">
-      <div class="mx-auto max-w-[1400px] px-8">
-        <ul id="megaNav" class="flex items-center gap-7"></ul>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Mega panel -->
-  <div id="megaPanelWrap" class="pointer-events-none fixed inset-x-0 top-0 z-30 hidden">
-    <div class="mx-auto max-w-[1400px]">
-      <div id="megaPanel" class="pointer-events-auto origin-top border-b border-lowgrey bg-white shadow-softlg"></div>
-    </div>
-  </div>
-  <div id="megaBackdrop" class="fixed inset-0 z-20 hidden bg-night/20"></div>
-
-  <!-- ============ MAIN ============ -->
   <main class="mx-auto max-w-[1400px] px-4 md:px-8">
-
-    <!-- ===== HERO (banner 30/70) ===== -->
+    <!-- HERO 30/70 -->
     <section class="pt-6">
       <div class="grid grid-cols-1 overflow-hidden rounded-xl2 shadow-soft md:grid-cols-[minmax(0,34%)_1fr]">
         <div class="flex flex-col justify-center bg-promo p-8 md:p-10">
@@ -132,132 +29,58 @@
       </div>
     </section>
 
-    <!-- ===== NOVEDADES ===== -->
+    <!-- NOVEDADES -->
     <section class="pt-12">
       <h2 class="mb-5 text-2xl font-bold text-night">Novedades</h2>
       <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
         <div id="novedadesGrid" class="contents"></div>
-        <!-- Tarjeta promo naranja -->
-        <a href="#" class="group flex flex-col justify-between rounded-xl2 bg-novedad p-6 text-white shadow-soft transition-all hover:-translate-y-1">
+        <a href="categoria.html" class="group flex flex-col justify-between rounded-xl2 bg-novedad p-6 text-white shadow-soft transition-all hover:-translate-y-1">
           <div>
             <h3 class="text-xl font-bold">Novedades</h3>
             <p class="mt-3 text-[14px] font-light leading-relaxed text-white/90">¡Descubre más de 20 artículos de la nueva colección de ofimática y papelería!</p>
           </div>
-          <span class="mt-6 grid h-11 w-11 place-items-center rounded-full border border-white/60 transition-transform group-hover:translate-x-1">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
+          <span class="mt-6 grid h-11 w-11 place-items-center rounded-full border border-white/60 transition-transform group-hover:translate-x-1"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
     </section>
 
-    <!-- ===== SEGUIR COMPRANDO ===== -->
+    <!-- SEGUIR COMPRANDO -->
     <section class="pt-12">
       <h2 class="mb-5 text-2xl font-bold text-night">Seguir comprando</h2>
       <div id="seguirGrid" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
     </section>
 
-    <!-- ===== CREA TU PROYECTO ===== -->
+    <!-- CREA TU PROYECTO -->
     <section class="py-12">
       <h2 class="mb-5 text-2xl font-bold text-night">Crea tu proyecto</h2>
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <!-- Banner azul Alzan -->
         <div class="grid grid-cols-1 overflow-hidden rounded-xl2 shadow-soft sm:grid-cols-2">
           <div class="proj-paint min-h-[180px]"></div>
           <div class="flex flex-col justify-center bg-b2b p-7 text-white">
             <h3 class="text-xl font-bold leading-snug">Dale forma a tu gran proyecto con Alzan</h3>
             <p class="mt-3 text-[13px] font-light text-white/90">¿Pensando en renovar? Todavía más fácil con nuestros servicios personalizados para reformas y construcciones. Escríbenos a infoproyecto@always.com</p>
-            <span class="mt-5 grid h-10 w-10 place-items-center rounded-full bg-white text-b2b">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
+            <a href="servicios.html" class="mt-5 grid h-10 w-10 place-items-center rounded-full bg-white text-b2b"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
-        <!-- Banner oscuro presupuesto -->
-        <a href="#" class="proj-dark group relative flex min-h-[220px] items-end overflow-hidden rounded-xl2 p-7 shadow-soft">
+        <a href="servicios.html" class="proj-dark group relative flex min-h-[220px] items-end overflow-hidden rounded-xl2 p-7 shadow-soft">
           <div class="relative z-10 flex w-full items-end justify-between gap-4 text-white">
             <h3 class="max-w-[60%] text-xl font-bold leading-snug">Pide presupuesto gratis para cambiar suelos y paredes</h3>
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/70 transition-transform group-hover:translate-x-1">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/70 transition-transform group-hover:translate-x-1"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </a>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="border-t border-lowgrey bg-white">
-    <div class="mx-auto max-w-[1400px] px-4 py-12 md:px-8">
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-        <div class="lg:col-span-2">
-          <span class="logo"><span class="logo-always">always</span><span class="logo-plaza">plaza</span></span>
-          <p class="mt-4 max-w-xs text-[15px] font-light text-mediumgrey">Marketplace para comprar desde cualquier parte del mundo y enviar a La Habana. Precios en euros (€).</p>
-        </div>
-        <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Comprar</h3>
-          <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="#" class="transition-colors hover:text-night">Bricolaje y construcción</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Envases y embalajes</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Papelería y ofimática</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Fotografía</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Hogar</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Servicios</h3>
-          <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="#" class="transition-colors hover:text-night">Todos nuestros servicios</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Always Market</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Always Sanguar</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Ayuda</h3>
-          <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="#" class="transition-colors hover:text-night">Puntos de recogida</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Envíos a Cuba</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Contacto</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-lowgrey pt-6 text-[13px] text-lowvis sm:flex-row">
-        <p>© 2026 Always Plaza. Todos los derechos reservados.</p>
-        <p>Moneda: Euro (€) · Idioma: Español</p>
-      </div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
-  <!-- ============ MODAL CÓDIGO POSTAL (drawer derecho) ============ -->
-  <div id="cpModal" class="fixed inset-0 z-[70] hidden">
-    <div class="absolute inset-0 bg-night/40" data-cp-close></div>
-    <aside class="absolute right-0 top-0 flex h-full w-[90%] max-w-md translate-x-full flex-col bg-white p-8 transition-transform duration-300 md:p-10" id="cpPanel">
-      <button data-cp-close class="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full text-darkgrey hover:bg-lowgrey" aria-label="Cerrar">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
-      <h2 class="mt-6 text-2xl font-bold text-night">Añade tu código postal</h2>
-      <p class="mt-4 text-[14px] text-darkgrey">Enviamos pedidos a domicilio en toda La Habana. Para pedidos fuera de La Habana disponemos de puntos de recogida <em>Always Points</em>.</p>
-      <p class="mt-3 text-[14px] text-darkgrey">Al añadir tu código postal verás tu punto de recogida o tienda más cercana.</p>
-      <label for="cpInput" class="mt-8 block text-[13px] text-mediumgrey">Introduce tu código postal (Ejemplo: 28012)</label>
-      <input id="cpInput" inputmode="numeric" maxlength="5" class="mt-3 w-full rounded-full bg-lowgrey px-5 py-3.5 text-[15px] text-night placeholder:text-lowvis focus:outline-none focus:ring-2 focus:ring-b2b" placeholder="28012" />
-      <p id="cpResult" class="mt-4 hidden items-center gap-2 rounded-xl bg-secondary px-4 py-3 text-[14px] font-medium text-night"></p>
-      <button id="cpConfirm" class="mt-6 flex items-center justify-center gap-2 rounded-full bg-b2b py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#0089d1]">Confirmar</button>
-    </aside>
-  </div>
-
-  <!-- ============ MENÚ MÓVIL (drawer) ============ -->
-  <div id="mobileDrawer" class="fixed inset-0 z-[60] hidden">
-    <div class="absolute inset-0 bg-night/40" data-close></div>
-    <div class="absolute left-0 top-0 h-full w-[86%] max-w-sm -translate-x-full overflow-y-auto bg-white p-5 transition-transform duration-300" id="drawerPanel">
-      <div class="flex items-center justify-between">
-        <span class="logo"><span class="logo-always">always</span><span class="logo-plaza">plaza</span></span>
-        <button data-close class="grid h-9 w-9 place-items-center rounded-full hover:bg-lowgrey" aria-label="Cerrar menú">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
-        </button>
-      </div>
-      <ul id="mobileNav" class="mt-6 flex flex-col gap-1"></ul>
-    </div>
-  </div>
-
+  <script src="js/logo.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    document.getElementById('novedadesGrid').innerHTML = NOVEDADES.map(AP.productCard).join('');
+    document.getElementById('seguirGrid').innerHTML = SEGUIR.map(AP.productCard).join('');
+  </script>
 </body>
 </html>

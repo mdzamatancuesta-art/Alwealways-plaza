@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+
+<body class="bg-main font-sans text-night antialiased" data-page="cart">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <h1 class="pt-8 text-[28px] font-bold text-night">Carrito</h1>
+
+    <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px]">
+      <!-- Items -->
+      <div>
+        <button class="flex w-full items-center justify-between rounded-xl2 border border-lowgrey bg-white px-5 py-4 text-[14px] font-medium text-night shadow-soft transition-colors hover:border-b2b" id="checkDelivery">
+          <span class="flex items-center gap-3">
+            <svg class="h-5 w-5 text-b2b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>
+            Comprobar disponibilidad de entrega
+          </span>
+          <svg class="h-4 w-4 text-lowvis" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div id="cartList" class="mt-4 divide-y divide-lowgrey"></div>
+      </div>
+
+      <!-- Resumen -->
+      <aside class="lg:sticky lg:top-24 lg:self-start">
+        <div class="rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft">
+          <h2 class="text-lg font-bold text-night">Resumen del pedido</h2>
+          <div class="mt-4 flex items-center justify-between text-[14px]"><span class="text-mediumgrey">Productos:</span><span id="sumProducts" class="font-semibold">279,93€</span></div>
+          <div class="mt-2 flex items-center justify-between text-[14px]"><span class="text-mediumgrey">Gastos de envío:</span><span class="italic text-mediumgrey">Se calculará en el siguiente paso</span></div>
+          <div class="my-4 border-t border-lowgrey"></div>
+          <div class="flex items-center justify-between"><span class="text-[15px] font-bold">Total <span class="text-[12px] font-normal text-mediumgrey">IVA incl.</span></span><span id="sumTotal" class="text-[18px] font-extrabold">279,93€</span></div>
+          <button class="mt-4 flex items-center gap-1.5 text-[13px] font-medium text-b2b hover:underline"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>Añadir código descuento</button>
+          <div class="mt-4 flex gap-2 text-mediumgrey">
+            <span class="grid h-7 w-10 place-items-center rounded border border-lowgrey text-[10px] font-bold">VISA</span>
+            <span class="grid h-7 w-10 place-items-center rounded border border-lowgrey text-[10px] font-bold">PP</span>
+            <span class="grid h-7 w-10 place-items-center rounded border border-lowgrey text-[10px] font-bold">GPay</span>
+            <span class="grid h-7 w-10 place-items-center rounded border border-lowgrey text-[10px] font-bold">MC</span>
+          </div>
+        </div>
+        <a href="checkout.html" class="mt-4 flex items-center justify-between rounded-xl2 bg-b2b px-7 py-5 text-white shadow-soft transition-colors hover:bg-[#0089d1]">
+          <span class="text-[17px] font-bold">Continuar</span>
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-white text-b2b"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-4 rounded-xl2 border border-lowgrey bg-white px-4 py-3 text-[12px] text-mediumgrey">
+          <span class="flex items-center gap-1"><svg class="h-4 w-4 text-b2b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Pago seguro</span>
+          <span class="flex items-center gap-1"><svg class="h-4 w-4 text-b2b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Garantía de calidad</span>
+          <span class="flex items-center gap-1"><svg class="h-4 w-4 text-b2b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Devolución 30 días</span>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    const euro = (n) => n.toFixed(2).replace('.', ',') + '€';
+    function renderCart() {
+      document.getElementById('cartList').innerHTML = CART_ITEMS.map((it, idx) => `
+        <div class="flex gap-4 py-5">
+          <div class="grid h-24 w-24 shrink-0 place-items-center rounded-xl2 bg-secondary text-nicegrey">${AP.svg(it.icon, 'h-12 w-12')}</div>
+          <div class="flex flex-1 flex-col">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="text-[15px] font-semibold text-night">${it.name}</h3>
+              <span class="text-[15px] font-bold text-night">${euro(it.price)}</span>
+            </div>
+            <p class="mt-1 line-clamp-2 text-[13px] text-mediumgrey">${it.desc}</p>
+            <p class="mt-1 text-[12px] text-mediumgrey">Vendido por ${it.seller}</p>
+            <div class="mt-auto flex items-center gap-4 pt-3">
+              <button data-del="${idx}" class="grid h-8 w-8 place-items-center rounded-full text-mediumgrey hover:bg-lowgrey hover:text-exito" aria-label="Eliminar">${AP.svg('<path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M6 7l1 13h10l1-13"/>', 'h-4 w-4')}</button>
+              <div class="flex items-center gap-3 rounded-full border border-nicegrey px-2 py-1">
+                <button data-dec="${idx}" class="grid h-7 w-7 place-items-center rounded-full hover:bg-lowgrey">–</button>
+                <span class="w-6 text-center text-[14px] font-semibold">${it.qty}</span>
+                <button data-inc="${idx}" class="grid h-7 w-7 place-items-center rounded-full bg-night text-white hover:bg-b2b">+</button>
+              </div>
+            </div>
+          </div>
+        </div>`).join('');
+      const total = CART_ITEMS.reduce((s, it) => s + it.price * it.qty, 0);
+      document.getElementById('sumProducts').textContent = euro(total);
+      document.getElementById('sumTotal').textContent = euro(total);
+      bind();
+    }
+    function bind() {
+      AP.$$('[data-inc]').forEach((b) => b.onclick = () => { CART_ITEMS[b.dataset.inc].qty++; renderCart(); });
+      AP.$$('[data-dec]').forEach((b) => b.onclick = () => { const i = b.dataset.dec; if (CART_ITEMS[i].qty > 1) { CART_ITEMS[i].qty--; renderCart(); } });
+      AP.$$('[data-del]').forEach((b) => b.onclick = () => { CART_ITEMS.splice(b.dataset.del, 1); renderCart(); });
+    }
+    document.getElementById('checkDelivery').addEventListener('click', () => document.getElementById('cpBtn').click());
+    renderCart();
+  </script>
+</body>
+</html>
