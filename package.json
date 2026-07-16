@@ -1,0 +1,14 @@
+{
+  "name": "always-plaza",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Always Plaza — marketplace frontend (envíos a La Habana).",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --watch",
+    "serve": "python3 -m http.server 4173"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

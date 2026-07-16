@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Always Plaza — Estilos complementarios (se compilan en tailwind.css)
+   ============================================================ */
+
+/* Jerarquía tipográfica según el descriptivo (Inter) */
+h1 { font-weight: 800; }   /* Extra Bold */
+h2 { font-weight: 700; }   /* Bold */
+h3 { font-weight: 500; }   /* Medium */
+
+/* Slides del hero */
+.hero-slide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .6s ease;
+}
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Recorte a 2 líneas */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Barra de scroll sutil */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #D3D9E8; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #868795; }
+
+/* Foco accesible visible */
+:focus-visible {
+  outline: 2px solid #01A3F4;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Ocultar marcador por defecto de <summary> */
+summary::-webkit-details-marker { display: none; }
+
+/* Menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
