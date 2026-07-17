@@ -109,8 +109,8 @@
     document.getElementById('packB').innerHTML = AP.svg(ICONS.wrench, 'h-9 w-9');
     document.getElementById('thumbs').innerHTML = [ICONS.hammer, ICONS.wrench].map((ic, i) =>
       `<button class="grid h-16 w-16 place-items-center rounded-xl border ${i === 0 ? 'border-night' : 'border-lowgrey'} bg-secondary text-nicegrey">${AP.svg(ic, 'h-7 w-7')}</button>`).join('');
-    document.getElementById('rel1').innerHTML = genProducts(5, { discounts: true }).map(AP.productCard).join('');
-    document.getElementById('rel2').innerHTML = genProducts(5, { discounts: true }).map(AP.productCard).join('');
+    document.getElementById('rel1').innerHTML = genProducts(5, { discounts: true, photos: PHOTO_POOL }).map(AP.productCard).join('');
+    document.getElementById('rel2').innerHTML = genProducts(5, { discounts: true, photos: PHOTO_POOL }).map(AP.productCard).join('');
 
     // Selector de modelo
     AP.$$('.model-opt').forEach((b) => b.addEventListener('click', () => {

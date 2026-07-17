@@ -20,11 +20,7 @@
     </header>
     <div class="sectionCards mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4"></div>
     <section class="mt-12">
-      <div class="mb-5 flex items-center gap-3"><h2 class="text-xl font-bold text-night">Destacados</h2></div>
-      <div class="grid1 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
-    </section>
-    <section class="mt-12">
-      <h2 class="mb-5 text-xl font-bold text-night">Todos los productos</h2>
+      <div class="mb-5 flex items-center justify-between gap-3"><h2 class="text-xl font-bold text-night gridTitle">Todos los productos</h2><button class="clearFilter hidden text-[13px] font-semibold text-b2b hover:underline">Ver todo</button></div>
       <div class="grid2 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
     </section>
   </main>
@@ -39,14 +35,35 @@
       root.querySelector('.crumb').textContent=info.name;
       root.querySelector('.catTitle').textContent=info.name;
       root.querySelector('.catDesc').textContent=info.desc;
-      root.querySelector('.sectionCards').innerHTML=sectionCardsFor(id).map(function(c){
-        return '<a href="#" class="group flex flex-col items-center gap-3 rounded-xl2 border border-lowgrey bg-white p-5 text-center shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">'+
+      var all=productsForCategory(id), grid2=root.querySelector('.grid2'), gridTitle=root.querySelector('.gridTitle'), clearBtn=root.querySelector('.clearFilter');
+      function renderGrid(list){ grid2.innerHTML=list.map(AP.productCard).join(''); }
+      renderGrid(all);
+      var cards=sectionCardsFor(id), active=null;
+      var cardsEl=root.querySelector('.sectionCards');
+      cardsEl.innerHTML=cards.map(function(c,i){
+        return '<button type="button" data-i="'+i+'" class="secCard group flex flex-col items-center gap-3 rounded-xl2 border border-lowgrey bg-white p-5 text-center shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">'+
           '<span class="grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-darkgrey">'+AP.svg(c.icon,'h-7 w-7')+'</span>'+
-          '<span class="text-[14px] font-medium text-night">'+c.name+'</span></a>';
+          '<span class="text-[14px] font-medium text-night">'+c.name+'</span></button>';
       }).join('');
-      var prods=productsForCategory(id);
-      root.querySelector('.grid1').innerHTML=prods.slice(0,5).map(AP.productCard).join('');
-      root.querySelector('.grid2').innerHTML=prods.slice(5).map(AP.productCard).join('');
+      function setActive(btn){
+        AP.$$('.secCard',cardsEl).forEach(function(b){ b.classList.remove('border-b2b','ring-2','ring-b2b/30'); });
+        if(btn){ btn.classList.add('border-b2b','ring-2','ring-b2b/30'); }
+      }
+      function filterBy(name){
+        var key=name.toLowerCase().replace('envases ','').split(' ')[0].replace(/s$/,'');
+        var list=all.filter(function(p){ return (p.name+' '+(p.desc||'')).toLowerCase().indexOf(key)>=0; });
+        if(!list.length) list=all;
+        renderGrid(list); gridTitle.textContent=name; clearBtn.classList.remove('hidden');
+        root.querySelector('.grid2').scrollIntoView({behavior:'smooth',block:'start'});
+      }
+      AP.$$('.secCard',cardsEl).forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var i=Number(btn.dataset.i);
+          if(active===i){ active=null; setActive(null); renderGrid(all); gridTitle.textContent='Todos los productos'; clearBtn.classList.add('hidden'); return; }
+          active=i; setActive(btn); filterBy(cards[i].name);
+        });
+      });
+      clearBtn.addEventListener('click',function(){ active=null; setActive(null); renderGrid(all); gridTitle.textContent='Todos los productos'; clearBtn.classList.add('hidden'); });
     })();
   </script>
 </body>

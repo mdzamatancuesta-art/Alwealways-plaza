@@ -123,8 +123,8 @@
     </div>
   </div>
 
-  <div id="cookieBanner" class="fixed inset-x-0 bottom-0 z-[80] hidden">
-    <div class="mx-auto m-3 max-w-3xl rounded-xl2 border border-lowgrey bg-white p-5 shadow-softlg md:m-4 md:p-6">
+  <div id="cookieBanner" class="pointer-events-none fixed inset-x-0 bottom-0 z-[80] hidden">
+    <div class="pointer-events-auto mx-auto m-3 max-w-3xl rounded-xl2 border border-lowgrey bg-white p-5 shadow-softlg md:m-4 md:p-6">
       <div class="flex flex-col gap-4 md:flex-row md:items-center">
         <div class="flex-1">
           <h3 class="text-[15px] font-bold text-night">🍪 Usamos cookies</h3>
@@ -374,6 +374,72 @@
     const a = e.target.closest('a[href="#"]');
     if (a) { e.preventDefault(); }
   });
+
+  /* ---------- Chatbot asistente (esquina inferior derecha) ---------- */
+  const chatHTML = `
+    <button id="apChatBtn" class="fixed bottom-5 right-5 z-[75] flex h-14 w-14 items-center justify-center rounded-full bg-b2b text-white shadow-softlg transition-transform hover:scale-105" aria-label="Abrir asistente">
+      ${svg('<path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/>', 'h-7 w-7')}
+    </button>
+    <div id="apChat" class="fixed bottom-5 right-5 z-[76] hidden w-[92vw] max-w-[380px] origin-bottom-right flex-col overflow-hidden rounded-xl2 border border-lowgrey bg-white shadow-softlg">
+      <div class="flex items-center justify-between bg-night px-5 py-4 text-white">
+        <div class="flex items-center gap-3">
+          <span class="grid h-9 w-9 place-items-center rounded-full bg-white/15">${svg('<path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/>', 'h-5 w-5')}</span>
+          <div><p class="text-[15px] font-bold leading-tight">Asistente Always</p><p class="flex items-center gap-1 text-[11px] text-white/70"><span class="h-1.5 w-1.5 rounded-full bg-[#4fd6a6]"></span>En línea</p></div>
+        </div>
+        <button id="apChatClose" class="grid h-8 w-8 place-items-center rounded-full text-white/80 hover:bg-white/10" aria-label="Cerrar">${svg('<path d="M6 6l12 12M18 6 6 18"/>', 'h-5 w-5')}</button>
+      </div>
+      <div id="apChatMsgs" class="flex h-80 flex-col gap-3 overflow-y-auto bg-secondary p-4"></div>
+      <div id="apChatChips" class="flex flex-wrap gap-2 border-t border-lowgrey bg-white px-4 pt-3"></div>
+      <form id="apChatForm" class="flex items-center gap-2 border-t border-lowgrey bg-white p-3">
+        <input id="apChatInput" type="text" placeholder="Escribe tu mensaje…" class="flex-1 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] focus:border-b2b focus:outline-none" />
+        <button type="submit" class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-b2b text-white hover:bg-[#0089d1]" aria-label="Enviar">${svg('<path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/>', 'h-5 w-5')}</button>
+      </form>
+    </div>`;
+  document.body.insertAdjacentHTML('beforeend', chatHTML);
+
+  const chatBtn = $('#apChatBtn'), chatPanel = $('#apChat'), chatMsgs = $('#apChatMsgs'), chatChips = $('#apChatChips');
+  const BOT = [
+    { k: ['envío', 'envio', 'entrega', 'cuba', 'habana'], a: 'Enviamos a domicilio en toda La Habana y ofrecemos recogida en nuestros Always Points. Plazo estimado: 7–15 días. <a href="envios.html" class="text-b2b underline">Ver envíos</a>.' },
+    { k: ['recogida', 'punto', 'point'], a: 'Tenemos 7 puntos de recogida en La Habana. Introduce tu código postal para ver el más cercano. <a href="puntos-recogida.html" class="text-b2b underline">Ver puntos</a>.' },
+    { k: ['servicio', 'empresa', 'b2b', 'personaliz'], a: 'Ofrecemos servicios para empresas: personalización, reformas, planificación e imprenta. <a href="servicios.html" class="text-b2b underline">Ver servicios</a>.' },
+    { k: ['pago', 'pagar', 'tarjeta'], a: 'Aceptamos tarjeta (Visa, MasterCard) y PayPal. El pago es 100% seguro.' },
+    { k: ['devol', 'cambio'], a: 'Dispones de 30 días para devolver. <a href="devoluciones.html" class="text-b2b underline">Política de devoluciones</a>.' },
+    { k: ['contacto', 'ayuda', 'telefono', 'teléfono', 'email'], a: 'Escríbenos a atencion@alwaysmk.com o revisa las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a>.' },
+  ];
+  function pushMsg(text, who) {
+    const el = document.createElement('div');
+    el.className = who === 'bot'
+      ? 'max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-white px-4 py-2.5 text-[14px] text-night shadow-soft'
+      : 'max-w-[85%] self-end rounded-2xl rounded-tr-sm bg-b2b px-4 py-2.5 text-[14px] text-white';
+    el.innerHTML = text;
+    chatMsgs.appendChild(el);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  }
+  function botReply(q) {
+    const low = q.toLowerCase();
+    const hit = BOT.find((b) => b.k.some((k) => low.includes(k)));
+    setTimeout(() => pushMsg(hit ? hit.a : 'Gracias por tu mensaje. Un agente te atenderá enseguida. Mientras, puedes consultar <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a> o elegir una opción de arriba.', 'bot'), 400);
+  }
+  let chatInit = false;
+  function openChat() {
+    chatPanel.classList.remove('hidden'); chatPanel.classList.add('flex'); chatBtn.classList.add('hidden');
+    if (!chatInit) {
+      chatInit = true;
+      pushMsg('¡Hola! 👋 Soy el asistente de Always Plaza. ¿En qué puedo ayudarte?', 'bot');
+      ['Envíos a Cuba', 'Puntos de recogida', 'Servicios', 'Devoluciones'].forEach((t) => {
+        const c = document.createElement('button');
+        c.type = 'button';
+        c.className = 'mb-3 rounded-full border border-nicegrey px-3 py-1.5 text-[13px] text-darkgrey transition-colors hover:border-b2b hover:text-b2b';
+        c.textContent = t;
+        c.addEventListener('click', () => { pushMsg(t, 'me'); botReply(t); });
+        chatChips.appendChild(c);
+      });
+    }
+  }
+  function closeChat() { chatPanel.classList.add('hidden'); chatPanel.classList.remove('flex'); chatBtn.classList.remove('hidden'); }
+  chatBtn.addEventListener('click', openChat);
+  $('#apChatClose').addEventListener('click', closeChat);
+  $('#apChatForm').addEventListener('submit', (e) => { e.preventDefault(); const v = $('#apChatInput').value.trim(); if (!v) return; pushMsg(v, 'me'); $('#apChatInput').value = ''; botReply(v); });
 
   /* Expose helpers for page scripts */
   window.AP = Object.assign(window.AP || {}, { svg, $, $$, toast, addToCart });

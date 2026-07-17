@@ -38,7 +38,7 @@
   <script>(function(){
   var params=new URLSearchParams(location.search); var q=params.get('q'); if(q){document.getElementById('q').textContent=q;}
   document.getElementById('filterCats').innerHTML=CATEGORIES.map(function(c){return '<li><label class="flex items-center gap-2"><input type="checkbox" class="accent-b2b"> '+c.name+'</label></li>';}).join('');
-  var prods=genProducts(12,{discounts:true});
+  var prods=genProducts(12,{discounts:true,photos:PHOTO_POOL});
   document.getElementById('count').textContent=prods.length+' productos encontrados';
   document.getElementById('results').innerHTML=prods.map(AP.productCard).join('');
 })();</script>

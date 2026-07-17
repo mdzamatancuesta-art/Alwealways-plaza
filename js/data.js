@@ -202,8 +202,16 @@ const SECTION_CARDS = [
 ];
 
 /* ---------- Catálogo genérico para listados (estilo mockup) ---------- */
+// Galería de fotos reales disponibles (marca blanca) para productos provisionales.
+const PHOTO_POOL = [
+  'assets/products/teclado.jpg', 'assets/products/dremel.jpg', 'assets/products/herramientas.jpg',
+  'assets/products/llaves.jpg', 'assets/products/pintura.jpg', 'assets/products/env8.jpg',
+  'assets/products/env40.jpg', 'assets/products/env26.jpg', 'assets/products/env18.jpg', 'assets/products/env3.jpg',
+];
+
 function genProducts(n, opts = {}) {
   const icons = opts.icons || [ICONS.hammer, ICONS.wrench, ICONS.drill, ICONS.ruler, ICONS.producto, ICONS.helmet];
+  const photos = opts.photos || null; // array de rutas para poner foto provisional
   const out = [];
   for (let i = 0; i < n; i++) {
     const disc = opts.discounts && i % 3 === 0;
@@ -213,6 +221,7 @@ function genProducts(n, opts = {}) {
       price: disc ? '19,99' : '25,99',
       icon: icons[i % icons.length],
     };
+    if (photos) item.img = photos[i % photos.length];
     if (disc) { item.old = '25,99'; item.discount = '-20%'; }
     else if (i % 4 === 1) item.tag = 'Novedad';
     else if (i % 4 === 2) item.badge = 'Más vendido';
@@ -253,20 +262,20 @@ function sectionCardsFor(id) {
 
 function productsForCategory(id) {
   if (id === 'envases') return ENVASES_PRODUCTS;
-  if (id === 'brico') return DESTACADOS.concat(genProducts(7));
+  if (id === 'brico') return DESTACADOS.concat(genProducts(7, { photos: PHOTO_POOL }));
   if (id === 'papeleria') return genProducts(10, {
     names: ['Cuaderno de contabilidad 2027', 'Bolígrafos punta fina (pack)', 'Pack de folios A4 500 h', 'Organizador de escritorio', 'Rotuladores fluorescentes', 'Tinta para impresora', 'Grapadora metálica', 'Set de manualidades', 'Archivador de anillas', 'Lápices de colores'],
-    icons: [ICONS.notebook, ICONS.ballpen, ICONS.papeleria, ICONS.printer],
+    icons: [ICONS.notebook, ICONS.ballpen, ICONS.papeleria, ICONS.printer], photos: PHOTO_POOL,
   });
   if (id === 'fotografia') return genProducts(10, {
     names: ['Cámara compacta 20 MP', 'Objetivo 50 mm f/1.8', 'Trípode de aluminio', 'Foco LED de estudio', 'Tarjeta de memoria 128 GB', 'Batería recargable', 'Álbum de fotos 200', 'Marco de madera A4', 'Flash externo', 'Fondo fotográfico'],
-    icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler],
+    icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler], photos: PHOTO_POOL,
   });
   if (id === 'hogar') return genProducts(10, {
     names: ['Set de sartenes antiadherentes', 'Juego de toallas', 'Lámpara de mesa LED', 'Organizador de armario', 'Vajilla 12 piezas', 'Cortina de baño', 'Cojín decorativo', 'Estantería modular', 'Set de limpieza', 'Cubo con tapa'],
-    icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano],
+    icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano], photos: PHOTO_POOL,
   });
-  return genProducts(10);
+  return genProducts(10, { photos: PHOTO_POOL });
 }
 
 /* ---------- Carrito ---------- */
