@@ -13,6 +13,18 @@
   const oi = (name, cls = 'h-5 w-5') => { const o = OI[name]; return o ? `<svg class="${cls}" viewBox="${o.vb}" fill="none" aria-hidden="true">${o.inner}</svg>` : ''; };
   // Navegación: usa el router de la vista previa (artifact) si existe; si no, navega de verdad.
   const nav = (href) => { if (window.__apNav) window.__apNav(href); else window.location.href = href; };
+  const ISO_SVG = "<svg class=\"ap-iso\" id=\"Capa_2\" data-name=\"Capa 2\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 328.1 220.7\"> <defs> <style> .cls-1 { fill: #0019ff; } </style> </defs> <g id=\"Capa_1-2\" data-name=\"Capa 1\"> <path class=\"cls-1\" d=\"M264.8,165.4c-.5-2.3-19.2-64.5-22.7-75.1-3.7-11-8.8-15.9-19-15.9s-18.9,7.3-57.9,57.9c-8.6,11.2-19.7,25.7-29,37-.7-9.9-1.2-21-1.5-29.3-1.9-45.1-2.9-67.7-25-67.7s-21.6,10.7-55.4,61c-5.2,7.7-11.4,17-17.5,25.8-.2-7.1-.4-15-.5-23.4V0H0v157.8c0,7.9.3,15.9,1,23.8.6,6.5,1.4,14,2.3,19.6,1.2,7,6.4,14,13,16.8,6.5,2.8,14.2,2.3,19.8-2,9.7-7.3,22-24.8,47.7-62.9,4.4-6.6,9.7-14.4,14.8-21.8.2,3.6.3,7,.5,10.2,2.1,49.4,3.4,79.3,28,79.3s23.4-10.9,66.3-66.7c6.9-8.9,15-19.5,22.1-28.4,1.4,4.6,8.6,25.5,15.9,47.9,1.9,5.7,4.9,15.3,9,23.7,7.4,15.3,24,18,34,7.4,5.7-6,10.6-12.8,15.7-19.2,11.8-14.9,23.3-30,34.9-45.1s3.2-6,3.2-9.4h0c0-14.3-17.8-20.9-27.1-10.1-15.3,17.9-28.4,35.6-36.3,44.5Z\"/> </g> </svg>";
+  // Animación de carga con el isotipo
+  (function(){
+    if (document.getElementById('ap-loader')) return;
+    const l = document.createElement('div');
+    l.id = 'ap-loader';
+    l.innerHTML = '<div class="ap-loader-box">'+ISO_SVG+'</div>';
+    (document.body||document.documentElement).insertAdjacentElement('afterbegin', l);
+    const hide = () => { l.classList.add('is-hidden'); setTimeout(()=>l.remove(), 500); };
+    if (document.readyState === 'complete') setTimeout(hide, 400); else window.addEventListener('load', ()=>setTimeout(hide, 400));
+    setTimeout(hide, 4000);
+  })();
   const PAGE = document.body.dataset.page || '';
 
   /* ---------- Markup ---------- */
@@ -211,10 +223,15 @@
     const zip = cpInput.value.trim();
     if (!zip) { cpResult.classList.add('hidden'); return null; }
     const pickup = pickupForZip(zip);
-    cpResult.classList.remove('hidden'); cpResult.classList.add('flex');
-    cpResult.innerHTML = pickup
-      ? svg('<path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/>', 'h-4 w-4 text-b2b') + `Tu punto más cercano: <strong>${pickup}</strong>`
-      : svg('<circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>', 'h-4 w-4 text-exito') + 'Aún no cubrimos ese código postal.';
+    cpResult.classList.remove('hidden');
+    if (pickup) {
+      cpResult.className = 'mt-4 flex items-center gap-2 rounded-xl bg-secondary px-4 py-3 text-[14px] font-medium text-night';
+      cpResult.innerHTML = svg('<path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/>', 'h-4 w-4 shrink-0 text-b2b') + `Tu punto más cercano: <strong class="ml-1">${pickup}</strong>`;
+    } else {
+      // Alerta: código postal fuera de cobertura (no cubano / fuera de La Habana).
+      cpResult.className = 'mt-4 flex items-center gap-2 rounded-xl bg-exito/10 px-4 py-3 text-[14px] font-medium text-exito';
+      cpResult.innerHTML = svg('<path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>', 'h-4 w-4 shrink-0') + 'Este código postal no es de La Habana. Solo realizamos envíos dentro de Cuba (La Habana).';
+    }
     return pickup;
   }
   $('#cpBtn').addEventListener('click', openCp);
@@ -244,7 +261,7 @@
     if (sub.links) return `<ul class="flex flex-col gap-3">${sub.links.map((l) => `<li><a href="${href}" class="text-[15px] text-night transition-colors hover:text-b2b">${l}</a></li>`).join('')}</ul>`;
     const actions = sub.actions ? `<div class="flex flex-col gap-3 pr-8">${sub.actions.map((a) => `<a href="${a === 'Personalizar' ? 'personalizacion.html' : href}" class="text-[15px] font-bold text-night transition-colors hover:text-b2b">${a}</a>`).join('')}</div>` : '';
     const groups = sub.groups
-      ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-medium text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="${href}" class="text-[13px] text-mediumgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`
+      ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-semibold text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="${href}" class="text-[13px] text-darkgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`
       : `<div class="flex flex-1 items-start"><a href="${sub.name === 'Always Market' ? 'always-market.html' : sub.name === 'Always Sanguar' ? 'always-sanguar.html' : href}" class="text-[15px] font-bold text-night hover:text-b2b">Ver todo en ${sub.name}</a></div>`;
     return `<div class="flex gap-4">${actions}${groups}</div>`;
   }
@@ -346,7 +363,8 @@
     if (fav) {
       e.preventDefault();
       const on = fav.classList.toggle('is-fav');
-      fav.classList.toggle('text-exito', on);
+      // Estado activo: corazón negro (relleno).
+      fav.classList.toggle('text-night', on);
       const path = fav.querySelector('svg path');
       if (path) path.setAttribute('fill', on ? 'currentColor' : 'none');
       toast(on ? '♥ Añadido a favoritos' : 'Quitado de favoritos');
