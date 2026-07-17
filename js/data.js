@@ -261,21 +261,25 @@ function sectionCardsFor(id) {
 }
 
 function productsForCategory(id) {
-  if (id === 'envases') return ENVASES_PRODUCTS;
-  if (id === 'brico') return DESTACADOS.concat(genProducts(7, { photos: PHOTO_POOL }));
-  if (id === 'papeleria') return genProducts(10, {
-    names: ['Cuaderno de contabilidad 2027', 'Bolígrafos punta fina (pack)', 'Pack de folios A4 500 h', 'Organizador de escritorio', 'Rotuladores fluorescentes', 'Tinta para impresora', 'Grapadora metálica', 'Set de manualidades', 'Archivador de anillas', 'Lápices de colores'],
+  // 5 productos provisionales por categoría (con foto de la galería disponible).
+  if (id === 'envases') return ENVASES_PRODUCTS.slice(0, 5);
+  if (id === 'brico') return genProducts(5, {
+    names: ['Taladro percutor 750W', 'Set de herramientas HomeMaster', 'Llave inglesa con mango de silicona', 'Pintura pared mate 4L', 'Martillo Multiusos HomeMaster'],
+    icons: [ICONS.drill, ICONS.producto, ICONS.wrench, ICONS.paint, ICONS.hammer], photos: PHOTO_POOL,
+  });
+  if (id === 'papeleria') return genProducts(5, {
+    names: ['Cuaderno de contabilidad 2027', 'Bolígrafos punta fina (pack)', 'Pack de folios A4 500 h', 'Organizador de escritorio', 'Rotuladores fluorescentes'],
     icons: [ICONS.notebook, ICONS.ballpen, ICONS.papeleria, ICONS.printer], photos: PHOTO_POOL,
   });
-  if (id === 'fotografia') return genProducts(10, {
-    names: ['Cámara compacta 20 MP', 'Objetivo 50 mm f/1.8', 'Trípode de aluminio', 'Foco LED de estudio', 'Tarjeta de memoria 128 GB', 'Batería recargable', 'Álbum de fotos 200', 'Marco de madera A4', 'Flash externo', 'Fondo fotográfico'],
+  if (id === 'fotografia') return genProducts(5, {
+    names: ['Cámara compacta 20 MP', 'Objetivo 50 mm f/1.8', 'Trípode de aluminio', 'Foco LED de estudio', 'Tarjeta de memoria 128 GB'],
     icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler], photos: PHOTO_POOL,
   });
-  if (id === 'hogar') return genProducts(10, {
-    names: ['Set de sartenes antiadherentes', 'Juego de toallas', 'Lámpara de mesa LED', 'Organizador de armario', 'Vajilla 12 piezas', 'Cortina de baño', 'Cojín decorativo', 'Estantería modular', 'Set de limpieza', 'Cubo con tapa'],
+  if (id === 'hogar') return genProducts(5, {
+    names: ['Set de sartenes antiadherentes', 'Juego de toallas', 'Lámpara de mesa LED', 'Organizador de armario', 'Vajilla 12 piezas'],
     icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano], photos: PHOTO_POOL,
   });
-  return genProducts(10, { photos: PHOTO_POOL });
+  return genProducts(5, { photos: PHOTO_POOL });
 }
 
 /* ---------- Carrito ---------- */
