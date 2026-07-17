@@ -64,7 +64,7 @@
         <a href="favoritos.html" class="relative grid h-10 w-10 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="Favoritos">${oi('heart','h-5 w-5')}</a>
         <a href="carrito.html" class="relative grid h-10 w-10 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="Cesta de la compra">
           ${oi('bag','h-5 w-5')}
-          <span class="absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-night px-1 text-[11px] font-bold leading-none text-white">10</span>
+          <span class="js-cart-count absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-night px-1 text-[11px] font-bold leading-none text-white">10</span>
         </a>
       </div>
     </div>
@@ -309,6 +309,51 @@
   $$('#cookieBanner [data-cookie]').forEach((b) => b.addEventListener('click', () => setCookieConsent(b.dataset.cookie)));
   $('#cookieSettingsLink')?.addEventListener('click', () => { window.location.href = 'cookies.html'; });
 
+  /* ---------- Toast ---------- */
+  const toastWrap = document.createElement('div');
+  toastWrap.id = 'toastWrap';
+  toastWrap.className = 'fixed bottom-5 left-1/2 z-[90] flex -translate-x-1/2 flex-col items-center gap-2';
+  document.body.appendChild(toastWrap);
+  function toast(msg) {
+    const t = document.createElement('div');
+    t.className = 'rounded-full bg-night px-5 py-2.5 text-[14px] font-medium text-white shadow-softlg';
+    t.style.opacity = '0';
+    t.style.transform = 'translateY(8px)';
+    t.style.transition = 'opacity .2s ease, transform .2s ease';
+    t.textContent = msg;
+    toastWrap.appendChild(t);
+    requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translateY(0)'; });
+    setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(8px)'; setTimeout(() => t.remove(), 250); }, 1900);
+  }
+
+  /* ---------- Cesta ---------- */
+  let cartCount = 0;
+  try { cartCount = parseInt(localStorage.getItem('ap_cart') || '10', 10) || 0; } catch (e) { cartCount = 10; }
+  function paintCart() { $$('.js-cart-count').forEach((el) => { el.textContent = cartCount; el.style.display = cartCount > 0 ? '' : 'none'; }); }
+  function addToCart(n = 1) { cartCount += n; try { localStorage.setItem('ap_cart', String(cartCount)); } catch (e) {} paintCart(); }
+  paintCart();
+
+  /* ---------- Delegación global de clics ---------- */
+  document.addEventListener('click', (e) => {
+    const add = e.target.closest('[data-add]');
+    if (add) { e.preventDefault(); addToCart(1); toast('✓ Añadido a la cesta'); return; }
+    const demo = e.target.closest('[data-demo]');
+    if (demo) { e.preventDefault(); toast(demo.dataset.demo || 'Función de demostración'); return; }
+    const fav = e.target.closest('[data-fav]');
+    if (fav) {
+      e.preventDefault();
+      const on = fav.classList.toggle('is-fav');
+      fav.classList.toggle('text-exito', on);
+      const path = fav.querySelector('svg path');
+      if (path) path.setAttribute('fill', on ? 'currentColor' : 'none');
+      toast(on ? '♥ Añadido a favoritos' : 'Quitado de favoritos');
+      return;
+    }
+    // Enlaces de demostración (href="#"): evitar el salto al inicio
+    const a = e.target.closest('a[href="#"]');
+    if (a) { e.preventDefault(); }
+  });
+
   /* Expose helpers for page scripts */
-  window.AP = Object.assign(window.AP || {}, { svg, $, $$ });
+  window.AP = Object.assign(window.AP || {}, { svg, $, $$, toast, addToCart });
 })();
