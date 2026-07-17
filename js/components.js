@@ -26,8 +26,13 @@
     const media = p.img
       ? `<img src="${p.img}" alt="${p.name}" loading="lazy" class="h-full w-full object-cover" />`
       : `<div class="grid h-full w-full place-items-center bg-secondary text-nicegrey">${svg(p.icon || ICONS.producto, 'h-24 w-24')}</div>`;
+    // Ficha del producto (sin imagen: se lee del <img> al hacer clic para no duplicar datos pesados).
+    const meta = encodeURIComponent(JSON.stringify({
+      name: p.name, desc: p.desc || '', price: p.price, old: p.old || '',
+      discount: p.discount || '', tag: p.tag || '', badge: p.badge || '', icon: p.icon || '',
+    }));
     return `
-      <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">
+      <article data-prod="${meta}" class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">
         <a href="producto.html" class="relative block h-[250px] w-full">
           ${discount}
           ${media}

@@ -16,7 +16,7 @@
 
   <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
     <nav class="pt-6 text-[13px] text-mediumgrey">
-      <a href="index.html" class="hover:text-night">Inicio</a> / <a href="categoria.html" class="hover:text-night">Bricolaje y construcción</a> / <a href="categoria.html" class="hover:text-night">Herramientas</a> / <span class="text-night">Martillo Multiusos</span>
+      <a href="index.html" class="hover:text-night">Inicio</a> / <a href="categoria.html" class="hover:text-night">Catálogo</a> / <span class="text-night" id="pdCrumb">Producto</span>
     </nav>
 
     <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -32,9 +32,9 @@
 
       <!-- Info -->
       <div>
-        <h1 class="text-[26px] font-bold leading-tight text-night">Martillo Multiusos HomeMaster</h1>
-        <p class="mt-3 text-[15px] text-mediumgrey">La herramienta indispensable para cualquier caja de herramientas doméstica, ideal para clavar y extraer clavos con facilidad. Diseño ligero pero resistente con cabezal pulido y agarre de alta tracción.</p>
-        <p class="mt-6 text-[24px] font-extrabold text-night">13<sup class="text-[13px]">,99</sup>€ <span class="text-[13px] font-normal text-mediumgrey">IVA incl.</span></p>
+        <h1 id="pdTitle" class="text-[26px] font-bold leading-tight text-night">Producto</h1>
+        <p id="pdDesc" class="mt-3 text-[15px] text-mediumgrey"></p>
+        <p class="mt-6 text-[24px] font-extrabold text-night"><span id="pdPrice"></span> <span class="text-[13px] font-normal text-mediumgrey">IVA incl.</span></p>
 
         <div class="mt-6">
           <p class="mb-2 text-[13px] font-medium text-darkgrey">Modelo</p>
@@ -70,8 +70,8 @@
         <p class="mb-4 text-[13px] font-medium text-darkgrey">Tu producto</p>
         <div class="grid items-center gap-4 lg:grid-cols-[1fr_auto_1fr_auto]">
           <div class="flex items-center gap-4 rounded-xl2 bg-white p-4">
-            <div class="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-secondary text-nicegrey" id="packA"></div>
-            <div><p class="text-[14px] font-semibold">Martillo Multiusos HomeMaster</p><p class="text-[12px] text-mediumgrey">Información del martillo maravilloso</p><p class="mt-1 text-[16px] font-extrabold">13,99€</p></div>
+            <div class="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-lg bg-secondary text-nicegrey" id="packA"></div>
+            <div><p class="text-[14px] font-semibold" id="pdPackName">Tu producto</p><p class="text-[12px] text-mediumgrey">Añádelo junto a un complemento</p><p class="mt-1 text-[16px] font-extrabold" id="pdPackPrice">—</p></div>
           </div>
           <div class="hidden text-center text-2xl font-light text-mediumgrey lg:block">+</div>
           <div class="flex items-center gap-4 rounded-xl2 bg-white p-4">
@@ -104,11 +104,32 @@
   <script src="js/components.js"></script>
   <script src="js/chrome.js"></script>
   <script>
-    document.getElementById('mainImg').innerHTML = AP.svg(ICONS.hammer, 'h-40 w-40');
-    document.getElementById('packA').innerHTML = AP.svg(ICONS.hammer, 'h-9 w-9');
+    var PROD_DEFAULT = { name: 'Martillo Multiusos HomeMaster', desc: 'La herramienta indispensable para cualquier caja de herramientas doméstica: cabezal pulido, agarre de alta tracción y diseño ligero pero resistente.', price: '13,99', icon: ICONS.hammer };
+    function readProduct() {
+      try { var p = JSON.parse(sessionStorage.getItem('ap_product') || 'null'); if (p && p.name) return p; } catch (e) {}
+      return PROD_DEFAULT;
+    }
+    function mediaBig(p) { return p.img ? '<img src="' + p.img + '" alt="' + p.name + '" class="max-h-full max-w-full object-contain" />' : AP.svg(p.icon || ICONS.producto, 'h-40 w-40'); }
+    function mediaSmall(p, cls) { return p.img ? '<img src="' + p.img + '" alt="' + p.name + '" class="h-full w-full object-cover" />' : AP.svg(p.icon || ICONS.producto, cls || 'h-9 w-9'); }
+    function renderProducto() {
+      var p = readProduct();
+      document.title = p.name + ' — Always Plaza';
+      document.getElementById('pdCrumb').textContent = p.name;
+      document.getElementById('pdTitle').textContent = p.name;
+      document.getElementById('pdDesc').textContent = p.desc || 'Producto de la selección Always Plaza. Calidad garantizada y envío a La Habana.';
+      document.getElementById('pdPrice').innerHTML = AP.fmtPrice(p.price);
+      document.getElementById('mainImg').innerHTML = mediaBig(p);
+      document.getElementById('packA').innerHTML = mediaSmall(p, 'h-9 w-9');
+      document.getElementById('pdPackName').textContent = p.name;
+      document.getElementById('pdPackPrice').textContent = p.price + '€';
+      document.getElementById('thumbs').innerHTML = [p, { icon: ICONS.producto }].map(function (t, i) {
+        return '<button class="grid h-16 w-16 place-items-center overflow-hidden rounded-xl border ' + (i === 0 ? 'border-night' : 'border-lowgrey') + ' bg-secondary text-nicegrey">' + mediaSmall(t, 'h-7 w-7') + '</button>';
+      }).join('');
+    }
+    window.__renderProducto = renderProducto;
+    renderProducto();
+
     document.getElementById('packB').innerHTML = AP.svg(ICONS.wrench, 'h-9 w-9');
-    document.getElementById('thumbs').innerHTML = [ICONS.hammer, ICONS.wrench].map((ic, i) =>
-      `<button class="grid h-16 w-16 place-items-center rounded-xl border ${i === 0 ? 'border-night' : 'border-lowgrey'} bg-secondary text-nicegrey">${AP.svg(ic, 'h-7 w-7')}</button>`).join('');
     document.getElementById('rel1').innerHTML = genProducts(5, { discounts: true, photos: PHOTO_POOL }).map(AP.productCard).join('');
     document.getElementById('rel2').innerHTML = genProducts(5, { discounts: true, photos: PHOTO_POOL }).map(AP.productCard).join('');
 

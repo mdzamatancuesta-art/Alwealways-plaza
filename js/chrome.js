@@ -359,6 +359,19 @@
 
   /* ---------- Delegación global de clics ---------- */
   document.addEventListener('click', (e) => {
+    // Guardar el producto pulsado para que su ficha muestre ESE producto (no el de por defecto).
+    const plink = e.target.closest('a[href$="producto.html"]');
+    if (plink) {
+      const art = plink.closest('[data-prod]');
+      if (art) {
+        try {
+          const obj = JSON.parse(decodeURIComponent(art.getAttribute('data-prod')));
+          const img = art.querySelector('img');
+          if (img) obj.img = img.getAttribute('src');
+          sessionStorage.setItem('ap_product', JSON.stringify(obj));
+        } catch (err) {}
+      }
+    }
     const add = e.target.closest('[data-add]');
     if (add) { e.preventDefault(); addToCart(1); toast('✓ Añadido a la cesta'); return; }
     const demo = e.target.closest('[data-demo]');
@@ -415,30 +428,50 @@
 
   const chatBtn = $('#apChatBtn'), chatPanel = $('#apChat'), chatMsgs = $('#apChatMsgs'), chatChips = $('#apChatChips');
   const BOT = [
-    { k: ['envío', 'envio', 'entrega', 'cuba', 'habana'], a: 'Enviamos a domicilio en toda La Habana y ofrecemos recogida en nuestros Always Points. Plazo estimado: 7–15 días. <a href="envios.html" class="text-b2b underline">Ver envíos</a>.' },
-    { k: ['recogida', 'punto', 'point'], a: 'Tenemos 7 puntos de recogida en La Habana. Introduce tu código postal para ver el más cercano. <a href="puntos-recogida.html" class="text-b2b underline">Ver puntos</a>.' },
-    { k: ['servicio', 'empresa', 'b2b', 'personaliz'], a: 'Ofrecemos servicios para empresas: personalización, reformas, planificación e imprenta. <a href="servicios.html" class="text-b2b underline">Ver servicios</a>.' },
-    { k: ['pago', 'pagar', 'tarjeta'], a: 'Aceptamos tarjeta (Visa, MasterCard) y PayPal. El pago es 100% seguro.' },
-    { k: ['devol', 'cambio'], a: 'Dispones de 30 días para devolver. <a href="devoluciones.html" class="text-b2b underline">Política de devoluciones</a>.' },
-    { k: ['contacto', 'ayuda', 'telefono', 'teléfono', 'email'], a: 'Escríbenos a atencion@alwaysmk.com o revisa las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a>.' },
+    { k: ['hola', 'buenas', 'saludos', 'hey'], a: '¡Hola! 😊 Puedo ayudarte con envíos, puntos de recogida, servicios, pagos o devoluciones. ¿Qué necesitas?' },
+    { k: ['envío', 'envio', 'entrega', 'cuba', 'habana', 'plazo', 'tarda', 'cuánto tarda', 'cuanto tarda'], a: 'Enviamos a domicilio en toda La Habana y ofrecemos recogida en nuestros Always Points. Plazo estimado: 7–15 días. <a href="envios.html" class="text-b2b underline">Ver envíos</a>.' },
+    { k: ['recogida', 'punto', 'point', 'recoger'], a: 'Tenemos 7 puntos de recogida en La Habana. Introduce tu código postal para ver el más cercano. <a href="puntos-recogida.html" class="text-b2b underline">Ver puntos</a>.' },
+    { k: ['servicio', 'empresa', 'b2b', 'personaliz', 'imprenta', 'reforma'], a: 'Ofrecemos servicios para empresas: personalización, reformas, planificación e imprenta. <a href="servicios.html" class="text-b2b underline">Ver servicios</a>.' },
+    { k: ['pago', 'pagar', 'tarjeta', 'paypal', 'visa'], a: 'Aceptamos tarjeta (Visa, MasterCard) y PayPal. El pago es 100% seguro. 🔒' },
+    { k: ['precio', 'euro', 'moneda', 'coste', 'cuesta'], a: 'Todos los precios están en euros (€) e incluyen IVA. Verás el total final antes de confirmar el pedido.' },
+    { k: ['devol', 'cambio', 'reembolso'], a: 'Dispones de 30 días para devolver. <a href="devoluciones.html" class="text-b2b underline">Política de devoluciones</a>.' },
+    { k: ['pedido', 'seguim', 'rastre', 'dónde está', 'donde esta'], a: 'Puedes seguir tu pedido desde <a href="mis-pedidos.html" class="text-b2b underline">Mis pedidos</a> en tu perfil.' },
+    { k: ['contacto', 'ayuda', 'telefono', 'teléfono', 'email', 'correo'], a: 'Escríbenos a atencion@alwaysmk.com o revisa las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a>.' },
+    { k: ['gracias', 'genial', 'perfecto', 'ok'], a: '¡Un placer! 🙌 Si necesitas algo más, aquí estoy.' },
   ];
   function pushMsg(text, who) {
     const el = document.createElement('div');
-    el.className = who === 'bot'
+    el.className = (who === 'bot'
       ? 'max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-white px-4 py-2.5 text-[14px] text-night shadow-soft'
-      : 'max-w-[85%] self-end rounded-2xl rounded-tr-sm bg-b2b px-4 py-2.5 text-[14px] text-white';
+      : 'max-w-[85%] self-end rounded-2xl rounded-tr-sm bg-b2b px-4 py-2.5 text-[14px] text-white') + ' ap-msg-in';
     el.innerHTML = text;
     chatMsgs.appendChild(el);
     chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    return el;
+  }
+  function showTyping() {
+    const el = document.createElement('div');
+    el.className = 'max-w-[85%] self-start rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-soft ap-msg-in';
+    el.innerHTML = '<span class="ap-typing"><span></span><span></span><span></span></span>';
+    chatMsgs.appendChild(el);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    return el;
   }
   function botReply(q) {
     const low = q.toLowerCase();
     const hit = BOT.find((b) => b.k.some((k) => low.includes(k)));
-    setTimeout(() => pushMsg(hit ? hit.a : 'Gracias por tu mensaje. Un agente te atenderá enseguida. Mientras, puedes consultar <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a> o elegir una opción de arriba.', 'bot'), 400);
+    const typing = showTyping();
+    setTimeout(() => {
+      typing.remove();
+      pushMsg(hit ? hit.a : 'Gracias por tu mensaje. Un agente te atenderá enseguida. Mientras, puedes consultar las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a> o elegir una opción de arriba.', 'bot');
+    }, 650 + Math.random() * 400);
   }
   let chatInit = false;
   function openChat() {
-    chatPanel.classList.remove('hidden'); chatPanel.classList.add('flex'); chatBtn.classList.add('hidden');
+    chatPanel.classList.remove('hidden'); chatPanel.classList.add('flex');
+    requestAnimationFrame(() => chatPanel.classList.add('ap-chat-in'));
+    chatBtn.style.opacity = '0'; chatBtn.style.transform = 'scale(.6)';
+    setTimeout(() => chatBtn.classList.add('hidden'), 180);
     if (!chatInit) {
       chatInit = true;
       pushMsg('¡Hola! 👋 Soy el asistente de Always Plaza. ¿En qué puedo ayudarte?', 'bot');
@@ -451,11 +484,41 @@
         chatChips.appendChild(c);
       });
     }
+    setTimeout(() => $('#apChatInput') && $('#apChatInput').focus(), 200);
   }
-  function closeChat() { chatPanel.classList.add('hidden'); chatPanel.classList.remove('flex'); chatBtn.classList.remove('hidden'); }
+  function closeChat() {
+    chatPanel.classList.remove('ap-chat-in');
+    chatBtn.classList.remove('hidden');
+    requestAnimationFrame(() => { chatBtn.style.opacity = '1'; chatBtn.style.transform = ''; });
+    setTimeout(() => { chatPanel.classList.add('hidden'); chatPanel.classList.remove('flex'); }, 240);
+  }
   chatBtn.addEventListener('click', openChat);
   $('#apChatClose').addEventListener('click', closeChat);
   $('#apChatForm').addEventListener('submit', (e) => { e.preventDefault(); const v = $('#apChatInput').value.trim(); if (!v) return; pushMsg(v, 'me'); $('#apChatInput').value = ''; botReply(v); });
+
+  /* ---------- Animaciones sutiles de entrada (reveal al hacer scroll) ---------- */
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = (!reduce && 'IntersectionObserver' in window)
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('ap-in'); io.unobserve(en.target); } });
+      }, { threshold: 0.06, rootMargin: '0px 0px -6% 0px' })
+    : null;
+  function reveal(root) {
+    if (!io) return;
+    const vh = window.innerHeight || 800;
+    // Bloques de contenido de la vista actual (evita anidados ya marcados).
+    $$('main > *, .ap-route > main > *', root || document).forEach((el) => {
+      if (el.classList.contains('ap-reveal')) return;      // ya procesado
+      const r = el.getBoundingClientRect();
+      if (r.height === 0) return;                           // oculto (otra ruta): reintentar luego
+      if (r.top < vh * 0.9) { el.classList.add('ap-reveal', 'ap-in'); return; } // ya visible: sin parpadeo
+      const sib = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : 0;
+      el.style.transitionDelay = Math.min(sib * 45, 180) + 'ms';
+      el.classList.add('ap-reveal'); io.observe(el);
+    });
+  }
+  window.__apReveal = reveal;
+  reveal();
 
   /* Expose helpers for page scripts */
   window.AP = Object.assign(window.AP || {}, { svg, $, $$, toast, addToCart });
