@@ -23,7 +23,7 @@
     l.id = 'ap-loader';
     l.innerHTML = '<div class="ap-loader-box">'+isoSVG('ap-iso','ap-iso-path')+'</div>';
     (document.body||document.documentElement).insertAdjacentElement('afterbegin', l);
-    const MIN = 1500, t0 = (window.performance && performance.now()) || Date.now();
+    const MIN = 2600, t0 = (window.performance && performance.now()) || Date.now();
     const doHide = () => { l.classList.add('is-hidden'); setTimeout(()=>l.remove(), 500); };
     const hide = () => { const now = (window.performance && performance.now()) || Date.now(); setTimeout(doHide, Math.max(0, MIN - (now - t0))); };
     if (document.readyState === 'complete') hide(); else window.addEventListener('load', hide);
