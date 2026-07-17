@@ -105,6 +105,22 @@
       </div>
       <ul id="mobileNav" class="mt-6 flex flex-col gap-1"></ul>
     </div>
+  </div>
+
+  <div id="cookieBanner" class="fixed inset-x-0 bottom-0 z-[80] hidden">
+    <div class="mx-auto m-3 max-w-3xl rounded-xl2 border border-lowgrey bg-white p-5 shadow-softlg md:m-4 md:p-6">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center">
+        <div class="flex-1">
+          <h3 class="text-[15px] font-bold text-night">🍪 Usamos cookies</h3>
+          <p class="mt-1 text-[13px] text-mediumgrey">Utilizamos cookies propias y de terceros para el funcionamiento del sitio, analizar el tráfico y personalizar el contenido. Puedes aceptarlas todas, rechazarlas o configurarlas. Más información en nuestra <a href="cookies.html" class="text-b2b hover:underline">Política de cookies</a>.</p>
+        </div>
+        <div class="flex flex-col gap-2 sm:flex-row md:shrink-0">
+          <button data-cookie="reject" class="rounded-full border border-nicegrey px-5 py-2.5 text-[14px] font-semibold text-night transition-colors hover:bg-secondary">Rechazar</button>
+          <a href="cookies.html" class="rounded-full border border-nicegrey px-5 py-2.5 text-center text-[14px] font-semibold text-night transition-colors hover:bg-secondary">Configurar</a>
+          <button data-cookie="all" class="rounded-full bg-b2b px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#0089d1]">Aceptar todas</button>
+        </div>
+      </div>
+    </div>
   </div>`;
 
   const footerHTML = `
@@ -142,7 +158,17 @@
           </ul>
         </div>
       </div>
-      <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-lowgrey pt-6 text-[13px] text-lowvis sm:flex-row">
+      <nav class="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-lowgrey pt-6 text-[13px] text-mediumgrey">
+        <a href="aviso-legal.html" class="transition-colors hover:text-night">Aviso legal</a>
+        <a href="privacidad.html" class="transition-colors hover:text-night">Política de privacidad</a>
+        <a href="cookies.html" class="transition-colors hover:text-night">Política de cookies</a>
+        <a href="terminos.html" class="transition-colors hover:text-night">Condiciones de compra</a>
+        <a href="devoluciones.html" class="transition-colors hover:text-night">Devoluciones</a>
+        <a href="envios.html" class="transition-colors hover:text-night">Envíos</a>
+        <a href="faq.html" class="transition-colors hover:text-night">Preguntas frecuentes</a>
+        <button id="cookieSettingsLink" class="transition-colors hover:text-night">Configurar cookies</button>
+      </nav>
+      <div class="mt-6 flex flex-col items-center justify-between gap-4 border-t border-lowgrey pt-6 text-[13px] text-lowvis sm:flex-row">
         <p>© 2026 Always Plaza. Todos los derechos reservados.</p>
         <p>Moneda: Euro (€) · Idioma: Español</p>
       </div>
@@ -267,6 +293,15 @@
       </details>` : `<a href="${catHref(c.id)}" class="flex items-center rounded-xl px-3 py-3 text-[16px] font-medium text-night hover:bg-secondary">${c.name}</a>`}</li>`).join('');
   $('#mobileMenuBtn').addEventListener('click', () => { drawer.classList.remove('hidden'); requestAnimationFrame(() => drawerPanel.style.transform = 'translateX(0)'); });
   $$('#mobileDrawer [data-close]').forEach((el) => el.addEventListener('click', () => { drawerPanel.style.transform = 'translateX(-100%)'; setTimeout(() => drawer.classList.add('hidden'), 300); }));
+
+  /* ---------- Banner de cookies ---------- */
+  const cookieBanner = $('#cookieBanner');
+  function setCookieConsent(v) { try { localStorage.setItem('ap_cookies', v); } catch (e) {} cookieBanner.classList.add('hidden'); }
+  let consent = null;
+  try { consent = localStorage.getItem('ap_cookies'); } catch (e) {}
+  if (!consent) cookieBanner.classList.remove('hidden');
+  $$('#cookieBanner [data-cookie]').forEach((b) => b.addEventListener('click', () => setCookieConsent(b.dataset.cookie)));
+  $('#cookieSettingsLink')?.addEventListener('click', () => { window.location.href = 'cookies.html'; });
 
   /* Expose helpers for page scripts */
   window.AP = Object.assign(window.AP || {}, { svg, $, $$ });

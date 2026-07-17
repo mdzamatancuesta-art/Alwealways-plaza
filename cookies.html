@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de cookies — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+<body class="bg-main font-sans text-night antialiased" data-page="">
+  <div id="site-header"></div>
+  <main class="mx-auto max-w-3xl px-4 py-10 md:px-8">
+    <nav class="text-[13px] text-mediumgrey"><a href="index.html" class="hover:text-night">Inicio</a> / <span class="text-night">Política de cookies</span></nav>
+    <h1 class="mt-4 text-[32px] font-extrabold text-night">Política de cookies</h1>
+    <p class="mt-2 text-[13px] text-lowvis">Última actualización: 17 de julio de 2026</p>
+    <div class="prose-legal mt-8">
+<p>Esta Política de cookies explica qué son las cookies, cuáles utiliza Always Plaza y cómo puedes gestionarlas. Al aceptar, consientes el uso de cookies según se describe a continuación; puedes cambiar tu elección en cualquier momento desde «Configurar cookies» en el pie de página.</p>
+<h2>1. ¿Qué son las cookies?</h2>
+<p>Las cookies son pequeños archivos que se descargan en tu dispositivo al visitar una web y permiten recordar tus preferencias, analizar el uso del sitio y personalizar el contenido.</p>
+<h2>2. Tipos de cookies que utilizamos</h2>
+<table>
+<thead><tr><th>Tipo</th><th>Finalidad</th><th>¿Se pueden desactivar?</th></tr></thead>
+<tbody>
+<tr><td>Técnicas (esenciales)</td><td>Funcionamiento del sitio, carrito, sesión e idioma.</td><td>No, son necesarias.</td></tr>
+<tr><td>Analíticas</td><td>Medir el uso del sitio de forma agregada para mejorarlo.</td><td>Sí.</td></tr>
+<tr><td>Personalización</td><td>Recordar preferencias como el código postal o el punto de recogida.</td><td>Sí.</td></tr>
+<tr><td>Publicitarias</td><td>Mostrar contenido y ofertas relevantes.</td><td>Sí.</td></tr>
+</tbody>
+</table>
+<h2>3. Gestión de cookies</h2>
+<p>Puedes aceptar todas, rechazar las no esenciales o configurarlas mediante el banner de cookies. Además, puedes eliminar o bloquear las cookies desde la configuración de tu navegador.</p>
+<div class="mt-4 flex flex-wrap gap-3">
+  <button id="cookieAcceptAll" class="rounded-full bg-b2b px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#0089d1]">Aceptar todas</button>
+  <button id="cookieRejectAll" class="rounded-full border border-nicegrey px-5 py-2.5 text-[14px] font-semibold text-night transition-colors hover:bg-secondary">Rechazar no esenciales</button>
+</div>
+<h2>4. Consentimiento</h2>
+<p>El consentimiento otorgado se conserva en tu navegador. Puedes retirarlo o modificarlo cuando quieras desde esta página o desde «Configurar cookies» en el pie.</p>
+<script>
+  (function(){
+    var set=function(v){try{localStorage.setItem('ap_cookies',v);}catch(e){}; var b=document.getElementById('cookieBanner'); if(b)b.classList.add('hidden'); alert('Preferencia guardada: '+(v==='all'?'Aceptar todas':'Solo esenciales'));};
+    var a=document.getElementById('cookieAcceptAll'), r=document.getElementById('cookieRejectAll');
+    if(a)a.addEventListener('click',function(){set('all');});
+    if(r)r.addEventListener('click',function(){set('reject');});
+  })();
+</script>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+</body>
+</html>

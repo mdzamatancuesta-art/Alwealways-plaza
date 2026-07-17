@@ -54,6 +54,22 @@ h3 { font-weight: 600; }
 :focus-visible { outline: 2px solid #01A3F4; outline-offset: 2px; border-radius: 6px; }
 summary::-webkit-details-marker { display: none; }
 
+/* ---- Texto legal (prosa) ---- */
+.prose-legal { color: #363F56; font-size: 15px; line-height: 1.7; }
+.prose-legal h2 { font-size: 20px; font-weight: 700; color: #070218; margin: 32px 0 12px; }
+.prose-legal h3 { font-size: 16px; font-weight: 600; color: #070218; margin: 22px 0 8px; }
+.prose-legal p { margin: 0 0 14px; }
+.prose-legal ul { margin: 0 0 14px; padding-left: 20px; list-style: disc; }
+.prose-legal li { margin: 0 0 6px; }
+.prose-legal a { color: #01A3F4; text-decoration: none; }
+.prose-legal a:hover { text-decoration: underline; }
+.prose-legal table { width: 100%; border-collapse: collapse; margin: 0 0 18px; font-size: 14px; }
+.prose-legal th, .prose-legal td { border: 1px solid #ECEFF6; padding: 8px 10px; text-align: left; vertical-align: top; }
+.prose-legal th { background: #F5F5F7; font-weight: 600; color: #070218; }
+
+/* ---- Banner de cookies ---- */
+#cookieBanner { transition: transform .35s ease, opacity .35s ease; }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
