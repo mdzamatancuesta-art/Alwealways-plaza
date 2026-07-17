@@ -48,6 +48,18 @@
       <div id="seguirGrid" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
     </section>
 
+    <!-- ENVASES Y EMBALAJES (fotos reales) -->
+    <section class="pt-12">
+      <div class="mb-5 flex items-end justify-between">
+        <div class="flex items-center gap-3">
+          <h2 class="text-2xl font-bold text-night">Envases y embalajes</h2>
+          <span class="rounded-full bg-b2b/10 px-3 py-1 text-xs font-bold text-b2b">Marca blanca</span>
+        </div>
+        <a href="categoria.html" class="hidden text-sm font-semibold text-b2b hover:underline sm:block">Ver todo</a>
+      </div>
+      <div id="envasesGrid" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
+    </section>
+
     <!-- CREA TU PROYECTO -->
     <section class="py-12">
       <h2 class="mb-5 text-2xl font-bold text-night">Crea tu proyecto</h2>
@@ -80,6 +92,7 @@
   <script>
     document.getElementById('novedadesGrid').innerHTML = NOVEDADES.map(AP.productCard).join('');
     document.getElementById('seguirGrid').innerHTML = SEGUIR.map(AP.productCard).join('');
+    document.getElementById('envasesGrid').innerHTML = ENVASES_PRODUCTS.slice(0, 10).map(AP.productCard).join('');
   </script>
 </body>
 </html>

@@ -102,9 +102,9 @@ const NOVEDADES = [
 /* ---------- Home · Seguir comprando ---------- */
 const SEGUIR = [
   { name: 'Cuadernos de contabilidad año 2027', desc: '3 Unidades de 200 páginas por ud.', price: '19,99', old: '25,99', discount: '-20%', icon: ICONS.notebook },
-  { name: 'Bolsas papel craft personalizables', desc: 'Desde 100 unidades. Diferentes tamaños y colores.', price: '29,99', old: '35,99', discount: '-20%', icon: ICONS.bag },
+  { name: 'Bolsas papel craft personalizables', desc: 'Desde 100 unidades. Diferentes tamaños y colores.', price: '29,99', old: '35,99', discount: '-20%', icon: ICONS.bag, img: 'assets/products/env3.jpg' },
   { name: 'Pintura pared azul Klein P 286C', desc: 'Pintura anti-moho 500 ml.', price: '12,99', icon: ICONS.paint, img: 'assets/products/pintura.jpg' },
-  { name: 'Pack platos y cubiertos biodegradables', desc: '25 unidades de cada por paquete: plato, tenedor, cuchillo y cuchara.', price: '9', icon: ICONS.plate },
+  { name: 'Pack platos y cubiertos biodegradables', desc: '25 unidades de cada por paquete: plato, tenedor, cuchillo y cuchara.', price: '9', icon: ICONS.plate, img: 'assets/products/env26.jpg' },
   { name: 'Bolígrafos Mapet punta fina', desc: 'Tinta azul. Disponibles en variedad de colores.', price: '5', icon: ICONS.ballpen },
 ];
 
@@ -168,6 +168,25 @@ const CART_ITEMS = [
   { name: 'Raton Gamer Hero T480', desc: 'Equipado con el sensor óptico PrecisionCore T3, el HERO T4…', seller: 'E&E', price: 25.99, qty: 10, icon: ICONS.mouse },
   { name: 'Martillo Multiusos HomeMaster', desc: 'La herramienta maravilla adecuada para el uso doméstico…', seller: 'Alzan', price: 13.99, qty: 1, icon: ICONS.hammer },
   { name: 'Pack platos y cubiertos biodegradables', desc: '12 piezas de platos de cartón craft, tenedores, cuchillos y c…', seller: 'E&E', price: 5.99, qty: 1, icon: ICONS.plate },
+];
+
+/* ---------- Envases y embalajes (fotos reales, marca blanca) ---------- */
+const ENVASES_PRODUCTS = [
+  { name: 'Bolsa de papel kraft con asa plana', desc: 'Desde 100 uds. Varios tamaños. Biodegradable.', price: '12,99', tag: 'Novedad', img: 'assets/products/env3.jpg' },
+  { name: 'Bolsa de papel kraft con asa rizada', desc: 'Desde 100 uds. Resistente y reutilizable.', price: '14,50', img: 'assets/products/env4.jpg' },
+  { name: 'Bolsa de papel blanca', desc: 'Desde 100 uds. Ideal para take away.', price: '11,99', img: 'assets/products/env5.jpg' },
+  { name: 'Caja de pizza kraft', desc: 'Desde 50 uds. Cartón corrugado resistente.', price: '19,90', badge: 'Más vendido', img: 'assets/products/env8.jpg' },
+  { name: 'Envase take away kraft', desc: 'Con cierre. Apto para alimentos calientes.', price: '9,90', old: '12,90', discount: '-20%', img: 'assets/products/env21.jpg' },
+  { name: 'Cuenco kraft biodegradable', desc: 'Desde 50 uds. 500 ml. Para sopas y ensaladas.', price: '8,50', img: 'assets/products/env19.jpg' },
+  { name: 'Cuenco blanco con tapa', desc: 'Desde 50 uds. Cierre hermético.', price: '10,00', img: 'assets/products/env18.jpg' },
+  { name: 'Plato de caña kraft (24 uds)', desc: 'Biodegradable y compostable.', price: '9,90', tag: 'Novedad', img: 'assets/products/env26.jpg' },
+  { name: 'Plato blanco de cartón (24 uds)', desc: 'Resistente y ligero.', price: '7,50', img: 'assets/products/env27.jpg' },
+  { name: 'Vaso de cartón kraft', desc: 'Desde 50 uds. 50 ml. Doble capa.', price: '5,00', badge: 'Más vendido', img: 'assets/products/env40.jpg' },
+  { name: 'Vaso corrugado kraft con tapa', desc: 'Desde 100 uds. Bebida caliente 35 ml.', price: '19,90', img: 'assets/products/env39.jpg' },
+  { name: 'Vaso de papel blanco', desc: 'Desde 50 uds. 25 ml. Personalizable.', price: '12,00', tag: 'Novedad', img: 'assets/products/env38.jpg' },
+  { name: 'Cubiertos de madera desechables', desc: 'Tenedor, cuchara y cuchillo. Desde 50 packs.', price: '7,90', img: 'assets/products/env14.jpg' },
+  { name: 'Cañitas de papel de colores', desc: 'Desde 100 uds. Biodegradables.', price: '4,50', img: 'assets/products/env12.jpg' },
+  { name: 'Porta-vasos de fibra moldeada', desc: 'Para 4 vasos. Transporte seguro.', price: '6,90', img: 'assets/products/env23.jpg' },
 ];
 
 /* ---------- Favoritos ---------- */
