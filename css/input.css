@@ -118,6 +118,7 @@ summary::-webkit-details-marker { display: none; }
 /* Isotipo dentro del chatbot */
 .ap-iso-chat { width: 30px; height: auto; }
 .ap-iso-white { fill: #ffffff; }
+.ap-iso-blue { fill: #0019ff; }
 .ap-loader-box::after {
   content: ""; width: 110px; height: 3px; border-radius: 2px;
   background: linear-gradient(90deg, #ECEFF6 0%, #0019ff 50%, #ECEFF6 100%);

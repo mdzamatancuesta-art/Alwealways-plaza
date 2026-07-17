@@ -393,8 +393,8 @@
 
   /* ---------- Chatbot asistente (esquina inferior derecha) ---------- */
   const chatHTML = `
-    <button id="apChatBtn" class="fixed bottom-5 right-5 z-[75] flex h-14 w-14 items-center justify-center rounded-full bg-b2b shadow-softlg transition-transform hover:scale-105" aria-label="Abrir asistente">
-      ${isoSVG('ap-iso-chat', 'ap-iso-white')}
+    <button id="apChatBtn" class="fixed bottom-5 right-5 z-[75] flex h-14 w-14 items-center justify-center rounded-full border border-lowgrey bg-white shadow-softlg transition-transform hover:scale-105" aria-label="Abrir asistente">
+      ${isoSVG('ap-iso-chat', 'ap-iso-blue')}
     </button>
     <div id="apChat" class="fixed bottom-5 right-5 z-[76] hidden w-[92vw] max-w-[380px] origin-bottom-right flex-col overflow-hidden rounded-xl2 border border-lowgrey bg-white shadow-softlg">
       <div class="flex items-center justify-between bg-night px-5 py-4 text-white">
