@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vasos personalizables — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+
+<body class="bg-main font-sans text-night antialiased" data-page="envases">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <nav class="pt-6 text-[13px] text-mediumgrey"><a href="index.html" class="hover:text-night">Inicio</a> / <a href="categoria-envases.html" class="hover:text-night">Envases y embalajes</a> / <a href="categoria-envases.html" class="hover:text-night">Vasos</a> / <span class="text-night">Personalizables</span></nav>
+
+    <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <!-- Galería -->
+      <div>
+        <p class="mb-3 text-[13px] text-mediumgrey">Vendido por <strong class="text-night">E&amp;E</strong></p>
+        <div class="relative aspect-square overflow-hidden rounded-xl2 bg-secondary">
+          <img id="mainImg" src="assets/products/env38.jpg" alt="Vaso personalizable" class="h-full w-full object-contain p-6" />
+          <button class="absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full text-darkgrey hover:text-exito" aria-label="Favorito"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.6-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5C19 15.4 12 20 12 20Z"/></svg></button>
+        </div>
+        <div class="mt-3 flex gap-3" id="thumbs"></div>
+
+        <div class="mt-8">
+          <p class="mb-3 text-[15px] font-medium text-night">Descargar archivos de apoyo:</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><span class="grid h-6 w-6 place-items-center rounded bg-night text-[10px] font-bold text-white">Ps</span> Plantilla para diseñar</a>
+            <a href="#" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg> Guía para impresión</a>
+          </div>
+        </div>
+
+        <div class="mt-8 divide-y divide-lowgrey border-y border-lowgrey">
+          <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between text-[15px] font-medium">Dimensiones y material<svg class="h-4 w-4 text-lowvis transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary><p class="mt-3 text-[14px] text-mediumgrey">Cartón kraft/blanco de doble capa, apto para bebidas calientes y frías. Capacidad según tamaño (20–75 ml).</p></details>
+          <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between text-[15px] font-medium">Más información<svg class="h-4 w-4 text-lowvis transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary><p class="mt-3 text-[14px] text-mediumgrey">Producto biodegradable y compostable. Personalización mediante impresión frontal o envolvente.</p></details>
+        </div>
+      </div>
+
+      <!-- Configurador -->
+      <div>
+        <h1 class="text-[26px] font-bold leading-tight text-night">Vasos personalizables</h1>
+        <p class="mt-2 text-[15px] text-mediumgrey">Vasos desechables biodegradables de la marca Envases &amp; Embalajes.</p>
+
+        <!-- Modelo -->
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Modelo</p>
+          <div class="flex flex-wrap gap-1 rounded-full bg-secondary p-1" data-group="modelo">
+            <button class="opt flex-1 rounded-full px-4 py-2 text-[14px] font-medium">Sencillo</button>
+            <button class="opt flex-1 rounded-full px-4 py-2 text-[14px] font-medium text-mediumgrey">Doble capa</button>
+            <button class="opt flex-1 rounded-full px-4 py-2 text-[14px] font-medium text-mediumgrey">Corrugado</button>
+            <button class="opt flex-1 rounded-full px-4 py-2 text-[14px] font-medium text-mediumgrey">Corrugado doble</button>
+          </div>
+        </div>
+
+        <!-- Tamaño -->
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Tamaño</p>
+          <div class="flex flex-wrap gap-3" data-group="tamano">
+            <button class="opt rounded-full border border-nicegrey px-5 py-2 text-[14px]">XS <span class="text-mediumgrey">20 ml.</span></button>
+            <button class="opt rounded-full border border-nicegrey px-5 py-2 text-[14px]">S <span class="text-mediumgrey">35 ml.</span></button>
+            <button class="opt rounded-full border border-nicegrey px-5 py-2 text-[14px]">M <span class="text-mediumgrey">50 ml.</span></button>
+            <button class="opt rounded-full border border-nicegrey px-5 py-2 text-[14px]">L <span class="text-mediumgrey">75 ml.</span></button>
+          </div>
+        </div>
+
+        <!-- Zona -->
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Zona de personalización</p>
+          <div class="grid grid-cols-3 gap-3" data-group="zona">
+            <button class="opt flex flex-col items-center gap-2 rounded-xl2 border border-nicegrey p-4 text-[13px]"><svg class="h-8 w-8 text-darkgrey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 4h10l-1.5 16h-7z"/><rect x="9" y="8" width="6" height="6" rx="1"/></svg>Frontal</button>
+            <button class="opt flex flex-col items-center gap-2 rounded-xl2 border border-nicegrey p-4 text-[13px]"><svg class="h-8 w-8 text-darkgrey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 4h10l-1.5 16h-7z"/><path d="M7.5 9h9M7.2 13h9.6"/></svg>Envolvente</button>
+            <button class="opt flex flex-col items-center gap-2 rounded-xl2 border border-nicegrey p-4 text-[13px]"><svg class="h-8 w-8 text-mediumgrey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 5l14 14M19 5 5 19"/></svg>Ninguna</button>
+          </div>
+        </div>
+
+        <!-- Color -->
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Color</p>
+          <div class="flex gap-3" data-group="color">
+            <button class="opt flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2 text-[14px]"><span class="h-3 w-3 rounded-full bg-night"></span>Negro</button>
+            <button class="opt flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2 text-[14px]"><span class="h-3 w-3 rounded-full" style="background:conic-gradient(#e3562b,#ffc919,#01a3f4,#d10037,#e3562b)"></span>A todo color</button>
+          </div>
+        </div>
+
+        <!-- Diseño -->
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Diseño</p>
+          <div class="flex flex-wrap gap-3">
+            <button class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg> Enviar archivo por email</button>
+            <button class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7-4-4-7 7v4z"/><path d="M15 8l1-1"/></svg> Contratar diseño por 60€</button>
+          </div>
+        </div>
+
+        <!-- Cantidad -->
+        <div class="mt-6">
+          <p class="mb-2 text-[13px] font-medium text-darkgrey">Cantidad</p>
+          <table class="w-full text-[14px]">
+            <thead><tr class="text-[12px] text-mediumgrey"><th class="py-2 text-left font-medium">Unidades</th><th class="py-2 text-left font-medium">Precio unitario</th><th class="py-2 text-right font-medium">Total sin IVA</th></tr></thead>
+            <tbody id="qtyRows"></tbody>
+          </table>
+          <button class="mt-2 w-full rounded-lg py-2 text-center text-[13px] text-mediumgrey hover:bg-secondary">Mostrar más</button>
+        </div>
+
+        <div class="mt-6 flex items-end justify-between">
+          <div><p class="text-[13px] text-mediumgrey">Total:</p><p class="text-[20px] font-extrabold" id="totalUds">100 unidades</p></div>
+          <span class="text-[12px] text-mediumgrey">IVA incl.</span>
+        </div>
+        <button class="mt-4 w-full rounded-full bg-night py-4 text-[15px] font-semibold text-white transition-colors hover:bg-b2b">Añadir</button>
+        <p class="mt-4 text-center text-[13px] text-mediumgrey">Ahorra asegurando tu stock</p>
+        <button class="mt-2 w-full rounded-full border border-nicegrey py-3.5 text-[15px] font-semibold text-night transition-colors hover:bg-secondary">Suscribirme a este producto</button>
+      </div>
+    </div>
+
+    <section class="mt-14">
+      <h2 class="mb-5 text-xl font-bold text-night">Productos relacionados</h2>
+      <div id="rel" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function(){
+      // Miniaturas
+      var thumbs=['env38.jpg','env18.jpg','env40.jpg'];
+      document.getElementById('thumbs').innerHTML=thumbs.map(function(t,i){
+        return '<button class="thumb grid h-16 w-16 place-items-center overflow-hidden rounded-xl border '+(i===0?'border-night':'border-lowgrey')+' bg-secondary" data-src="assets/products/'+t+'"><img src="assets/products/'+t+'" class="h-full w-full object-contain p-1"></button>';
+      }).join('');
+      AP.$$('.thumb').forEach(function(b){ b.addEventListener('click',function(){
+        document.getElementById('mainImg').src=b.dataset.src;
+        AP.$$('.thumb').forEach(function(x){x.classList.remove('border-night');x.classList.add('border-lowgrey');});
+        b.classList.add('border-night'); b.classList.remove('border-lowgrey');
+      });});
+
+      // Selectores de opción (un activo por grupo)
+      AP.$$('[data-group]').forEach(function(group){
+        var opts=Array.prototype.slice.call(group.querySelectorAll('.opt'));
+        function activate(el){
+          opts.forEach(function(o){ o.classList.remove('bg-white','bg-night','text-white','text-night','border-night','shadow-soft'); });
+          if(group.dataset.group==='modelo'){ el.classList.add('bg-white','text-night','shadow-soft'); }
+          else { el.classList.add('border-night','text-night'); }
+        }
+        opts.forEach(function(o){ o.addEventListener('click',function(){ activate(o); }); });
+        activate(opts[0]);
+      });
+
+      // Tabla de cantidades
+      var tiers=[['50 uds','0,34€','17,00€',50],['100 uds','0,24€','24,00€',100],['200 uds','0,21€','42,00€',200]];
+      function renderQty(sel){
+        document.getElementById('qtyRows').innerHTML=tiers.map(function(t,i){
+          var on=i===sel;
+          return '<tr data-i="'+i+'" class="cursor-pointer '+(on?'bg-secondary':'')+'"><td class="rounded-l-lg py-2.5 pl-3 font-medium">'+t[0]+'</td><td class="py-2.5 text-mediumgrey">'+t[1]+'</td><td class="rounded-r-lg py-2.5 pr-3 text-right font-semibold">'+t[2]+'</td></tr>';
+        }).join('');
+        document.getElementById('totalUds').textContent=tiers[sel][3]+' unidades';
+        AP.$$('#qtyRows tr').forEach(function(r){ r.addEventListener('click',function(){ renderQty(Number(r.dataset.i)); }); });
+      }
+      renderQty(1);
+
+      // Relacionados (fotos reales de envases)
+      document.getElementById('rel').innerHTML=ENVASES_PRODUCTS.slice(5,10).map(AP.productCard).join('');
+    })();
+  </script>
+</body>
+</html>

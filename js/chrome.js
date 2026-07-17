@@ -136,19 +136,19 @@
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Comprar</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="categoria.html" class="transition-colors hover:text-night">Bricolaje y construcción</a></li>
-            <li><a href="categoria.html" class="transition-colors hover:text-night">Envases y embalajes</a></li>
-            <li><a href="categoria.html" class="transition-colors hover:text-night">Papelería y ofimática</a></li>
-            <li><a href="categoria.html" class="transition-colors hover:text-night">Fotografía</a></li>
-            <li><a href="categoria.html" class="transition-colors hover:text-night">Hogar</a></li>
+            <li><a href="categoria-brico.html" class="transition-colors hover:text-night">Bricolaje y construcción</a></li>
+            <li><a href="categoria-envases.html" class="transition-colors hover:text-night">Envases y embalajes</a></li>
+            <li><a href="categoria-papeleria.html" class="transition-colors hover:text-night">Papelería y ofimática</a></li>
+            <li><a href="categoria-fotografia.html" class="transition-colors hover:text-night">Fotografía</a></li>
+            <li><a href="categoria-hogar.html" class="transition-colors hover:text-night">Hogar</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Servicios</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
             <li><a href="servicios.html" class="transition-colors hover:text-night">Todos nuestros servicios</a></li>
-            <li><a href="servicios.html" class="transition-colors hover:text-night">Always Market</a></li>
-            <li><a href="servicios.html" class="transition-colors hover:text-night">Always Sanguar</a></li>
+            <li><a href="always-market.html" class="transition-colors hover:text-night">Always Market</a></li>
+            <li><a href="always-sanguar.html" class="transition-colors hover:text-night">Always Sanguar</a></li>
           </ul>
         </div>
         <div>
@@ -223,10 +223,12 @@
   /* ---------- Buscador móvil ---------- */
   const mobileSearch = $('#mobileSearch');
   $('#mobileSearchBtn')?.addEventListener('click', () => { mobileSearch.classList.toggle('hidden'); const i = $('input', mobileSearch); if (!mobileSearch.classList.contains('hidden') && i) i.focus(); });
-  $('#searchForm')?.addEventListener('submit', (e) => e.preventDefault());
+  const goSearch = (q) => { window.location.href = 'buscar.html' + (q ? ('?q=' + encodeURIComponent(q)) : ''); };
+  $('#searchForm')?.addEventListener('submit', (e) => { e.preventDefault(); goSearch($('#searchInput').value.trim()); });
+  mobileSearch?.addEventListener('submit', (e) => { e.preventDefault(); goSearch($('input', mobileSearch).value.trim()); });
 
   /* ---------- Nav + Mega menú ---------- */
-  const catHref = (id) => id === 'servicios' ? 'servicios.html' : 'categoria.html';
+  const catHref = (id) => id === 'servicios' ? 'servicios.html' : `categoria-${id}.html`;
   const megaNav = $('#megaNav'), wrap = $('#megaPanelWrap'), panel = $('#megaPanel'), backdrop = $('#megaBackdrop');
   let openId = null, closeTimer = null;
 
@@ -235,31 +237,33 @@
       <a href="${catHref(c.id)}" class="mega-tab flex items-center py-3.5 text-[15px] transition-colors hover:text-b2b ${PAGE === c.id ? 'font-semibold text-b2b' : 'text-night'}">${c.name}</a>
     </li>`).join('');
 
-  function renderSubContent(sub) {
-    if (sub.links) return `<ul class="flex flex-col gap-3">${sub.links.map((l) => `<li><a href="servicios.html" class="text-[15px] text-night transition-colors hover:text-b2b">${l}</a></li>`).join('')}</ul>`;
-    const actions = sub.actions ? `<div class="flex flex-col gap-3 pr-8">${sub.actions.map((a) => `<a href="categoria.html" class="text-[15px] font-bold text-night transition-colors hover:text-b2b">${a}</a>`).join('')}</div>` : '';
+  function renderSubContent(sub, href) {
+    if (sub.links) return `<ul class="flex flex-col gap-3">${sub.links.map((l) => `<li><a href="${href}" class="text-[15px] text-night transition-colors hover:text-b2b">${l}</a></li>`).join('')}</ul>`;
+    const actions = sub.actions ? `<div class="flex flex-col gap-3 pr-8">${sub.actions.map((a) => `<a href="${a === 'Personalizar' ? 'personalizacion.html' : href}" class="text-[15px] font-bold text-night transition-colors hover:text-b2b">${a}</a>`).join('')}</div>` : '';
     const groups = sub.groups
-      ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-medium text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="categoria.html" class="text-[13px] text-mediumgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`
-      : `<div class="flex flex-1 items-start"><a href="categoria.html" class="text-[15px] font-bold text-night hover:text-b2b">Ver todo en ${sub.name}</a></div>`;
+      ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-medium text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="${href}" class="text-[13px] text-mediumgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`
+      : `<div class="flex flex-1 items-start"><a href="${sub.name === 'Always Market' ? 'always-market.html' : sub.name === 'Always Sanguar' ? 'always-sanguar.html' : href}" class="text-[15px] font-bold text-night hover:text-b2b">Ver todo en ${sub.name}</a></div>`;
     return `<div class="flex gap-4">${actions}${groups}</div>`;
   }
   function renderPanel(cat) {
     if (!cat.subs.length) return '';
+    const href = catHref(cat.id);
     const a = Math.max(0, cat.subs.findIndex((s) => s.groups || s.links));
     return `<div class="mx-auto flex max-w-[1400px] gap-8 px-8 py-8">
       <ul class="w-64 shrink-0 border-r border-lowgrey pr-4" id="megaSubs">
         ${cat.subs.map((s, i) => `<li><button data-sub="${i}" class="mega-sub flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-[15px] transition-colors ${i === a ? 'bg-secondary font-medium text-night' : 'text-darkgrey hover:bg-secondary'}">${s.name}${svg('<path d="m9 6 6 6-6 6"/>', 'h-4 w-4 text-lowvis')}</button></li>`).join('')}
       </ul>
-      <div class="flex-1 pt-1" id="megaContent">${renderSubContent(cat.subs[a])}</div>
+      <div class="flex-1 pt-1" id="megaContent">${renderSubContent(cat.subs[a], href)}</div>
     </div>`;
   }
   function bindSubs(cat) {
     const subsEl = $('#megaSubs'), content = $('#megaContent'); if (!subsEl) return;
+    const href = catHref(cat.id);
     $$('.mega-sub', subsEl).forEach((btn) => {
       const activate = () => {
         $$('.mega-sub', subsEl).forEach((b) => { b.classList.remove('bg-secondary', 'font-medium', 'text-night'); b.classList.add('text-darkgrey'); });
         btn.classList.add('bg-secondary', 'font-medium', 'text-night'); btn.classList.remove('text-darkgrey');
-        content.innerHTML = renderSubContent(cat.subs[Number(btn.dataset.sub)]);
+        content.innerHTML = renderSubContent(cat.subs[Number(btn.dataset.sub)], href);
       };
       btn.addEventListener('mouseenter', activate);
     });

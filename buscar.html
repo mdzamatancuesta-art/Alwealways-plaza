@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultados de búsqueda — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+<body class="bg-main font-sans text-night antialiased" data-page="">
+  <div id="site-header"></div>
+  <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <div class="pt-8">
+      <h1 class="text-[24px] font-bold text-night">Resultados para "<span id="q">taladro</span>"</h1>
+      <p class="mt-1 text-[14px] text-mediumgrey" id="count">12 productos encontrados</p>
+    </div>
+    <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+      <aside class="lg:w-60 lg:shrink-0">
+        <div class="rounded-xl2 border border-lowgrey bg-white p-5 shadow-soft">
+          <h2 class="text-[15px] font-bold">Filtrar</h2>
+          <div class="mt-4"><p class="mb-2 text-[13px] font-medium text-darkgrey">Categoría</p><ul class="space-y-1.5 text-[14px] text-mediumgrey" id="filterCats"></ul></div>
+          <div class="mt-5"><p class="mb-2 text-[13px] font-medium text-darkgrey">Precio</p><ul class="space-y-1.5 text-[14px] text-mediumgrey"><li><label class="flex items-center gap-2"><input type="checkbox" class="accent-b2b"> Menos de 20€</label></li><li><label class="flex items-center gap-2"><input type="checkbox" class="accent-b2b"> 20€ - 50€</label></li><li><label class="flex items-center gap-2"><input type="checkbox" class="accent-b2b"> Más de 50€</label></li></ul></div>
+        </div>
+      </aside>
+      <div class="flex-1">
+        <div id="results" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"></div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>(function(){
+  var params=new URLSearchParams(location.search); var q=params.get('q'); if(q){document.getElementById('q').textContent=q;}
+  document.getElementById('filterCats').innerHTML=CATEGORIES.map(function(c){return '<li><label class="flex items-center gap-2"><input type="checkbox" class="accent-b2b"> '+c.name+'</label></li>';}).join('');
+  var prods=genProducts(12,{discounts:true});
+  document.getElementById('count').textContent=prods.length+' productos encontrados';
+  document.getElementById('results').innerHTML=prods.map(AP.productCard).join('');
+})();</script>
+</body>
+</html>

@@ -63,7 +63,8 @@
   <script src="js/components.js"></script>
   <script src="js/chrome.js"></script>
   <script>
-    const link = (t) => `<li><a href="#" class="flex items-center justify-between rounded-lg px-2 py-1 transition-colors hover:bg-secondary hover:text-night">${t}<svg class="h-4 w-4 text-lowvis" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></a></li>`;
+    const HREFS = { 'Mis pedidos': 'mis-pedidos.html', 'Suscripciones': 'suscripciones.html', 'Cambios y devoluciones': 'mis-devoluciones.html', 'Direcciones': 'direcciones.html', 'Preguntas frecuentes': 'faq.html' };
+    const link = (t) => `<li><a href="${HREFS[t] || '#'}" class="flex items-center justify-between rounded-lg px-2 py-1 transition-colors hover:bg-secondary hover:text-night">${t}<svg class="h-4 w-4 text-lowvis" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></a></li>`;
     document.getElementById('listPedidos').innerHTML = ['Mis pedidos', 'Suscripciones', 'Cambios y devoluciones'].map(link).join('');
     document.getElementById('listConfig').innerHTML = ['Direcciones', 'Transacciones y métodos de pago', 'Seguridad y privacidad', 'Cerrar cuenta'].map(link).join('');
     document.getElementById('listAyuda').innerHTML = ['Contáctanos', 'Preguntas frecuentes'].map(link).join('');

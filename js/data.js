@@ -20,6 +20,15 @@ const ICONS = {
   producto: '<path d="M6 7h12l-1 13H7zM9 7V5a3 3 0 0 1 6 0v2"/>',
   ruler: '<path d="M3 8h18v8H3zM7 8v3M11 8v4M15 8v3M19 8v4"/>',
   drill: '<path d="M3 8h9v5H3zM12 9h4l2 2M7 13v4M14 13l4 4"/>',
+  vaso: '<path d="M7 4h10l-1.5 16h-7z"/>',
+  cuenco: '<path d="M4 10h16a8 8 0 0 1-16 0z"/>',
+  envases: '<path d="M6 3h12l-1 4H7zM7 7l1 13h8l1-13"/>',
+  bolsa: '<path d="M6 8h12l-1 12H7zM9 8V6a3 3 0 0 1 6 0v2"/>',
+  papeleria: '<path d="M5 3h10l4 4v14H5zM15 3v4h4"/><path d="M8 12h7M8 16h7"/>',
+  iluminacion: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/>',
+  cocina: '<path d="M6 3v7a3 3 0 0 0 6 0V3M9 3v18M17 3c-2 0-3 2-3 5s1 4 3 4v9"/>',
+  bano: '<path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM7 12V6a2 2 0 0 1 4 0"/>',
+  hogar: '<path d="M4 11l8-6 8 6M6 10v9h12v-9"/>',
 };
 
 /* ---------- Categorías del nav + mega menú (2 niveles) ----------
@@ -206,6 +215,48 @@ const DESTACADOS = [
   { name: 'Set de herramientas HomeMaster', desc: 'Kit completo para bricolaje y reparaciones del hogar.', price: '25,99', tag: 'Novedad', icon: ICONS.producto, img: 'assets/products/herramientas.jpg' },
   { name: 'Teclado gamer RX500 Power Plus', desc: 'Teclado mecánico inalámbrico retroiluminado.', price: '25,99', tag: 'Novedad', icon: ICONS.keyboard, img: 'assets/products/teclado.jpg' },
 ];
+
+/* ---------- Info y datos por página de categoría ---------- */
+const CATEGORY_INFO = {
+  brico: { name: 'Bricolaje y construcción', desc: 'Herramientas, materiales y todo lo necesario para tus proyectos de construcción y reforma.' },
+  envases: { name: 'Envases y embalajes', desc: 'Envases biodegradables y de marca blanca: vasos, cajas take away, cuencos, platos, bolsas y más.' },
+  papeleria: { name: 'Papelería y ofimática', desc: 'Cuadernos, escritura, material de oficina e impresión para el día a día y tu empresa.' },
+  fotografia: { name: 'Fotografía', desc: 'Cámaras, objetivos, iluminación y accesorios para profesionales y aficionados.' },
+  hogar: { name: 'Hogar', desc: 'Cocina, baño, textil, decoración y organización para tu casa.' },
+};
+
+// Iconos para las tarjetas de subcategoría de cada categoría.
+const SUB_ICONS = {
+  brico: [ICONS.drill, ICONS.hammer, ICONS.ruler, ICONS.helmet],
+  envases: [ICONS.vaso, ICONS.cuenco, ICONS.envases, ICONS.bolsa],
+  papeleria: [ICONS.notebook, ICONS.ballpen, ICONS.papeleria, ICONS.printer],
+  fotografia: [ICONS.producto, ICONS.producto, ICONS.iluminacion, ICONS.producto],
+  hogar: [ICONS.cocina, ICONS.bano, ICONS.hogar, ICONS.iluminacion],
+};
+
+function sectionCardsFor(id) {
+  const cat = CATEGORIES.find((c) => c.id === id);
+  const icons = SUB_ICONS[id] || [];
+  return (cat ? cat.subs.slice(0, 4) : []).map((s, i) => ({ name: s.name, icon: icons[i] || ICONS.producto }));
+}
+
+function productsForCategory(id) {
+  if (id === 'envases') return ENVASES_PRODUCTS;
+  if (id === 'brico') return DESTACADOS.concat(genProducts(7));
+  if (id === 'papeleria') return genProducts(10, {
+    names: ['Cuaderno de contabilidad 2027', 'Bolígrafos punta fina (pack)', 'Pack de folios A4 500 h', 'Organizador de escritorio', 'Rotuladores fluorescentes', 'Tinta para impresora', 'Grapadora metálica', 'Set de manualidades', 'Archivador de anillas', 'Lápices de colores'],
+    icons: [ICONS.notebook, ICONS.ballpen, ICONS.papeleria, ICONS.printer],
+  });
+  if (id === 'fotografia') return genProducts(10, {
+    names: ['Cámara compacta 20 MP', 'Objetivo 50 mm f/1.8', 'Trípode de aluminio', 'Foco LED de estudio', 'Tarjeta de memoria 128 GB', 'Batería recargable', 'Álbum de fotos 200', 'Marco de madera A4', 'Flash externo', 'Fondo fotográfico'],
+    icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler],
+  });
+  if (id === 'hogar') return genProducts(10, {
+    names: ['Set de sartenes antiadherentes', 'Juego de toallas', 'Lámpara de mesa LED', 'Organizador de armario', 'Vajilla 12 piezas', 'Cortina de baño', 'Cojín decorativo', 'Estantería modular', 'Set de limpieza', 'Cubo con tapa'],
+    icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano],
+  });
+  return genProducts(10);
+}
 
 /* ---------- Carrito ---------- */
 const CART_ITEMS = [

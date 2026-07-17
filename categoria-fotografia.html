@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fotografía — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+<body class="bg-main font-sans text-night antialiased" data-page="fotografia">
+  <div id="site-header"></div>
+  <main id="catroot-fotografia" class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <nav class="pt-6 text-[13px] text-mediumgrey"><a href="index.html" class="hover:text-night">Inicio</a> / <span class="text-night crumb"></span></nav>
+    <header class="mt-4">
+      <h1 class="text-[32px] font-extrabold text-night catTitle"></h1>
+      <p class="mt-2 max-w-2xl text-[15px] text-mediumgrey catDesc"></p>
+    </header>
+    <div class="sectionCards mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4"></div>
+    <section class="mt-12">
+      <div class="mb-5 flex items-center gap-3"><h2 class="text-xl font-bold text-night">Destacados</h2></div>
+      <div class="grid1 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
+    </section>
+    <section class="mt-12">
+      <h2 class="mb-5 text-xl font-bold text-night">Todos los productos</h2>
+      <div class="grid2 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function(){
+      var id='fotografia', root=document.getElementById('catroot-'+id), info=CATEGORY_INFO[id]||{name:'',desc:''};
+      root.querySelector('.crumb').textContent=info.name;
+      root.querySelector('.catTitle').textContent=info.name;
+      root.querySelector('.catDesc').textContent=info.desc;
+      root.querySelector('.sectionCards').innerHTML=sectionCardsFor(id).map(function(c){
+        return '<a href="#" class="group flex flex-col items-center gap-3 rounded-xl2 border border-lowgrey bg-white p-5 text-center shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">'+
+          '<span class="grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-darkgrey">'+AP.svg(c.icon,'h-7 w-7')+'</span>'+
+          '<span class="text-[14px] font-medium text-night">'+c.name+'</span></a>';
+      }).join('');
+      var prods=productsForCategory(id);
+      root.querySelector('.grid1').innerHTML=prods.slice(0,5).map(AP.productCard).join('');
+      root.querySelector('.grid2').innerHTML=prods.slice(5).map(AP.productCard).join('');
+    })();
+  </script>
+</body>
+</html>
