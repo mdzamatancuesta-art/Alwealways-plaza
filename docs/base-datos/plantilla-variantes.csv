@@ -1,0 +1,8 @@
+sku,tipo_variante,opcion,precio_extra_eur,sku_variante
+BRC-HER-0001,Modelo,Madera,0,BRC-HER-0001-MAD
+BRC-HER-0001,Modelo,Metal,2.00,BRC-HER-0001-MET
+ENV-VAS-0001,Tamaño,XS 20 ml,0,ENV-VAS-0001-XS
+ENV-VAS-0001,Tamaño,S 35 ml,0.50,ENV-VAS-0001-S
+ENV-VAS-0001,Tamaño,M 50 ml,1.00,ENV-VAS-0001-M
+ENV-VAS-0001,Modelo,Sencillo,0,
+ENV-VAS-0001,Modelo,Doble capa,1.50,

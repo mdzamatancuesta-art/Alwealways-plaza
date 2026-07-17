@@ -1,0 +1,5 @@
+sku,nombre,categoria,subcategoria,descripcion_corta,descripcion_larga,marca_vendedor,precio_eur,precio_anterior_eur,iva_pct,unidad_venta,cantidad_minima,stock,personalizable,etiqueta,imagen_principal,imagenes_adicionales,peso_g,dimensiones_cm,activo
+BRC-HER-0001,Martillo Multiusos HomeMaster,Bricolaje y construcción,Herramientas,Martillo ligero para clavar y extraer clavos,"Cabezal de acero al carbono, mango de fresno. 33 cm, 450 g.",Alzan,13.99,,21,unidad,1,120,no,,assets/products/hammer.jpg,,450,33x13x3,si
+ENV-VAS-0001,Vaso de cartón kraft 50 ml,Envases y embalajes,Vasos,Vaso doble capa biodegradable,Vaso de cartón kraft de doble capa para bebida. Desde 50 uds.,E&E,5.00,,21,pack,50,300,si,Más vendido,assets/products/env40.jpg,,,,si
+ENV-BOL-0001,Bolsa de papel kraft con asa plana,Envases y embalajes,Bolsas de papel,Bolsa kraft biodegradable con asa plana,"Bolsa de papel kraft, varios tamaños. Desde 100 uds.",E&E,12.99,,21,pack,100,500,si,Novedad,assets/products/env3.jpg,,,,si
+OFI-PAP-0001,Cuaderno de contabilidad 2027,Papelería y ofimática,(por definir),Cuaderno 200 páginas,3 unidades de 200 páginas por ud.,Mapet,19.99,25.99,21,pack,3,80,no,Oferta,,,,,si

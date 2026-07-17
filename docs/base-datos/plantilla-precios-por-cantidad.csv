@@ -1,0 +1,4 @@
+sku,cantidad_uds,precio_unitario_eur,precio_total_sin_iva_eur
+ENV-VAS-0001,50,0.34,17.00
+ENV-VAS-0001,100,0.24,24.00
+ENV-VAS-0001,200,0.21,42.00
