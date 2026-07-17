@@ -11,6 +11,8 @@
     `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
   const OI = {"globe":{"vb":"0 0 24 24","inner":"<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 22C17.5229 22 22 17.5229 22 12C22 6.47715 17.5229 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5229 6.47715 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2 12H22\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 22C14.2092 22 16 17.5229 16 12C16 6.47715 14.2092 2 12 2C9.79085 2 8 6.47715 8 12C8 17.5229 9.79085 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M4.92896 5.07104C6.7386 6.88069 9.2386 7.99999 12 7.99999C14.7615 7.99999 17.2615 6.88069 19.0711 5.07104\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M19.0711 18.9289C17.2615 17.1193 14.7615 16 12 16C9.2386 16 6.7386 17.1193 4.92896 18.9289\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"truck":{"vb":"0 0 68 68","inner":"<path d=\"M18.25 20H37.5C38.4665 20 39.25 20.7835 39.25 21.75V41C39.25 41.9665 38.4665 42.75 37.5 42.75H18.25C17.2835 42.75 16.5 41.9665 16.5 41V21.75C16.5 20.7835 17.2835 20 18.25 20Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path d=\"M51.5 42.75H39.25V30.5H45.375L51.5 36.1538V42.75Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path d=\"M39.25 44.5C39.25 46.433 40.817 48 42.75 48C44.683 48 46.25 46.433 46.25 44.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M20 44.5C20 46.433 21.567 48 23.5 48C25.433 48 27 46.433 27 44.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"pin":{"vb":"0 0 24 24","inner":"<path d=\"M12 22C12 22 19.5 16 19.5 9.5C19.5 5.35785 16.1421 2 12 2C7.85785 2 4.5 5.35785 4.5 9.5C4.5 16 12 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><path d=\"M12 12.5C13.6568 12.5 15 11.1568 15 9.5C15 7.84315 13.6568 6.5 12 6.5C10.3432 6.5 9 7.84315 9 9.5C9 11.1568 10.3432 12.5 12 12.5Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/>"},"store":{"vb":"0 0 68 68","inner":"<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M27.875 25.25L51.5 34V51.5H27.875V25.25Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M27.875 25.25L16.5 34V51.5H27.875\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M43.625 51.5V41L35.75 38.375V51.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M51.5 51.5H27.875\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"menu":{"vb":"0 0 24 24","inner":"<path d=\"M21 4.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M17 9.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M21 14.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M17 19.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"user":{"vb":"0 0 24 24","inner":"<path d=\"M12 10C14.2091 10 16 8.20914 16 6C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6C8 8.20914 9.79086 10 12 10Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M21 22C21 17.0294 16.9706 13 12 13C7.02945 13 3 17.0294 3 22\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"heart":{"vb":"0 0 44 44","inner":"<path d=\"M17.5 14C14.4624 14 12 16.4625 12 19.5C12 25 18.5 30 22 31.1631C25.5 30 32 25 32 19.5C32 16.4625 29.5375 14 26.5 14C24.6399 14 22.9954 14.9235 22 16.3369C21.0046 14.9235 19.3601 14 17.5 14Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"bag":{"vb":"0 0 24 24","inner":"<path d=\"M19 7H5C4.44772 7 4 7.44772 4 8V21C4 21.5523 4.44772 22 5 22H19C19.5523 22 20 21.5523 20 21V8C20 7.44772 19.5523 7 19 7Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M8.5 9V5.5C8.5 3.56701 10.067 2 12 2C13.933 2 15.5 3.56701 15.5 5.5V9\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"}};
   const oi = (name, cls = 'h-5 w-5') => { const o = OI[name]; return o ? `<svg class="${cls}" viewBox="${o.vb}" fill="none" aria-hidden="true">${o.inner}</svg>` : ''; };
+  // Navegación: usa el router de la vista previa (artifact) si existe; si no, navega de verdad.
+  const nav = (href) => { if (window.__apNav) window.__apNav(href); else window.location.href = href; };
   const PAGE = document.body.dataset.page || '';
 
   /* ---------- Markup ---------- */
@@ -154,8 +156,8 @@
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Ayuda</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="#" class="transition-colors hover:text-night">Puntos de recogida</a></li>
-            <li><a href="#" class="transition-colors hover:text-night">Envíos a Cuba</a></li>
+            <li><a href="puntos-recogida.html" class="transition-colors hover:text-night">Puntos de recogida</a></li>
+            <li><a href="envios.html" class="transition-colors hover:text-night">Envíos a Cuba</a></li>
             <li><a href="perfil.html" class="transition-colors hover:text-night">Mi perfil</a></li>
           </ul>
         </div>
@@ -216,14 +218,15 @@
     return pickup;
   }
   $('#cpBtn').addEventListener('click', openCp);
+  $('#pickupBtn').addEventListener('click', () => { nav('puntos-recogida.html'); });
   cpInput.addEventListener('input', () => { cpInput.value = cpInput.value.replace(/\D/g, '').slice(0, 5); evalCp(); });
-  $('#cpConfirm').addEventListener('click', () => { const p = evalCp(); if (p) { cpLabel.textContent = 'CP ' + cpInput.value; pickupLabel.textContent = p; closeCp(); } });
+  $('#cpConfirm').addEventListener('click', () => { const p = evalCp(); if (p) { cpLabel.textContent = 'CP ' + cpInput.value; pickupLabel.textContent = p; try { localStorage.setItem('ap_cp', cpInput.value); } catch (e) {} closeCp(); } });
   $$('#cpModal [data-cp-close]').forEach((el) => el.addEventListener('click', closeCp));
 
   /* ---------- Buscador móvil ---------- */
   const mobileSearch = $('#mobileSearch');
   $('#mobileSearchBtn')?.addEventListener('click', () => { mobileSearch.classList.toggle('hidden'); const i = $('input', mobileSearch); if (!mobileSearch.classList.contains('hidden') && i) i.focus(); });
-  const goSearch = (q) => { window.location.href = 'buscar.html' + (q ? ('?q=' + encodeURIComponent(q)) : ''); };
+  const goSearch = (q) => { nav('buscar.html' + (q ? ('?q=' + encodeURIComponent(q)) : '')); };
   $('#searchForm')?.addEventListener('submit', (e) => { e.preventDefault(); goSearch($('#searchInput').value.trim()); });
   mobileSearch?.addEventListener('submit', (e) => { e.preventDefault(); goSearch($('input', mobileSearch).value.trim()); });
 
@@ -307,7 +310,7 @@
   try { consent = localStorage.getItem('ap_cookies'); } catch (e) {}
   if (!consent) cookieBanner.classList.remove('hidden');
   $$('#cookieBanner [data-cookie]').forEach((b) => b.addEventListener('click', () => setCookieConsent(b.dataset.cookie)));
-  $('#cookieSettingsLink')?.addEventListener('click', () => { window.location.href = 'cookies.html'; });
+  $('#cookieSettingsLink')?.addEventListener('click', () => { nav('cookies.html'); });
 
   /* ---------- Toast ---------- */
   const toastWrap = document.createElement('div');

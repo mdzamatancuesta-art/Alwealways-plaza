@@ -182,6 +182,17 @@ function pickupForZip(zip) {
   return null;
 }
 
+/* ---------- Always Points · puntos de recogida en La Habana ---------- */
+const PICKUP_POINTS = [
+  { n: 1, name: 'Habana Vieja', address: 'Calle Obispo 253, entre Cuba y Aguiar', cp: '10100', hours: 'Lun–Sáb 9:00–18:00', phone: '(+53) 7 861 0100' },
+  { n: 2, name: 'Centro Habana', address: 'Av. Galiano 120, esq. Ánimas', cp: '10200 · 10300', hours: 'Lun–Sáb 9:00–19:00', phone: '(+53) 7 862 0200' },
+  { n: 3, name: 'Cerro', address: 'Calzada del Cerro 1550', cp: '10400 · 10500 · 10600', hours: 'Lun–Sáb 9:00–18:00', phone: '(+53) 7 863 0300' },
+  { n: 4, name: 'Vedado', address: 'Calle 23 nº 456, entre H e I', cp: '10700', hours: 'Lun–Dom 9:00–20:00', phone: '(+53) 7 830 0400' },
+  { n: 5, name: 'Plaza de la Revolución', address: 'Av. Paseo nº 30', cp: '10800', hours: 'Lun–Sáb 9:00–18:00', phone: '(+53) 7 830 0500' },
+  { n: 6, name: 'Playa', address: '5ta Avenida nº 8801, esq. 88', cp: '11300', hours: 'Lun–Dom 9:00–20:00', phone: '(+53) 7 204 0600' },
+  { n: 7, name: 'Diez de Octubre', address: 'Calzada de 10 de Octubre nº 456', cp: '11900', hours: 'Lun–Sáb 9:00–18:00', phone: '(+53) 7 649 0700' },
+];
+
 /* ---------- Categoría · subcategorías destacadas (Herramientas) ---------- */
 const SECTION_CARDS = [
   { name: 'Herramientas eléctricas', icon: ICONS.drill },

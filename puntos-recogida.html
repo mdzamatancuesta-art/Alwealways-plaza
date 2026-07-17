@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puntos de recogida — Always Plaza</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2301A3F4'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Inter,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tailwind.css" />
+</head>
+
+<body class="bg-main font-sans text-night antialiased" data-page="">
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-[1400px] px-4 pb-16 md:px-8">
+    <nav class="pt-6 text-[13px] text-mediumgrey"><a href="index.html" class="hover:text-night">Inicio</a> / <span class="text-night">Puntos de recogida</span></nav>
+    <header class="mt-4">
+      <h1 class="text-[32px] font-extrabold text-night">Puntos de recogida · Always Points</h1>
+      <p class="mt-2 max-w-2xl text-[15px] text-mediumgrey">Recoge tu pedido en el Always Point más cercano de La Habana. Introduce tu código postal para encontrar el punto que te corresponde.</p>
+    </header>
+
+    <!-- Buscador de CP -->
+    <div class="mt-6 flex flex-col gap-3 rounded-xl2 border border-lowgrey bg-white p-5 shadow-soft sm:flex-row sm:items-center">
+      <label for="zipFind" class="text-[14px] font-medium text-darkgrey">Tu código postal:</label>
+      <input id="zipFind" inputmode="numeric" maxlength="5" placeholder="Ej. 10200" class="w-full rounded-full border border-nicegrey px-4 py-2.5 text-[15px] focus:border-b2b focus:outline-none sm:w-48" />
+      <p id="zipResult" class="text-[14px] font-medium text-night"></p>
+    </div>
+
+    <!-- Grid de puntos -->
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="pointsGrid"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/logo.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function(){
+      function card(p, highlight){
+        return '<div class="rounded-xl2 border '+(highlight?'border-b2b ring-2 ring-b2b/30':'border-lowgrey')+' bg-white p-5 shadow-soft" data-n="'+p.n+'">'+
+          '<div class="flex items-start justify-between">'+
+            '<div class="flex items-center gap-3">'+
+              '<span class="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-b2b">'+AP.svg('<path d="M12 22C12 22 19.5 16 19.5 9.5C19.5 5.35785 16.1421 2 12 2C7.85785 2 4.5 5.35785 4.5 9.5C4.5 16 12 22 12 22Z"/><circle cx="12" cy="9.5" r="3"/>','h-6 w-6')+'</span>'+
+              '<div><p class="text-[15px] font-bold text-night">Punto '+p.n+'</p><p class="text-[13px] text-mediumgrey">'+p.name+'</p></div>'+
+            '</div>'+(highlight?'<span class="rounded-full bg-b2b px-3 py-1 text-[11px] font-bold text-white">Tu punto</span>':'')+
+          '</div>'+
+          '<dl class="mt-4 space-y-2 text-[13px]">'+
+            '<div class="flex gap-2"><dt class="w-20 shrink-0 text-mediumgrey">Dirección</dt><dd class="text-night">'+p.address+'</dd></div>'+
+            '<div class="flex gap-2"><dt class="w-20 shrink-0 text-mediumgrey">Horario</dt><dd class="text-night">'+p.hours+'</dd></div>'+
+            '<div class="flex gap-2"><dt class="w-20 shrink-0 text-mediumgrey">C.P.</dt><dd class="text-night">'+p.cp+'</dd></div>'+
+            '<div class="flex gap-2"><dt class="w-20 shrink-0 text-mediumgrey">Teléfono</dt><dd><a href="tel:'+p.phone.replace(/[^0-9+]/g,'')+'" class="text-b2b hover:underline">'+p.phone+'</a></dd></div>'+
+          '</dl>'+
+          '<button type="button" data-demo="Punto seleccionado (demo)" class="mt-4 w-full rounded-full border border-nicegrey py-2.5 text-[14px] font-semibold text-night transition-colors hover:bg-secondary">Elegir este punto</button>'+
+        '</div>';
+      }
+      function render(highlightName){
+        document.getElementById('pointsGrid').innerHTML = PICKUP_POINTS.map(function(p){
+          return card(p, highlightName && ('Punto '+p.n+' · '+p.name)===highlightName);
+        }).join('');
+      }
+      render(null);
+
+      var input=document.getElementById('zipFind'), res=document.getElementById('zipResult');
+      input.addEventListener('input', function(){
+        input.value=input.value.replace(/\D/g,'').slice(0,5);
+        var pk=input.value?pickupForZip(input.value):null;
+        if(!input.value){ res.textContent=''; render(null); return; }
+        if(pk){ res.innerHTML='Tu punto más cercano: <span class="text-b2b">'+pk+'</span>'; render(pk); }
+        else { res.textContent='Aún no cubrimos ese código postal.'; render(null); }
+      });
+      // Prefill desde el CP guardado
+      try { var saved=localStorage.getItem('ap_cp'); if(saved){ input.value=saved; input.dispatchEvent(new Event('input')); } } catch(e){}
+    })();
+  </script>
+</body>
+</html>
