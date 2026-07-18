@@ -70,7 +70,7 @@
     function renderCart() {
       document.getElementById('cartList').innerHTML = CART_ITEMS.map((it, idx) => `
         <div class="flex gap-4 py-5">
-          <div class="grid h-24 w-24 shrink-0 place-items-center rounded-xl2 bg-secondary text-nicegrey">${AP.svg(it.icon, 'h-12 w-12')}</div>
+          <div class="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-xl2 bg-secondary text-nicegrey">${it.img ? `<img src="${it.img}" alt="${it.name}" class="h-full w-full object-cover" />` : AP.svg(it.icon, 'h-12 w-12')}</div>
           <div class="flex flex-1 flex-col">
             <div class="flex items-start justify-between gap-3">
               <h3 class="text-[15px] font-semibold text-night">${it.name}</h3>

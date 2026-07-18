@@ -146,19 +146,19 @@ const CATEGORIES = [
 
 /* ---------- Home · Novedades ---------- */
 const NOVEDADES = [
-  { name: 'Impresora Camon MX3 Serie 5000T', desc: 'Impresora de tinta inyectada multiformato A3 A4 A2 digital.', tag: 'Novedad', price: '59,99', icon: ICONS.printer },
+  { name: 'Impresora Camon MX3 Serie 5000T', desc: 'Impresora de tinta inyectada multiformato A3 A4 A2 digital.', tag: 'Novedad', price: '59,99', icon: ICONS.printer, img: 'assets/products/dremel.jpg' },
   { name: 'Teclado gamer RX500 Power Plus', desc: 'Teclado mecánico inalámbrico.', tag: 'Novedad', price: '29,99', icon: ICONS.keyboard, img: 'assets/products/teclado.jpg' },
-  { name: 'Raton Gamer HERO T480', desc: 'Ratón inalámbrico hergonómico 36000 DPI 8 botones.', tag: 'Novedad', price: '25,99', icon: ICONS.mouse },
-  { name: 'Waco pen digital S80', desc: 'Lápiz digital profesional para diseño gráfico y animación 3D.', tag: 'Novedad', price: '15', icon: ICONS.pen },
+  { name: 'Raton Gamer HERO T480', desc: 'Ratón inalámbrico hergonómico 36000 DPI 8 botones.', tag: 'Novedad', price: '25,99', icon: ICONS.mouse, img: 'assets/products/herramientas.jpg' },
+  { name: 'Waco pen digital S80', desc: 'Lápiz digital profesional para diseño gráfico y animación 3D.', tag: 'Novedad', price: '15', icon: ICONS.pen, img: 'assets/products/llaves.jpg' },
 ];
 
 /* ---------- Home · Seguir comprando ---------- */
 const SEGUIR = [
-  { name: 'Cuadernos de contabilidad año 2027', desc: '3 Unidades de 200 páginas por ud.', price: '19,99', old: '25,99', discount: '-20%', icon: ICONS.notebook },
+  { name: 'Cuadernos de contabilidad año 2027', desc: '3 Unidades de 200 páginas por ud.', price: '19,99', old: '25,99', discount: '-20%', icon: ICONS.notebook, img: 'assets/products/env18.jpg' },
   { name: 'Bolsas papel craft personalizables', desc: 'Desde 100 unidades. Diferentes tamaños y colores.', price: '29,99', old: '35,99', discount: '-20%', icon: ICONS.bag, img: 'assets/products/env3.jpg' },
   { name: 'Pintura pared azul Klein P 286C', desc: 'Pintura anti-moho 500 ml.', price: '12,99', icon: ICONS.paint, img: 'assets/products/pintura.jpg' },
   { name: 'Pack platos y cubiertos biodegradables', desc: '25 unidades de cada por paquete: plato, tenedor, cuchillo y cuchara.', price: '9', icon: ICONS.plate, img: 'assets/products/env26.jpg' },
-  { name: 'Bolígrafos Mapet punta fina', desc: 'Tinta azul. Disponibles en variedad de colores.', price: '5', icon: ICONS.ballpen },
+  { name: 'Bolígrafos Mapet punta fina', desc: 'Tinta azul. Disponibles en variedad de colores.', price: '5', icon: ICONS.ballpen, img: 'assets/products/env40.jpg' },
 ];
 
 /* ---------- Códigos postales de La Habana → punto de recogida ---------- */
@@ -211,7 +211,7 @@ const PHOTO_POOL = [
 
 function genProducts(n, opts = {}) {
   const icons = opts.icons || [ICONS.hammer, ICONS.wrench, ICONS.drill, ICONS.ruler, ICONS.producto, ICONS.helmet];
-  const photos = opts.photos || null; // array de rutas para poner foto provisional
+  const photos = opts.photos || PHOTO_POOL; // todos los productos llevan foto (galería de marca blanca)
   const out = [];
   for (let i = 0; i < n; i++) {
     const disc = opts.discounts && i % 3 === 0;
@@ -261,32 +261,32 @@ function sectionCardsFor(id) {
 }
 
 function productsForCategory(id) {
-  // 5 productos provisionales por categoría (con foto de la galería disponible).
-  if (id === 'envases') return ENVASES_PRODUCTS.slice(0, 5);
-  if (id === 'brico') return genProducts(5, {
-    names: ['Taladro percutor 750W', 'Set de herramientas HomeMaster', 'Llave inglesa con mango de silicona', 'Pintura pared mate 4L', 'Martillo Multiusos HomeMaster'],
-    icons: [ICONS.drill, ICONS.producto, ICONS.wrench, ICONS.paint, ICONS.hammer], photos: PHOTO_POOL,
+  // 15 productos provisionales por categoría, todos con foto de la galería.
+  if (id === 'envases') return ENVASES_PRODUCTS.slice(0, 15);
+  if (id === 'brico') return genProducts(15, {
+    names: ['Taladro percutor 750W', 'Set de herramientas HomeMaster', 'Llave inglesa ajustable', 'Pintura pared mate 4L', 'Martillo de carpintero', 'Juego de destornilladores 6 pzas', 'Sierra de mano universal', 'Nivel láser autonivelante', 'Caja de tornillos surtidos', 'Guantes de trabajo reforzados', 'Cinta métrica 5 m', 'Taladro atornillador 18V', 'Alicate universal', 'Gafas de protección', 'Rodillo de pintura antigoteo'],
+    icons: [ICONS.drill, ICONS.producto, ICONS.wrench, ICONS.paint, ICONS.hammer, ICONS.ruler, ICONS.helmet],
   });
-  if (id === 'papeleria') return genProducts(5, {
-    names: ['Cuaderno de contabilidad 2027', 'Bolígrafos punta fina (pack)', 'Pack de folios A4 500 h', 'Organizador de escritorio', 'Rotuladores fluorescentes'],
-    icons: [ICONS.notebook, ICONS.ballpen, ICONS.papeleria, ICONS.printer], photos: PHOTO_POOL,
+  if (id === 'papeleria') return genProducts(15, {
+    names: ['Cuaderno de contabilidad 2027', 'Bolígrafos punta fina (pack 12)', 'Pack de folios A4 500 h', 'Organizador de escritorio', 'Rotuladores fluorescentes', 'Grapadora metálica', 'Set de subrayadores pastel', 'Archivador de palanca A4', 'Tijeras de oficina', 'Calculadora científica', 'Notas adhesivas de colores', 'Portaminas 0.5 mm', 'Cinta adhesiva transparente', 'Agenda anual 2027', 'Sobres blancos (pack 50)'],
+    icons: [ICONS.notebook, ICONS.ballpen, ICONS.papeleria, ICONS.printer],
   });
-  if (id === 'fotografia') return genProducts(5, {
-    names: ['Cámara compacta 20 MP', 'Objetivo 50 mm f/1.8', 'Trípode de aluminio', 'Foco LED de estudio', 'Tarjeta de memoria 128 GB'],
-    icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler], photos: PHOTO_POOL,
+  if (id === 'fotografia') return genProducts(15, {
+    names: ['Cámara compacta 20 MP', 'Objetivo 50 mm f/1.8', 'Trípode de aluminio', 'Foco LED de estudio', 'Tarjeta de memoria 128 GB', 'Flash externo speedlite', 'Bolsa acolchada para cámara', 'Filtro polarizador 58 mm', 'Estabilizador gimbal', 'Fondo fotográfico blanco', 'Reflector plegable 5 en 1', 'Batería recargable', 'Objetivo gran angular', 'Aro de luz LED', 'Kit de limpieza de lentes'],
+    icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler],
   });
-  if (id === 'hogar') return genProducts(5, {
-    names: ['Set de sartenes antiadherentes', 'Juego de toallas', 'Lámpara de mesa LED', 'Organizador de armario', 'Vajilla 12 piezas'],
-    icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano], photos: PHOTO_POOL,
+  if (id === 'hogar') return genProducts(15, {
+    names: ['Set de sartenes antiadherentes', 'Juego de toallas (4 pzas)', 'Lámpara de mesa LED', 'Organizador de armario', 'Vajilla 12 piezas', 'Juego de sábanas', 'Set de cuchillos de cocina', 'Cesto de la colada plegable', 'Cortina de baño impermeable', 'Batidora de mano', 'Juego de tazas de café', 'Alfombra de baño', 'Perchas de terciopelo (pack)', 'Recipientes herméticos (set)', 'Manta de sofá'],
+    icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano],
   });
-  return genProducts(5, { photos: PHOTO_POOL });
+  return genProducts(15, {});
 }
 
 /* ---------- Carrito ---------- */
 const CART_ITEMS = [
-  { name: 'Raton Gamer Hero T480', desc: 'Equipado con el sensor óptico PrecisionCore T3, el HERO T4…', seller: 'E&E', price: 25.99, qty: 10, icon: ICONS.mouse },
-  { name: 'Martillo Multiusos HomeMaster', desc: 'La herramienta maravilla adecuada para el uso doméstico…', seller: 'Alzan', price: 13.99, qty: 1, icon: ICONS.hammer },
-  { name: 'Pack platos y cubiertos biodegradables', desc: '12 piezas de platos de cartón craft, tenedores, cuchillos y c…', seller: 'E&E', price: 5.99, qty: 1, icon: ICONS.plate },
+  { name: 'Raton Gamer Hero T480', desc: 'Equipado con el sensor óptico PrecisionCore T3, el HERO T4…', seller: 'E&E', price: 25.99, qty: 10, icon: ICONS.mouse, img: 'assets/products/teclado.jpg' },
+  { name: 'Martillo Multiusos HomeMaster', desc: 'La herramienta maravilla adecuada para el uso doméstico…', seller: 'Alzan', price: 13.99, qty: 1, icon: ICONS.hammer, img: 'assets/products/herramientas.jpg' },
+  { name: 'Pack platos y cubiertos biodegradables', desc: '12 piezas de platos de cartón craft, tenedores, cuchillos y c…', seller: 'E&E', price: 5.99, qty: 1, icon: ICONS.plate, img: 'assets/products/env26.jpg' },
 ];
 
 /* ---------- Envases y embalajes (fotos reales, marca blanca) ---------- */
