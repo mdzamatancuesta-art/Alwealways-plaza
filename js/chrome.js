@@ -429,17 +429,35 @@
 
   const chatBtn = $('#apChatBtn'), chatPanel = $('#apChat'), chatMsgs = $('#apChatMsgs'), chatChips = $('#apChatChips');
   const BOT = [
-    { k: ['hola', 'buenas', 'saludos', 'hey'], a: '¡Hola! 😊 Puedo ayudarte con envíos, puntos de recogida, servicios, pagos o devoluciones. ¿Qué necesitas?' },
-    { k: ['envío', 'envio', 'entrega', 'cuba', 'habana', 'plazo', 'tarda', 'cuánto tarda', 'cuanto tarda'], a: 'Enviamos a domicilio en toda La Habana y ofrecemos recogida en nuestros Always Points. Plazo estimado: 7–15 días. <a href="envios.html" class="text-b2b underline">Ver envíos</a>.' },
-    { k: ['recogida', 'punto', 'point', 'recoger'], a: 'Tenemos 7 puntos de recogida en La Habana. Introduce tu código postal para ver el más cercano. <a href="puntos-recogida.html" class="text-b2b underline">Ver puntos</a>.' },
-    { k: ['servicio', 'empresa', 'b2b', 'personaliz', 'imprenta', 'reforma'], a: 'Ofrecemos servicios para empresas: personalización, reformas, planificación e imprenta. <a href="servicios.html" class="text-b2b underline">Ver servicios</a>.' },
-    { k: ['pago', 'pagar', 'tarjeta', 'paypal', 'visa'], a: 'Aceptamos tarjeta (Visa, MasterCard) y PayPal. El pago es 100% seguro. 🔒' },
-    { k: ['precio', 'euro', 'moneda', 'coste', 'cuesta'], a: 'Todos los precios están en euros (€) e incluyen IVA. Verás el total final antes de confirmar el pedido.' },
-    { k: ['devol', 'cambio', 'reembolso'], a: 'Dispones de 30 días para devolver. <a href="devoluciones.html" class="text-b2b underline">Política de devoluciones</a>.' },
-    { k: ['pedido', 'seguim', 'rastre', 'dónde está', 'donde esta'], a: 'Puedes seguir tu pedido desde <a href="mis-pedidos.html" class="text-b2b underline">Mis pedidos</a> en tu perfil.' },
-    { k: ['contacto', 'ayuda', 'telefono', 'teléfono', 'email', 'correo'], a: 'Escríbenos a atencion@alwaysmk.com o revisa las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a>.' },
-    { k: ['gracias', 'genial', 'perfecto', 'ok'], a: '¡Un placer! 🙌 Si necesitas algo más, aquí estoy.' },
+    { k: ['hola', 'buenas', 'saludos', 'hey', 'hi', 'hello', 'que tal', 'buenos dias', 'buenas tardes'], a: '¡Hola! 😊 Soy el asistente de Always Plaza. Puedo ayudarte con envíos, puntos de recogida, pagos, devoluciones, servicios, ofertas, tu cuenta o cualquier categoría. ¿Qué necesitas?' },
+    { k: ['horario', 'hora', 'abierto', 'abren', 'cierran', 'que hora'], a: 'La tienda online está disponible 24/7. Nuestros Always Points abren de lunes a sábado (algunos también domingo). <a href="puntos-recogida.html" class="text-b2b underline">Ver horarios</a>.' },
+    { k: ['envio', 'entrega', 'mandar', 'enviar', 'domicilio', 'cuba', 'habana', 'plazo', 'tarda', 'cuanto tarda', 'dias', 'demora', 'reparto'], a: 'Enviamos a domicilio en toda La Habana y ofrecemos recogida en nuestros Always Points. Plazo estimado: 7–15 días. <a href="envios.html" class="text-b2b underline">Ver envíos</a>.' },
+    { k: ['recogida', 'punto', 'point', 'recoger', 'always point'], a: 'Tenemos 7 puntos de recogida (Always Points) en La Habana. Introduce tu código postal arriba para ver el más cercano. <a href="puntos-recogida.html" class="text-b2b underline">Ver puntos</a>.' },
+    { k: ['codigo postal', 'cp', 'zona', 'cobertura', 'llega a'], a: 'Añade tu código postal desde el botón «Añadir CP» de la barra superior y te diremos si hacemos envío a domicilio o cuál es tu punto de recogida más cercano.' },
+    { k: ['servicio', 'empresa', 'b2b', 'negocio', 'mayorista', 'reforma', 'planific'], a: 'Tenemos servicios para empresas: personalización de producto, reformas, planificación e imprenta. <a href="servicios.html" class="text-b2b underline">Ver servicios</a>.' },
+    { k: ['personaliz', 'vaso', 'logo', 'imprimir', 'serigraf', 'diseno', 'diseño', 'marca propia'], a: 'Puedes personalizar productos (por ejemplo vasos) con tu logo y diseño. <a href="personalizacion.html" class="text-b2b underline">Personalizar ahora</a>.' },
+    { k: ['imprenta', 'impresion', 'flyer', 'cartel', 'tarjeta de visita'], a: 'Nuestro servicio de imprenta cubre flyers, carteles, tarjetas y packaging. <a href="servicios.html" class="text-b2b underline">Ver imprenta</a>.' },
+    { k: ['pago', 'pagar', 'tarjeta', 'paypal', 'visa', 'mastercard', 'financ'], a: 'Aceptamos tarjeta (Visa, MasterCard) y PayPal. El pago es 100% seguro. 🔒' },
+    { k: ['precio', 'euro', 'moneda', 'coste', 'cuesta', 'iva', 'caro', 'barato'], a: 'Todos los precios están en euros (€) e incluyen IVA. Verás el total final antes de confirmar el pedido.' },
+    { k: ['oferta', 'rebaja', 'descuento', 'promo', 'primavera', 'chollo'], a: '¡Tenemos las Ofertas de primavera con hasta -30%! <a href="ofertas-primavera.html" class="text-b2b underline">Ver ofertas</a>.' },
+    { k: ['devol', 'cambio', 'reembolso', 'roto', 'defectuoso'], a: 'Dispones de 30 días para devolver. <a href="devoluciones.html" class="text-b2b underline">Política de devoluciones</a>.' },
+    { k: ['garantia', 'garantía'], a: 'Todos los productos tienen garantía. Si algo llega defectuoso, gestionamos el cambio o reembolso sin coste. <a href="devoluciones.html" class="text-b2b underline">Más info</a>.' },
+    { k: ['pedido', 'seguim', 'rastre', 'donde esta', 'estado', 'factura'], a: 'Puedes ver el estado y la factura de tu pedido en <a href="mis-pedidos.html" class="text-b2b underline">Mis pedidos</a>.' },
+    { k: ['cuenta', 'registr', 'login', 'sesion', 'contrasena', 'contraseña', 'password', 'perfil'], a: 'Puedes <a href="login.html" class="text-b2b underline">iniciar sesión</a> o <a href="registro.html" class="text-b2b underline">crear una cuenta</a>. Desde tu <a href="perfil.html" class="text-b2b underline">perfil</a> gestionas pedidos, direcciones y devoluciones.' },
+    { k: ['favorito', 'lista', 'guardar', 'corazon', 'corazón', 'deseos', 'wishlist'], a: 'Guarda productos en <a href="favoritos.html" class="text-b2b underline">Favoritos</a> pulsando el corazón de cada tarjeta.' },
+    { k: ['carrito', 'cesta', 'comprar', 'anadir', 'añadir', 'checkout', 'finalizar', 'tramitar'], a: 'Añade productos con el botón de la cesta y finaliza en el <a href="carrito.html" class="text-b2b underline">carrito</a>. El proceso de <a href="checkout.html" class="text-b2b underline">pago</a> es rápido y seguro.' },
+    { k: ['bricolaje', 'herramienta', 'taladro', 'construccion', 'construcción', 'pintura', 'obra'], a: 'En <a href="categoria-brico.html" class="text-b2b underline">Bricolaje y construcción</a> encontrarás herramientas, pintura y materiales.' },
+    { k: ['papeleria', 'papelería', 'oficina', 'cuaderno', 'boligrafo', 'bolígrafo', 'folio', 'impresora', 'ofimatica', 'ofimática'], a: 'Mira nuestra <a href="categoria-papeleria.html" class="text-b2b underline">Papelería y ofimática</a>: cuadernos, escritura, material de oficina e impresión.' },
+    { k: ['fotografia', 'fotografía', 'camara', 'cámara', 'objetivo', 'foto', 'tripode', 'trípode'], a: 'En <a href="categoria-fotografia.html" class="text-b2b underline">Fotografía</a> tienes cámaras, objetivos, iluminación y accesorios.' },
+    { k: ['hogar', 'cocina', 'bano', 'baño', 'casa', 'decoracion', 'decoración', 'menaje'], a: 'Descubre <a href="categoria-hogar.html" class="text-b2b underline">Hogar</a>: cocina, baño, textil y organización.' },
+    { k: ['envase', 'embalaje', 'caja', 'bolsa', 'take away', 'biodegradable', 'packaging'], a: 'En <a href="categoria-envases.html" class="text-b2b underline">Envases y embalajes</a> tenemos vasos, cajas, bolsas y menaje biodegradable de marca blanca.' },
+    { k: ['contacto', 'ayuda', 'telefono', 'teléfono', 'email', 'correo', 'atencion', 'atención', 'whatsapp', 'llamar'], a: 'Escríbenos a atencion@alwaysmk.com o revisa las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a>. Un agente puede atenderte también por aquí.' },
+    { k: ['cookie', 'privacidad', 'datos', 'rgpd', 'legal', 'aviso'], a: 'Consulta nuestras políticas: <a href="privacidad.html" class="text-b2b underline">Privacidad</a>, <a href="cookies.html" class="text-b2b underline">Cookies</a> y <a href="aviso-legal.html" class="text-b2b underline">Aviso legal</a>.' },
+    { k: ['idioma', 'lengua', 'ingles', 'inglés', 'english', 'language'], a: 'Puedes cambiar el idioma desde el selector de la barra superior (Español / English).' },
+    { k: ['gracias', 'genial', 'perfecto', 'adios', 'adiós', 'chao', 'hasta luego', 'vale'], a: '¡Un placer! 🙌 Si necesitas algo más, aquí estoy.' },
   ];
+  const CHAT_FALLBACK = 'No estoy seguro de haber entendido 🤔. Puedo ayudarte con: <strong>envíos</strong>, <strong>puntos de recogida</strong>, <strong>pagos</strong>, <strong>devoluciones</strong>, <strong>ofertas</strong>, <strong>servicios</strong>, <strong>tu cuenta</strong> o cualquier <strong>categoría</strong>. También puedes escribir a atencion@alwaysmk.com o ver las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a>.';
+  const chatNorm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   function pushMsg(text, who) {
     const el = document.createElement('div');
     el.className = (who === 'bot'
@@ -459,13 +477,13 @@
     return el;
   }
   function botReply(q) {
-    const low = q.toLowerCase();
-    const hit = BOT.find((b) => b.k.some((k) => low.includes(k)));
+    const low = chatNorm(q);
+    const hit = BOT.find((b) => b.k.some((k) => low.includes(chatNorm(k))));
     const typing = showTyping();
     setTimeout(() => {
       typing.remove();
-      pushMsg(hit ? hit.a : 'Gracias por tu mensaje. Un agente te atenderá enseguida. Mientras, puedes consultar las <a href="faq.html" class="text-b2b underline">preguntas frecuentes</a> o elegir una opción de arriba.', 'bot');
-    }, 650 + Math.random() * 400);
+      pushMsg(hit ? hit.a : CHAT_FALLBACK, 'bot');
+    }, 600 + Math.random() * 400);
   }
   let chatInit = false;
   function openChat() {
@@ -476,7 +494,7 @@
     if (!chatInit) {
       chatInit = true;
       pushMsg('¡Hola! 👋 Soy el asistente de Always Plaza. ¿En qué puedo ayudarte?', 'bot');
-      ['Envíos a Cuba', 'Puntos de recogida', 'Servicios', 'Devoluciones'].forEach((t) => {
+      ['Envíos a Cuba', 'Puntos de recogida', 'Ofertas', 'Formas de pago', 'Servicios', 'Devoluciones'].forEach((t) => {
         const c = document.createElement('button');
         c.type = 'button';
         c.className = 'mb-3 rounded-full border border-nicegrey px-3 py-1.5 text-[13px] text-darkgrey transition-colors hover:border-b2b hover:text-b2b';

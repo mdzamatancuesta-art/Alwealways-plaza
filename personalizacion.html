@@ -30,8 +30,8 @@
         <div class="mt-8">
           <p class="mb-3 text-[15px] font-medium text-night">Descargar archivos de apoyo:</p>
           <div class="flex flex-wrap gap-3">
-            <a href="#" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><span class="grid h-6 w-6 place-items-center rounded bg-night text-[10px] font-bold text-white">Ps</span> Plantilla para diseñar</a>
-            <a href="#" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg> Guía para impresión</a>
+            <a href="#" data-demo="Descargando plantilla de diseño…" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><span class="grid h-6 w-6 place-items-center rounded bg-night text-[10px] font-bold text-white">Ps</span> Plantilla para diseñar</a>
+            <a href="#" data-demo="Descargando guía de impresión…" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg> Guía para impresión</a>
           </div>
         </div>
 
@@ -91,8 +91,8 @@
         <div class="mt-6">
           <p class="mb-2 text-[13px] font-medium text-darkgrey">Diseño</p>
           <div class="flex flex-wrap gap-3">
-            <button class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg> Enviar archivo por email</button>
-            <button class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7-4-4-7 7v4z"/><path d="M15 8l1-1"/></svg> Contratar diseño por 60€</button>
+            <button type="button" data-demo="Te enviaremos un correo para adjuntar tu diseño" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg> Enviar archivo por email</button>
+            <button type="button" data-demo="Diseño profesional añadido (+60€)" class="flex items-center gap-2 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] font-medium transition-colors hover:bg-secondary"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7-4-4-7 7v4z"/><path d="M15 8l1-1"/></svg> Contratar diseño por 60€</button>
           </div>
         </div>
 
@@ -103,7 +103,7 @@
             <thead><tr class="text-[12px] text-mediumgrey"><th class="py-2 text-left font-medium">Unidades</th><th class="py-2 text-left font-medium">Precio unitario</th><th class="py-2 text-right font-medium">Total sin IVA</th></tr></thead>
             <tbody id="qtyRows"></tbody>
           </table>
-          <button class="mt-2 w-full rounded-lg py-2 text-center text-[13px] text-mediumgrey hover:bg-secondary">Mostrar más</button>
+          <button type="button" id="moreTiers" class="mt-2 w-full rounded-lg py-2 text-center text-[13px] text-mediumgrey hover:bg-secondary">Mostrar más</button>
         </div>
 
         <div class="mt-6 flex items-end justify-between">
@@ -152,10 +152,13 @@
         activate(opts[0]);
       });
 
-      // Tabla de cantidades
-      var tiers=[['50 uds','0,34€','17,00€',50],['100 uds','0,24€','24,00€',100],['200 uds','0,21€','42,00€',200]];
-      function renderQty(sel){
-        document.getElementById('qtyRows').innerHTML=tiers.map(function(t,i){
+      // Tabla de cantidades (con "Mostrar más" para revelar tramos mayores)
+      var tiers=[['50 uds','0,34€','17,00€',50],['100 uds','0,24€','24,00€',100],['200 uds','0,21€','42,00€',200],['500 uds','0,18€','90,00€',500],['1000 uds','0,15€','150,00€',1000],['2500 uds','0,12€','300,00€',2500]];
+      var sel=1, showAll=false;
+      function renderQty(s){
+        if(s!=null) sel=s;
+        var list = showAll ? tiers : tiers.slice(0,3);
+        document.getElementById('qtyRows').innerHTML=list.map(function(t,i){
           var on=i===sel;
           return '<tr data-i="'+i+'" class="cursor-pointer '+(on?'bg-secondary':'')+'"><td class="rounded-l-lg py-2.5 pl-3 font-medium">'+t[0]+'</td><td class="py-2.5 text-mediumgrey">'+t[1]+'</td><td class="rounded-r-lg py-2.5 pr-3 text-right font-semibold">'+t[2]+'</td></tr>';
         }).join('');
@@ -163,6 +166,9 @@
         AP.$$('#qtyRows tr').forEach(function(r){ r.addEventListener('click',function(){ renderQty(Number(r.dataset.i)); }); });
       }
       renderQty(1);
+      document.getElementById('moreTiers').addEventListener('click',function(){
+        showAll=!showAll; this.textContent = showAll ? 'Mostrar menos' : 'Mostrar más'; renderQty();
+      });
 
       // Relacionados (fotos reales de envases)
       document.getElementById('rel').innerHTML=ENVASES_PRODUCTS.slice(5,10).map(AP.productCard).join('');
