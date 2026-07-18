@@ -23,9 +23,9 @@
       <!-- Galería -->
       <div>
         <p class="mb-3 text-[13px] text-mediumgrey">Vendido por <strong class="text-night">ALZAN</strong></p>
-        <div class="relative aspect-square overflow-hidden rounded-xl2 bg-secondary p-10">
-          <button type="button" data-fav class="absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full text-darkgrey hover:text-exito" aria-label="Favorito"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.6-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5C19 15.4 12 20 12 20Z"/></svg></button>
+        <div class="relative aspect-square overflow-hidden rounded-xl2 bg-secondary">
           <div class="grid h-full w-full place-items-center text-nicegrey" id="mainImg"></div>
+          <button type="button" data-fav class="absolute bottom-4 right-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white/80 text-darkgrey shadow-soft backdrop-blur hover:text-exito" aria-label="Favorito"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.6-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5C19 15.4 12 20 12 20Z"/></svg></button>
         </div>
         <div class="mt-3 flex gap-3" id="thumbs"></div>
       </div>
@@ -75,7 +75,7 @@
           </div>
           <div class="hidden text-center text-2xl font-light text-mediumgrey lg:block">+</div>
           <div class="flex items-center gap-4 rounded-xl2 bg-white p-4">
-            <div class="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-secondary text-nicegrey" id="packB"></div>
+            <div class="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-lg bg-secondary text-nicegrey" id="packB"></div>
             <div><p class="text-[14px] font-semibold">Llave inglesa con mango de silicona</p><p class="text-[12px] text-mediumgrey">Información sobre la llave inglesa maravillosa</p><p class="mt-1 text-[16px] font-extrabold">29,99€</p></div>
           </div>
           <div class="text-center lg:text-right">
@@ -109,8 +109,9 @@
       try { var p = JSON.parse(sessionStorage.getItem('ap_product') || 'null'); if (p && p.name) return p; } catch (e) {}
       return PROD_DEFAULT;
     }
-    function mediaBig(p) { return p.img ? '<img src="' + p.img + '" alt="' + p.name + '" class="max-h-full max-w-full object-contain" />' : AP.svg(p.icon || ICONS.producto, 'h-40 w-40'); }
-    function mediaSmall(p, cls) { return p.img ? '<img src="' + p.img + '" alt="' + p.name + '" class="h-full w-full object-cover" />' : AP.svg(p.icon || ICONS.producto, cls || 'h-9 w-9'); }
+    var STOCK = (typeof PHOTO_POOL !== 'undefined') ? PHOTO_POOL : [];
+    function mediaBig(p) { return p.img ? '<img src="' + p.img + '" alt="' + p.name + '" class="h-full w-full object-cover" />' : AP.svg(p.icon || ICONS.producto, 'h-40 w-40'); }
+    function mediaSmall(p, cls) { return p.img ? '<img src="' + p.img + '" alt="' + (p.name || '') + '" class="h-full w-full object-cover" />' : AP.svg(p.icon || ICONS.producto, cls || 'h-9 w-9'); }
     function renderProducto() {
       var p = readProduct();
       document.title = p.name + ' — Always Plaza';
@@ -122,14 +123,18 @@
       document.getElementById('packA').innerHTML = mediaSmall(p, 'h-9 w-9');
       document.getElementById('pdPackName').textContent = p.name;
       document.getElementById('pdPackPrice').textContent = p.price + '€';
-      document.getElementById('thumbs').innerHTML = [p, { icon: ICONS.producto }].map(function (t, i) {
+      // Miniaturas: la foto del producto + fotos de banco (distintas) para completar la galería.
+      var extra = STOCK.filter(function (x) { return x !== p.img; });
+      var thumbs = [p, { img: extra[0] }, { img: extra[1] }].filter(function (t) { return t.img || t.icon; });
+      document.getElementById('thumbs').innerHTML = thumbs.map(function (t, i) {
         return '<button class="grid h-16 w-16 place-items-center overflow-hidden rounded-xl border ' + (i === 0 ? 'border-night' : 'border-lowgrey') + ' bg-secondary text-nicegrey">' + mediaSmall(t, 'h-7 w-7') + '</button>';
       }).join('');
+      // Complemento del pack: foto de banco.
+      var packB = document.getElementById('packB');
+      if (packB) packB.innerHTML = mediaSmall({ img: extra[2] || extra[0] }, 'h-9 w-9');
     }
     window.__renderProducto = renderProducto;
     renderProducto();
-
-    document.getElementById('packB').innerHTML = AP.svg(ICONS.wrench, 'h-9 w-9');
     document.getElementById('rel1').innerHTML = genProducts(5, { discounts: true, photos: PHOTO_POOL }).map(AP.productCard).join('');
     document.getElementById('rel2').innerHTML = genProducts(5, { discounts: true, photos: PHOTO_POOL }).map(AP.productCard).join('');
 

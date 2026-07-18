@@ -154,6 +154,7 @@
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Comprar</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
+            <li><a href="ofertas-primavera.html" class="font-semibold text-b2b transition-colors hover:text-night">Ofertas de primavera</a></li>
             <li><a href="categoria-brico.html" class="transition-colors hover:text-night">Bricolaje y construcción</a></li>
             <li><a href="categoria-envases.html" class="transition-colors hover:text-night">Envases y embalajes</a></li>
             <li><a href="categoria-papeleria.html" class="transition-colors hover:text-night">Papelería y ofimática</a></li>
