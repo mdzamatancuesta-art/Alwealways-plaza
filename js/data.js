@@ -152,19 +152,19 @@ const CATEGORIES = [
 
 /* ---------- Home · Novedades ---------- */
 const NOVEDADES = [
-  { name: 'Impresora Camon MX3 Serie 5000T', desc: 'Impresora de tinta inyectada multiformato A3 A4 A2 digital.', tag: 'Novedad', price: '59,99', icon: ICONS.printer, img: 'assets/products/dremel.jpg' },
+  { name: 'Impresora Camon MX3 Serie 5000T', desc: 'Impresora de tinta inyectada multiformato A3 A4 A2 digital.', tag: 'Novedad', price: '59,99', icon: ICONS.printer, img: 'assets/products/px4792283.jpg' },
   { name: 'Teclado gamer RX500 Power Plus', desc: 'Teclado mecánico inalámbrico.', tag: 'Novedad', price: '29,99', icon: ICONS.keyboard, img: 'assets/products/teclado.jpg' },
-  { name: 'Raton Gamer HERO T480', desc: 'Ratón inalámbrico hergonómico 36000 DPI 8 botones.', tag: 'Novedad', price: '25,99', icon: ICONS.mouse, img: 'assets/products/herramientas.jpg' },
-  { name: 'Waco pen digital S80', desc: 'Lápiz digital profesional para diseño gráfico y animación 3D.', tag: 'Novedad', price: '15', icon: ICONS.pen, img: 'assets/products/llaves.jpg' },
+  { name: 'Raton Gamer HERO T480', desc: 'Ratón inalámbrico hergonómico 36000 DPI 8 botones.', tag: 'Novedad', price: '25,99', icon: ICONS.mouse, img: 'assets/products/px20510001.jpg' },
+  { name: 'Waco pen digital S80', desc: 'Lápiz digital profesional para diseño gráfico y animación 3D.', tag: 'Novedad', price: '15', icon: ICONS.pen, img: 'assets/products/px7987849.jpg' },
 ];
 
 /* ---------- Home · Seguir comprando ---------- */
 const SEGUIR = [
-  { name: 'Cuadernos de contabilidad año 2027', desc: '3 Unidades de 200 páginas por ud.', price: '19,99', old: '25,99', discount: '-20%', icon: ICONS.notebook, img: 'assets/products/env18.jpg' },
+  { name: 'Cuadernos de contabilidad año 2027', desc: '3 Unidades de 200 páginas por ud.', price: '19,99', old: '25,99', discount: '-20%', icon: ICONS.notebook, img: 'assets/products/px8099385.jpg' },
   { name: 'Bolsas papel craft personalizables', desc: 'Desde 100 unidades. Diferentes tamaños y colores.', price: '29,99', old: '35,99', discount: '-20%', icon: ICONS.bag, img: 'assets/products/env3.jpg' },
-  { name: 'Pintura pared azul Klein P 286C', desc: 'Pintura anti-moho 500 ml.', price: '12,99', icon: ICONS.paint, img: 'assets/products/pintura.jpg' },
+  { name: 'Pintura pared azul Klein P 286C', desc: 'Pintura anti-moho 500 ml.', price: '12,99', icon: ICONS.paint, img: 'assets/products/px6764238.jpg' },
   { name: 'Pack platos y cubiertos biodegradables', desc: '25 unidades de cada por paquete: plato, tenedor, cuchillo y cuchara.', price: '9', icon: ICONS.plate, img: 'assets/products/env26.jpg' },
-  { name: 'Bolígrafos Mapet punta fina', desc: 'Tinta azul. Disponibles en variedad de colores.', price: '5', icon: ICONS.ballpen, img: 'assets/products/env40.jpg' },
+  { name: 'Bolígrafos Mapet punta fina', desc: 'Tinta azul. Disponibles en variedad de colores.', price: '5', icon: ICONS.ballpen, img: 'assets/products/px5706218.jpg' },
 ];
 
 /* ---------- Códigos postales de La Habana → punto de recogida ---------- */
@@ -215,6 +215,52 @@ const PHOTO_POOL = [
   'assets/products/env40.jpg', 'assets/products/env26.jpg', 'assets/products/env18.jpg', 'assets/products/env3.jpg',
 ];
 
+// Foto real (banco de imágenes) asignada por nombre exacto de producto.
+const PRODUCT_PHOTOS = {
+  'Impresora Camon MX3 Serie 5000T': 'assets/products/px4792283.jpg',
+  'Raton Gamer HERO T480': 'assets/products/px20510001.jpg',
+  'Waco pen digital S80': 'assets/products/px7987849.jpg',
+  'Cuadernos de contabilidad año 2027': 'assets/products/px8099385.jpg',
+  'Pintura pared azul Klein P 286C': 'assets/products/px6764238.jpg',
+  'Bolígrafos Mapet punta fina': 'assets/products/px5706218.jpg',
+  // Bricolaje
+  'Pintura pared mate 4L': 'assets/products/px6764238.jpg',
+  'Nivel láser autonivelante': 'assets/products/px6474311.jpg',
+  'Cinta métrica 5 m': 'assets/products/px19658254.jpg',
+  // Papelería
+  'Cuaderno de contabilidad 2027': 'assets/products/px8099385.jpg',
+  'Bolígrafos punta fina (pack 12)': 'assets/products/px5706218.jpg',
+  'Pack de folios A4 500 h': 'assets/products/px4464918.jpg',
+  'Rotuladores fluorescentes': 'assets/products/px5594285.jpg',
+  'Grapadora metálica': 'assets/products/px227383.jpg',
+  'Set de subrayadores pastel': 'assets/products/px6969285.jpg',
+  'Archivador de palanca A4': 'assets/products/px8970658.jpg',
+  'Tijeras de oficina': 'assets/products/px7280632.jpg',
+  'Notas adhesivas de colores': 'assets/products/px6991389.jpg',
+  'Portaminas 0.5 mm': 'assets/products/px983827.jpg',
+  'Cinta adhesiva transparente': 'assets/products/px5691627.jpg',
+  'Agenda anual 2027': 'assets/products/px5594267.jpg',
+  'Sobres blancos (pack 50)': 'assets/products/px4722000.jpg',
+};
+
+// Pool de fotos reales por categoría (orden ~ productos de esa categoría).
+const FOTO_POOL = [
+  'assets/products/px17924459.jpg', 'assets/products/px13820811.jpg', 'assets/products/px25526511.jpg',
+  'assets/products/px28772529.jpg', 'assets/products/px1738642.jpg', 'assets/products/px34642454.jpg',
+  'assets/products/px10913160.jpg', 'assets/products/px3244608.jpg', 'assets/products/px15631397.jpg',
+  'assets/products/px7772524.jpg', 'assets/products/px28772530.jpg', 'assets/products/px19486350.jpg',
+  'assets/products/px10922591.jpg', 'assets/products/px30675879.jpg', 'assets/products/px2147080.jpg',
+  'assets/products/px11294012.jpg',
+];
+const HOGAR_POOL = [
+  'assets/products/px1194432.jpg', 'assets/products/px4107959.jpg', 'assets/products/px1552616.jpg',
+  'assets/products/px18984533.jpg', 'assets/products/px17542995.jpg', 'assets/products/px31902663.jpg',
+  'assets/products/px4397797.jpg', 'assets/products/px3962340.jpg', 'assets/products/px30353221.jpg',
+  'assets/products/px4202503.jpg', 'assets/products/px6837423.jpg', 'assets/products/px34061950.jpg',
+  'assets/products/px28146523.jpg', 'assets/products/px8259233.jpg', 'assets/products/px11889255.jpg',
+  'assets/products/px6633445.jpg', 'assets/products/px3946250.jpg', 'assets/products/px269318.jpg',
+];
+
 function genProducts(n, opts = {}) {
   const icons = opts.icons || [ICONS.hammer, ICONS.wrench, ICONS.drill, ICONS.ruler, ICONS.producto, ICONS.helmet];
   const photos = opts.photos || PHOTO_POOL; // todos los productos llevan foto (galería de marca blanca)
@@ -227,7 +273,8 @@ function genProducts(n, opts = {}) {
       price: disc ? '19,99' : '25,99',
       icon: icons[i % icons.length],
     };
-    if (photos) item.img = photos[i % photos.length];
+    // Foto específica por nombre si existe; si no, la del pool.
+    item.img = PRODUCT_PHOTOS[item.name] || (photos ? photos[i % photos.length] : undefined);
     if (disc) { item.old = '25,99'; item.discount = '-20%'; }
     else if (i % 4 === 1) item.tag = 'Novedad';
     else if (i % 4 === 2) item.badge = 'Más vendido';
@@ -279,11 +326,11 @@ function productsForCategory(id) {
   });
   if (id === 'fotografia') return genProducts(15, {
     names: ['Cámara compacta 20 MP', 'Objetivo 50 mm f/1.8', 'Trípode de aluminio', 'Foco LED de estudio', 'Tarjeta de memoria 128 GB', 'Flash externo speedlite', 'Bolsa acolchada para cámara', 'Filtro polarizador 58 mm', 'Estabilizador gimbal', 'Fondo fotográfico blanco', 'Reflector plegable 5 en 1', 'Batería recargable', 'Objetivo gran angular', 'Aro de luz LED', 'Kit de limpieza de lentes'],
-    icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler],
+    icons: [ICONS.producto, ICONS.iluminacion, ICONS.ruler], photos: FOTO_POOL,
   });
   if (id === 'hogar') return genProducts(15, {
     names: ['Set de sartenes antiadherentes', 'Juego de toallas (4 pzas)', 'Lámpara de mesa LED', 'Organizador de armario', 'Vajilla 12 piezas', 'Juego de sábanas', 'Set de cuchillos de cocina', 'Cesto de la colada plegable', 'Cortina de baño impermeable', 'Batidora de mano', 'Juego de tazas de café', 'Alfombra de baño', 'Perchas de terciopelo (pack)', 'Recipientes herméticos (set)', 'Manta de sofá'],
-    icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano],
+    icons: [ICONS.cocina, ICONS.hogar, ICONS.iluminacion, ICONS.bano], photos: HOGAR_POOL,
   });
   return genProducts(15, {});
 }
