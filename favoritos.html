@@ -34,17 +34,27 @@
   <script src="js/components.js"></script>
   <script src="js/chrome.js"></script>
   <script>
-    document.getElementById('favLists').innerHTML = FAV_LISTS.map((l) => `
-      <a href="#" class="group flex items-center justify-between rounded-xl2 border border-lowgrey bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">
+    document.getElementById('favLists').innerHTML = FAV_LISTS.map((l, i) => `
+      <button type="button" data-list="${i}" class="group flex items-center justify-between rounded-xl2 border border-lowgrey bg-white p-5 text-left shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">
         <div class="flex items-center gap-4">
           <span class="grid h-12 w-12 place-items-center rounded-xl bg-exito/10 text-exito">${AP.svg('<path d="M12 20s-7-4.6-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5C19 15.4 12 20 12 20Z"/>', 'h-6 w-6')}</span>
           <div><p class="text-[15px] font-semibold text-night">${l.name}</p><p class="text-[13px] text-mediumgrey">${l.count} productos</p></div>
         </div>
         <svg class="h-5 w-5 text-lowvis transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
-      </a>`).join('') + `
-      <button class="flex items-center justify-center gap-2 rounded-xl2 border border-dashed border-nicegrey p-5 text-[14px] font-medium text-mediumgrey transition-colors hover:border-b2b hover:text-b2b">
+      </button>`).join('') + `
+      <button type="button" data-demo="Nueva lista creada" class="flex items-center justify-center gap-2 rounded-xl2 border border-dashed border-nicegrey p-5 text-[14px] font-medium text-mediumgrey transition-colors hover:border-b2b hover:text-b2b">
         ${AP.svg('<path d="M12 5v14M5 12h14"/>', 'h-5 w-5')} Crear nueva lista
       </button>`;
+    var favTitle = document.querySelector('h2') || document.body;
+    function openList(i) {
+      var l = FAV_LISTS[i];
+      document.getElementById('favSug').innerHTML = genProducts(l.count, { discounts: true }).map(AP.productCard).join('');
+      var h = document.getElementById('favSugTitle');
+      if (h) h.textContent = 'Lista: ' + l.name + ' (' + l.count + ' productos)';
+      if (window.AP && AP.toast) AP.toast('Abriendo «' + l.name + '»');
+      document.getElementById('favSug').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    AP.$$('[data-list]').forEach(function (b) { b.addEventListener('click', function () { openList(Number(b.dataset.list)); }); });
     document.getElementById('favSug').innerHTML = genProducts(10).map(AP.productCard).join('');
   </script>
 </body>

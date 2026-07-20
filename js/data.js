@@ -144,8 +144,6 @@ const CATEGORIES = [
           { label: 'Envíos a domicilio y recogida', href: 'servicios.html#envios' },
         ],
       },
-      { name: 'Always Market' },
-      { name: 'Always Sanguar' },
     ],
   },
 ];
@@ -178,7 +176,6 @@ const HAVANA_PICKUPS = {
   '10700': 'Punto 4 · Vedado',
   '10800': 'Punto 5 · Plaza de la Revolución',
   '11300': 'Punto 6 · Playa',
-  '11900': 'Punto 7 · Diez de Octubre',
   '28012': 'Tienda Artex · C/ Alegría 9',
 };
 
@@ -196,7 +193,6 @@ const PICKUP_POINTS = [
   { n: 4, name: 'Vedado', address: 'Calle 23 nº 456, entre H e I', cp: '10700', hours: 'Lun–Dom 9:00–20:00', phone: '(+53) 7 830 0400' },
   { n: 5, name: 'Plaza de la Revolución', address: 'Av. Paseo nº 30', cp: '10800', hours: 'Lun–Sáb 9:00–18:00', phone: '(+53) 7 830 0500' },
   { n: 6, name: 'Playa', address: '5ta Avenida nº 8801, esq. 88', cp: '11300', hours: 'Lun–Dom 9:00–20:00', phone: '(+53) 7 204 0600' },
-  { n: 7, name: 'Diez de Octubre', address: 'Calzada de 10 de Octubre nº 456', cp: '11900', hours: 'Lun–Sáb 9:00–18:00', phone: '(+53) 7 649 0700' },
 ];
 
 /* ---------- Categoría · subcategorías destacadas (Herramientas) ---------- */

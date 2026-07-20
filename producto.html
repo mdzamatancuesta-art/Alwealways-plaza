@@ -123,15 +123,12 @@
       document.getElementById('packA').innerHTML = mediaSmall(p, 'h-9 w-9');
       document.getElementById('pdPackName').textContent = p.name;
       document.getElementById('pdPackPrice').textContent = p.price + '€';
-      // Miniaturas: la foto del producto + fotos de banco (distintas) para completar la galería.
-      var extra = STOCK.filter(function (x) { return x !== p.img; });
-      var thumbs = [p, { img: extra[0] }, { img: extra[1] }].filter(function (t) { return t.img || t.icon; });
-      document.getElementById('thumbs').innerHTML = thumbs.map(function (t, i) {
-        return '<button class="grid h-16 w-16 place-items-center overflow-hidden rounded-xl border ' + (i === 0 ? 'border-night' : 'border-lowgrey') + ' bg-secondary text-nicegrey">' + mediaSmall(t, 'h-7 w-7') + '</button>';
-      }).join('');
-      // Complemento del pack: foto de banco.
+      // Miniatura: la foto del propio producto (una sola imagen, coherente con la ficha).
+      document.getElementById('thumbs').innerHTML =
+        '<button class="grid h-16 w-16 place-items-center overflow-hidden rounded-xl border border-night bg-secondary text-nicegrey">' + mediaSmall(p, 'h-7 w-7') + '</button>';
+      // Complemento del pack: otro producto distinto de la galería.
       var packB = document.getElementById('packB');
-      if (packB) packB.innerHTML = mediaSmall({ img: extra[2] || extra[0] }, 'h-9 w-9');
+      if (packB) { var comp = STOCK.filter(function (x) { return x !== p.img; })[0]; packB.innerHTML = mediaSmall({ img: comp }, 'h-9 w-9'); }
     }
     window.__renderProducto = renderProducto;
     renderProducto();

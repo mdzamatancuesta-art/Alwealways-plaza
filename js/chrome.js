@@ -148,15 +148,15 @@
   const footerHTML = `
   <footer class="border-t border-lowgrey bg-white">
     <div class="mx-auto max-w-[1400px] px-4 py-12 md:px-8">
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-6">
         <div class="lg:col-span-2">
           <span class="logo logo--blue"></span>
-          <p class="mt-4 max-w-xs text-[15px] font-light text-mediumgrey">Marketplace para comprar desde cualquier parte del mundo y enviar a La Habana. Precios en euros (€).</p>
+          <p class="mt-4 max-w-xs text-[15px] font-light text-mediumgrey">Always Plaza pertenece a Grupo Empresarial Alzara. Always Plaza es el Marketplace para comprar desde cualquier parte del mundo con envíos a La Habana, especializado en productos y servicios de las marcas E&amp;E y Alzan.</p>
         </div>
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Comprar</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="ofertas-primavera.html" class="font-semibold text-b2b transition-colors hover:text-night">Ofertas de primavera</a></li>
+            <li><a href="ofertas-primavera.html" class="transition-colors hover:text-night">Ofertas</a></li>
             <li><a href="categoria-brico.html" class="transition-colors hover:text-night">Bricolaje y construcción</a></li>
             <li><a href="categoria-envases.html" class="transition-colors hover:text-night">Envases y embalajes</a></li>
             <li><a href="categoria-papeleria.html" class="transition-colors hover:text-night">Papelería y ofimática</a></li>
@@ -167,17 +167,28 @@
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Servicios</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="servicios.html" class="transition-colors hover:text-night">Todos nuestros servicios</a></li>
-            <li><a href="always-market.html" class="transition-colors hover:text-night">Always Market</a></li>
-            <li><a href="always-sanguar.html" class="transition-colors hover:text-night">Always Sanguar</a></li>
+            <li><a href="servicios.html#empresas" class="transition-colors hover:text-night">Servicios para empresas</a></li>
+            <li><a href="servicios.html#planificacion" class="transition-colors hover:text-night">Planificación y asesoramiento</a></li>
+            <li><a href="servicios.html#reformas" class="transition-colors hover:text-night">Reformas y construcciones</a></li>
+            <li><a href="personalizacion.html" class="transition-colors hover:text-night">Personalización de productos</a></li>
+            <li><a href="servicios.html#imprenta" class="transition-colors hover:text-night">Imprenta y reprografía</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Ayuda</h3>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Área personal</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="puntos-recogida.html" class="transition-colors hover:text-night">Puntos de recogida</a></li>
-            <li><a href="envios.html" class="transition-colors hover:text-night">Envíos a Cuba</a></li>
             <li><a href="perfil.html" class="transition-colors hover:text-night">Mi perfil</a></li>
+            <li><a href="favoritos.html" class="transition-colors hover:text-night">Mis listas</a></li>
+            <li><a href="perfil.html" class="transition-colors hover:text-night">Pagos y facturas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Información</h3>
+          <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
+            <li><a href="contacta.html" class="transition-colors hover:text-night">Contacta</a></li>
+            <li><a href="envios.html" class="transition-colors hover:text-night">Envíos</a></li>
+            <li><a href="puntos-recogida.html" class="transition-colors hover:text-night">Puntos de recogida</a></li>
+            <li><a href="faq.html" class="transition-colors hover:text-night">Preguntas frecuentes</a></li>
           </ul>
         </div>
       </div>
@@ -407,7 +418,9 @@
     }
   });
 
-  /* ---------- Chatbot asistente (esquina inferior derecha) ---------- */
+  /* ---------- Chatbot asistente (DESACTIVADO por petición) ---------- */
+  const CHAT_ENABLED = false;
+  if (CHAT_ENABLED) {
   const chatHTML = `
     <button id="apChatBtn" class="fixed bottom-5 right-5 z-[75] flex h-14 w-14 items-center justify-center rounded-full border border-lowgrey bg-white shadow-softlg transition-transform hover:scale-105" aria-label="Abrir asistente">
       ${isoSVG('ap-iso-chat', 'ap-iso-blue')}
@@ -516,6 +529,7 @@
   chatBtn.addEventListener('click', openChat);
   $('#apChatClose').addEventListener('click', closeChat);
   $('#apChatForm').addEventListener('submit', (e) => { e.preventDefault(); const v = $('#apChatInput').value.trim(); if (!v) return; pushMsg(v, 'me'); $('#apChatInput').value = ''; botReply(v); });
+  } /* fin CHAT_ENABLED */
 
   /* ---------- Animaciones sutiles de entrada (reveal al hacer scroll) ---------- */
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
