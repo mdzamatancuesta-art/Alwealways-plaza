@@ -1,0 +1,57 @@
+name: Recompilar Tailwind CSS
+
+# Recompila css/tailwind.css automáticamente cuando cambian las fuentes
+# (input.css, HTML, JS o la config) y hace commit del resultado en la rama.
+on:
+  push:
+    branches:
+      - claude/alwealways-plaza-c9k7gq
+    paths:
+      - 'css/input.css'
+      - 'tailwind.config.js'
+      - '**/*.html'
+      - 'js/**/*.js'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/build-css.yml'
+  workflow_dispatch: {}
+
+# Necesario para que el workflow pueda hacer commit del CSS recompilado.
+permissions:
+  contents: write
+
+concurrency:
+  group: build-css-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-css:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar Tailwind CSS
+        run: npm run build:css
+
+      - name: Commit del CSS recompilado (si cambió)
+        run: |
+          if [[ -n "$(git status --porcelain css/tailwind.css)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add css/tailwind.css
+            git commit -m "chore: recompilar tailwind.css [skip ci]"
+            git push
+            echo "tailwind.css actualizado y publicado."
+          else
+            echo "Sin cambios en tailwind.css."
+          fi
