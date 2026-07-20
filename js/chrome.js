@@ -263,7 +263,7 @@
     </li>`).join('');
 
   function renderSubContent(sub, href) {
-    if (sub.links) return `<ul class="flex flex-col gap-3">${sub.links.map((l) => `<li><a href="${href}" class="text-[15px] text-night transition-colors hover:text-b2b">${l}</a></li>`).join('')}</ul>`;
+    if (sub.links) return `<ul class="flex flex-col gap-3">${sub.links.map((l) => { const lab = typeof l === 'string' ? l : l.label; const lh = typeof l === 'string' ? href : l.href; return `<li><a href="${lh}" class="text-[15px] text-night transition-colors hover:text-b2b">${lab}</a></li>`; }).join('')}</ul>`;
     const actions = sub.actions ? `<div class="flex flex-col gap-3 pr-8">${sub.actions.map((a) => `<a href="${a === 'Personalizar' ? 'personalizacion.html' : href}" class="text-[15px] font-bold text-night transition-colors hover:text-b2b">${a}</a>`).join('')}</div>` : '';
     const groups = sub.groups
       ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-semibold text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="${href}" class="text-[13px] text-darkgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`

@@ -136,7 +136,13 @@ const CATEGORIES = [
     subs: [
       {
         name: 'Todos nuestros servicios',
-        links: ['Servicios para empresas', 'Planificación y asesoramiento', 'Reformas y construcciones', 'Personalización de productos', 'Envíos a domicilio y recogida'],
+        links: [
+          { label: 'Servicios para empresas', href: 'servicios.html#empresas' },
+          { label: 'Planificación y asesoramiento', href: 'servicios.html#planificacion' },
+          { label: 'Reformas y construcciones', href: 'servicios.html#reformas' },
+          { label: 'Personalización de productos', href: 'personalizacion.html' },
+          { label: 'Envíos a domicilio y recogida', href: 'servicios.html#envios' },
+        ],
       },
       { name: 'Always Market' },
       { name: 'Always Sanguar' },
