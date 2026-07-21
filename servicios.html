@@ -18,8 +18,14 @@
     <nav class="pt-6 text-[13px] text-mediumgrey"><a href="index.html" class="hover:text-night">Inicio</a> / <span class="text-night">Servicios</span></nav>
     <h1 class="mt-4 text-[32px] font-extrabold text-night">Nuestros servicios</h1>
 
-    <!-- Nuestros servicios: 5 tarjetas de icono -->
-    <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5" id="topServices"></div>
+    <!-- Nuestros servicios: 5 tarjetas SVG (llevan a Servicios al alcance) -->
+    <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <a href="#alcance" class="block overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-softlg"><img src="assets/icons/servicio-personalizados.svg" alt="Productos personalizados" class="w-full" /></a>
+      <a href="#alcance" class="block overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-softlg"><img src="assets/icons/servicio-reformas.svg" alt="Reformas y construcciones" class="w-full" /></a>
+      <a href="#alcance" class="block overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-softlg"><img src="assets/icons/servicio-planificacion.svg" alt="Planificación y asesoramiento" class="w-full" /></a>
+      <a href="#alcance" class="block overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-softlg"><img src="assets/icons/servicio-imprenta.svg" alt="Proyectos de imprenta" class="w-full" /></a>
+      <a href="#alcance" class="block overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-softlg"><img src="assets/icons/servicio-envio.svg" alt="Envío a domicilio y recogida" class="w-full" /></a>
+    </div>
 
     <!-- Servicios para empresas -->
     <section class="mt-10 scroll-mt-40" id="empresas">
@@ -30,14 +36,14 @@
             <span class="text-2xl font-extrabold leading-tight">Always<br />Business</span>
             <p class="mt-4 max-w-xs text-[14px] font-light text-white/90">En Always para empresas tenemos servicios que te ayudan a personalizar tu negocio con ventajas adicionales para transformar el día a día de tu empresa.</p>
           </div>
-          <a href="registro.html" class="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-[14px] font-semibold text-b2b transition-transform hover:-translate-y-0.5">Crear cuenta de empresa</a>
+          <a href="registro.html" class="mt-8 inline-flex w-fit items-center gap-2 self-end rounded-full bg-white px-6 py-3 text-[14px] font-semibold text-b2b transition-transform hover:-translate-y-0.5">Crear cuenta de empresa</a>
         </div>
         <div id="empresaCards" class="contents"></div>
       </div>
     </section>
 
     <!-- Servicios al alcance -->
-    <section class="mt-12">
+    <section class="mt-12 scroll-mt-40" id="alcance">
       <h2 class="mb-4 text-[15px] font-semibold text-darkgrey">Servicios al alcance</h2>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <article class="flex flex-col overflow-hidden rounded-xl2 border border-lowgrey bg-white shadow-soft">
@@ -48,7 +54,6 @@
             <ul class="mt-2 space-y-1 pl-4 text-[13px] text-mediumgrey" style="list-style:disc">
               <li>Envases y embalajes</li>
               <li>Packaging alimentario y no alimentario</li>
-              <li>Endoléctica de papel</li>
               <li>Camisetas y textiles de trabajo</li>
             </ul>
             <a href="personalizacion.html" class="mt-4 text-[13px] font-semibold text-b2b hover:underline">Personalizar →</a>
@@ -59,7 +64,7 @@
           <div class="flex flex-1 flex-col p-5">
             <h3 class="text-[16px] font-bold text-night">Reformas y construcciones</h3>
             <p class="mt-2 text-[13px] text-mediumgrey">Haz realidad tu proyecto con nuestros servicios y materiales de reforma y construcción. Solicita un presupuesto a medida y el equipo Alzan lo gestiona por ti.</p>
-            <a href="always-market.html" class="mt-auto pt-4 text-[13px] font-semibold text-b2b hover:underline">Pedir presupuesto →</a>
+            <a href="contacta.html" class="mt-auto pt-4 text-[13px] font-semibold text-b2b hover:underline">Pedir presupuesto →</a>
           </div>
         </article>
         <article id="planificacion" class="flex scroll-mt-40 flex-col overflow-hidden rounded-xl2 border border-lowgrey bg-white shadow-soft">
@@ -67,50 +72,40 @@
           <div class="flex flex-1 flex-col p-5">
             <h3 class="text-[16px] font-bold text-night">Planificación y asesoramiento</h3>
             <p class="mt-2 text-[13px] text-mediumgrey">Ya sea el diseño de tus envases, una reforma integral o un proyecto desde cero, te asesoramos de forma presencial o telemática.</p>
-            <a href="faq.html" class="mt-auto pt-4 text-[13px] font-semibold text-b2b hover:underline">Solicitar asesoría →</a>
+            <a href="contacta.html" class="mt-auto pt-4 text-[13px] font-semibold text-b2b hover:underline">Solicitar asesoría →</a>
           </div>
         </article>
-        <article class="flex flex-col items-center justify-center gap-4 rounded-xl2 border border-lowgrey bg-white p-6 text-center shadow-soft">
-          <span class="grid h-16 w-16 place-items-center rounded-full bg-secondary text-b2b">
-            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
-          </span>
-          <div>
-            <h3 class="text-[16px] font-bold text-night">¿Dudas?</h3>
-            <p class="text-[14px] text-mediumgrey">Contáctanos</p>
+        <article id="imprenta" class="flex scroll-mt-40 flex-col overflow-hidden rounded-xl2 border border-lowgrey bg-white shadow-soft">
+          <div class="serv-print h-40"></div>
+          <div class="flex flex-1 flex-col p-5">
+            <h3 class="text-[16px] font-bold text-night">Imprenta y reprografía</h3>
+            <p class="mt-2 text-[13px] text-mediumgrey">Potencia tus proyectos con nuestro servicio de impresión, reprografía y encuadernación. Localiza la tienda física más cercana para un acabado impecable.</p>
+            <a href="puntos-recogida.html" class="mt-auto pt-4 text-[13px] font-semibold text-b2b hover:underline">Localizar tienda →</a>
           </div>
-          <a href="faq.html" class="rounded-full border border-nicegrey px-5 py-2.5 text-[13px] font-semibold transition-colors hover:bg-secondary">Contactar</a>
         </article>
       </div>
-    </section>
 
-    <!-- Envíos · Imprenta · Mapa -->
-    <section class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
-      <article id="envios" class="flex scroll-mt-40 flex-col overflow-hidden rounded-xl2 border border-lowgrey bg-white shadow-soft">
-        <div class="h-44 bg-cover bg-center" style="background-image:url('assets/products/env3.jpg')"></div>
-        <div class="p-5">
-          <h3 class="text-[16px] font-bold text-night">Envíos y recogida en tienda</h3>
-          <p class="mt-2 text-[13px] text-mediumgrey">Solicita tu pedido a domicilio en Cuba o disfruta de la recogida en tienda con máxima flexibilidad.</p>
-          <ul class="mt-3 space-y-1 text-[13px] text-darkgrey">
-            <li>· Tiempo medio de envío: 7 a 12 días</li>
-            <li>· Tiempo medio de recogida: 3 a 10 días</li>
-          </ul>
-          <a href="envios.html" class="mt-4 inline-block text-[13px] font-semibold text-b2b hover:underline">Ver envíos →</a>
-        </div>
-      </article>
-      <article class="flex flex-col overflow-hidden rounded-xl2 border border-lowgrey bg-white shadow-soft">
-        <div class="serv-print h-44"></div>
-        <div class="p-5">
-          <h3 class="text-[16px] font-bold text-night">Imprenta</h3>
-          <p class="mt-2 text-[13px] text-mediumgrey">Potencia tus proyectos con nuestro servicio de impresión, reprografía y encuadernación. Localiza la tienda física más cercana para un acabado impecable.</p>
-          <a href="puntos-recogida.html" class="mt-4 inline-block text-[13px] font-semibold text-b2b hover:underline">Localizar tienda →</a>
-        </div>
-      </article>
-      <a href="puntos-recogida.html" class="serv-map group relative overflow-hidden rounded-xl2 border border-lowgrey shadow-soft" style="min-height:280px">
-        <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full">
-          <svg class="h-9 w-9 text-exito" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z"/><circle cx="12" cy="9" r="2.5" fill="#fff"/></svg>
-        </span>
-        <span class="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-[13px] font-semibold text-night shadow-soft">La Habana · Ver puntos</span>
-      </a>
+      <!-- Dos tarjetas horizontales estrechas -->
+      <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <article id="envios" class="flex scroll-mt-40 items-center gap-5 rounded-xl2 border border-lowgrey bg-white p-5 shadow-soft">
+          <div class="h-20 w-28 shrink-0 rounded-xl bg-cover bg-center" style="background-image:url('assets/products/env3.jpg')"></div>
+          <div class="flex-1">
+            <h3 class="text-[16px] font-bold text-night">Envíos y recogida en tienda</h3>
+            <p class="mt-1 text-[13px] text-mediumgrey">A domicilio en Cuba (7–12 días) o recogida en tienda (3–10 días).</p>
+            <a href="envios.html" class="mt-1 inline-block text-[13px] font-semibold text-b2b hover:underline">Ver envíos →</a>
+          </div>
+        </article>
+        <article class="flex items-center gap-5 rounded-xl2 border border-lowgrey bg-white p-5 shadow-soft">
+          <div class="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-secondary text-b2b">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-[16px] font-bold text-night">¿Dudas?</h3>
+            <p class="mt-1 text-[13px] text-mediumgrey">Escríbenos y te ayudamos con cualquier consulta.</p>
+            <a href="contacta.html" class="mt-1 inline-block text-[13px] font-semibold text-b2b hover:underline">Contactar →</a>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 
@@ -121,24 +116,12 @@
   <script src="js/chrome.js"></script>
   <script>
     (function(){
-      var top=[
-        {n:'Productos personalizados', i:ICONS.envases, h:'personalizacion.html'},
-        {n:'Reformas y construcciones', i:ICONS.drill, h:'always-market.html'},
-        {n:'Planificación y asesoramiento', i:ICONS.ruler, h:'faq.html'},
-        {n:'Proyectos de imprenta', i:ICONS.papeleria, h:'puntos-recogida.html'},
-        {n:'Envío a domicilio y recogida', i:ICONS.bag, h:'envios.html'},
-      ];
-      document.getElementById('topServices').innerHTML=top.map(function(s){
-        return '<a href="'+s.h+'" class="group flex flex-col items-start gap-4 rounded-xl2 border border-lowgrey bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">'+
-          '<span class="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-darkgrey transition-colors group-hover:text-b2b">'+AP.svg(s.i,'h-6 w-6')+'</span>'+
-          '<span class="text-[14px] font-semibold text-night">'+s.n+'</span></a>';
-      }).join('');
-
+      // Cada servicio abre la página Always Business, con su bloque explicado.
       var emp=[
-        {t:'Tu marca en todas partes', d:'Personaliza tu negocio: crea tu propio diseño para envases y embalajes con la marca de tu empresa — vasos, camisetas, bolsas, cajas y más.', h:'personalizacion.html'},
-        {t:'Always stock', d:'Programa tu siguiente pedido: recibe de forma periódica los envases y productos que necesitas para el día a día de tu empresa.', h:'suscripciones.html'},
-        {t:'Proyectos a medida con Alzan', d:'Asóciate para tu próxima reforma. Asesoramiento en diseño y materiales para tus proyectos de reforma y construcción.', h:'always-market.html'},
-        {t:'Ocasiones memorables', d:'Crea tus invitaciones y detalles únicos para que tu evento deje huella en todos tus invitados.', h:'personalizacion.html'},
+        {t:'Tu marca en todas partes', d:'Personaliza tu negocio: crea tu propio diseño para envases y embalajes con la marca de tu empresa — vasos, camisetas, bolsas, cajas y más.', h:'always-business.html#marca'},
+        {t:'Always stock', d:'Programa tu siguiente pedido: recibe de forma periódica los envases y productos que necesitas para el día a día de tu empresa.', h:'always-business.html#stock'},
+        {t:'Proyectos a medida con Alzan', d:'Asóciate para tu próxima reforma. Asesoramiento en diseño y materiales para tus proyectos de reforma y construcción.', h:'always-business.html#alzan'},
+        {t:'Ocasiones memorables', d:'Crea tus invitaciones y detalles únicos para que tu evento deje huella en todos tus invitados.', h:'always-business.html#ocasiones'},
       ];
       document.getElementById('empresaCards').innerHTML=emp.map(function(c){
         return '<a href="'+c.h+'" class="group flex flex-col justify-between rounded-xl2 border border-lowgrey bg-white p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-softlg">'+
