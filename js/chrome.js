@@ -68,8 +68,8 @@
   const t = (k) => (T[LANG] && T[LANG][k] != null) ? T[LANG][k] : (T.es[k] != null ? T.es[k] : k);
   const CAT_EN = { brico: 'DIY & construction', envases: 'Packaging', papeleria: 'Stationery & office', fotografia: 'Photography', hogar: 'Home', servicios: 'Services' };
   const catName = (c) => (LANG === 'en' && CAT_EN[c.id]) ? CAT_EN[c.id] : c.name;
-  // Icono oficial de la cesta (círculo oscuro + bolsa blanca con insignia +).
-  const CART_ICON = (cls = 'h-8 w-8') => `<svg class="${cls}" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#070218" d="M23,0h0c12.7,0,23,10.3,23,23h0c0,12.7-10.3,23-23,23h0C10.3,46,0,35.7,0,23h0C0,10.3,10.3,0,23,0Z"/><path fill="#fff" d="M30.4,33.3h-14.8c-.39,0-.73-.29-.79-.67l-2.1-13c-.04-.23.03-.47.18-.65.15-.18.38-.28.61-.28h19c.23,0,.46.1.61.28.15.18.22.42.18.65l-2.1,13c-.06.39-.4.67-.79.67ZM16.28,31.7h13.44l1.84-11.4H14.44l1.84,11.4Z"/><path fill="#fff" d="M28.5,20.3c-.44,0-.8-.36-.8-.8,0-2.87-2.11-5.2-4.7-5.2s-4.7,2.33-4.7,5.2c0,.44-.36.8-.8.8s-.8-.36-.8-.8c0-3.75,2.83-6.8,6.3-6.8s6.3,3.05,6.3,6.8c0,.44-.36.8-.8.8Z"/><path fill="#070218" d="M30.5,26h0c3.04,0,5.5,2.46,5.5,5.5h0c0,3.04-2.46,5.5-5.5,5.5h0c-3.04,0-5.5-2.46-5.5-5.5h0c0-3.04,2.46-5.5,5.5-5.5Z"/><path fill="#fff" d="M30.51,35.51h0c-.44,0-.8-.36-.8-.8v-6.42c0-.44.37-.8.81-.8h0c.44,0,.8.36.8.8v6.42c0,.44-.37.8-.81.8Z"/><path fill="#fff" d="M33.71,32.3h-6.42c-.44,0-.8-.36-.8-.8s.36-.8.8-.8h6.42c.44,0,.8.36.8.8s-.36.8-.8.8Z"/></svg>`;
+  // Icono de la cesta (bolsa line-art). El contador se superpone aparte.
+  const BAG_ICON = (cls = 'h-7 w-7') => `<svg class="${cls}" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.5 18.5H31.5L29.4 31.5H14.6L12.5 18.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M27.5 18.5C27.5 15.1863 25.0375 12.5 22 12.5C18.9625 12.5 16.5 15.1863 16.5 18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   // Navegación: usa el router de la vista previa (artifact) si existe; si no, navega de verdad.
   const nav = (href) => { if (window.__apNav) window.__apNav(href); else window.location.href = href; };
   // Isotipo (marca de agua) reutilizable. pathLength=1 permite animar el trazado.
@@ -139,9 +139,9 @@
           ${oi('user','h-5 w-5')}<span class="hidden lg:inline">${t('login')}</span>
         </a>
         <a href="favoritos.html" class="relative grid h-11 w-11 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="${t('favAria')}">${oi('heart','h-7 w-7')}</a>
-        <a href="carrito.html" class="relative grid h-10 w-10 place-items-center rounded-full transition-transform hover:scale-110" aria-label="${t('cartAria')}">
-          ${CART_ICON('h-8 w-8')}
-          <span class="js-cart-count absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-b2b px-1 text-[11px] font-bold leading-none text-white ring-2 ring-white">10</span>
+        <a href="carrito.html" class="relative grid h-11 w-11 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="${t('cartAria')}">
+          ${BAG_ICON('h-7 w-7')}
+          <span class="js-cart-count absolute right-0.5 top-0.5 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-night px-1 text-[10px] font-bold leading-none text-white ring-2 ring-white">10</span>
         </a>
       </div>
     </div>
