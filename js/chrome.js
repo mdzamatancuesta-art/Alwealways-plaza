@@ -11,6 +11,61 @@
     `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
   const OI = {"globe":{"vb":"0 0 24 24","inner":"<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 22C17.5229 22 22 17.5229 22 12C22 6.47715 17.5229 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5229 6.47715 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2 12H22\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 22C14.2092 22 16 17.5229 16 12C16 6.47715 14.2092 2 12 2C9.79085 2 8 6.47715 8 12C8 17.5229 9.79085 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M4.92896 5.07104C6.7386 6.88069 9.2386 7.99999 12 7.99999C14.7615 7.99999 17.2615 6.88069 19.0711 5.07104\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M19.0711 18.9289C17.2615 17.1193 14.7615 16 12 16C9.2386 16 6.7386 17.1193 4.92896 18.9289\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"truck":{"vb":"0 0 68 68","inner":"<path d=\"M18.25 20H37.5C38.4665 20 39.25 20.7835 39.25 21.75V41C39.25 41.9665 38.4665 42.75 37.5 42.75H18.25C17.2835 42.75 16.5 41.9665 16.5 41V21.75C16.5 20.7835 17.2835 20 18.25 20Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path d=\"M51.5 42.75H39.25V30.5H45.375L51.5 36.1538V42.75Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/><path d=\"M39.25 44.5C39.25 46.433 40.817 48 42.75 48C44.683 48 46.25 46.433 46.25 44.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M20 44.5C20 46.433 21.567 48 23.5 48C25.433 48 27 46.433 27 44.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"pin":{"vb":"0 0 24 24","inner":"<path d=\"M12 22C12 22 19.5 16 19.5 9.5C19.5 5.35785 16.1421 2 12 2C7.85785 2 4.5 5.35785 4.5 9.5C4.5 16 12 22 12 22Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/><path d=\"M12 12.5C13.6568 12.5 15 11.1568 15 9.5C15 7.84315 13.6568 6.5 12 6.5C10.3432 6.5 9 7.84315 9 9.5C9 11.1568 10.3432 12.5 12 12.5Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/>"},"store":{"vb":"0 0 68 68","inner":"<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M27.875 25.25L51.5 34V51.5H27.875V25.25Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M27.875 25.25L16.5 34V51.5H27.875\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M43.625 51.5V41L35.75 38.375V51.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M51.5 51.5H27.875\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"menu":{"vb":"0 0 24 24","inner":"<path d=\"M21 4.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M17 9.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M21 14.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M17 19.5H3\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"user":{"vb":"0 0 24 24","inner":"<path d=\"M12 10C14.2091 10 16 8.20914 16 6C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6C8 8.20914 9.79086 10 12 10Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M21 22C21 17.0294 16.9706 13 12 13C7.02945 13 3 17.0294 3 22\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"heart":{"vb":"0 0 44 44","inner":"<path d=\"M17.5 14C14.4624 14 12 16.4625 12 19.5C12 25 18.5 30 22 31.1631C25.5 30 32 25 32 19.5C32 16.4625 29.5375 14 26.5 14C24.6399 14 22.9954 14.9235 22 16.3369C21.0046 14.9235 19.3601 14 17.5 14Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"},"bag":{"vb":"0 0 24 24","inner":"<path d=\"M19 7H5C4.44772 7 4 7.44772 4 8V21C4 21.5523 4.44772 22 5 22H19C19.5523 22 20 21.5523 20 21V8C20 7.44772 19.5523 7 19 7Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M8.5 9V5.5C8.5 3.56701 10.067 2 12 2C13.933 2 15.5 3.56701 15.5 5.5V9\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"}};
   const oi = (name, cls = 'h-5 w-5') => { const o = OI[name]; return o ? `<svg class="${cls}" viewBox="${o.vb}" fill="none" aria-hidden="true">${o.inner}</svg>` : ''; };
+
+  /* ---------- Idiomas (i18n) ---------- */
+  let LANG = 'es';
+  try { LANG = localStorage.getItem('ap_lang') || 'es'; } catch (e) {}
+  const T = {
+    es: {
+      shipBanner: 'Envío a domicilio solo disponible en La Habana', addCp: 'Añadir CP', pickup: 'Punto recogida',
+      searchPh: '¿Qué estás buscando?', login: 'Inicia sesión', favAria: 'Favoritos', cartAria: 'Cesta de la compra',
+      cookieTitle: '🍪 Usamos cookies',
+      cookieText: 'Utilizamos cookies propias y de terceros para el funcionamiento del sitio, analizar el tráfico y personalizar el contenido. Puedes aceptarlas todas, rechazarlas o configurarlas. Más información en nuestra ',
+      cookiePolicy: 'Política de cookies', cReject: 'Rechazar', cConfig: 'Configurar', cAccept: 'Aceptar todas',
+      cpTitle: 'Añade tu código postal',
+      cpText1: 'Enviamos pedidos a domicilio en toda La Habana. Para pedidos fuera de La Habana disponemos de puntos de recogida <em>Always Points</em>.',
+      cpText2: 'Al añadir tu código postal verás tu punto de recogida o tienda más cercana.',
+      cpLabel: 'Introduce tu código postal (Ejemplo: 28012)', cpConfirm: 'Confirmar',
+      fBuy: 'Comprar', fServices: 'Servicios', fArea: 'Área personal', fInfo: 'Información',
+      fOffers: 'Ofertas', fReturns: 'Devoluciones', fShipping: 'Envíos', fPickup: 'Puntos de recogida', fFaq: 'Preguntas frecuentes',
+      fContact: 'Contacta', fProfile: 'Mi perfil', fLists: 'Mis listas', fBilling: 'Pagos y facturas',
+      fEmpresas: 'Servicios para empresas', fPlan: 'Planificación y asesoramiento', fReformas: 'Reformas y construcciones', fPersonaliz: 'Personalización de productos', fImprenta: 'Imprenta y reprografía',
+      fTagline: 'Always Plaza pertenece a Grupo Empresarial Alzara. Always Plaza es el Marketplace para comprar desde cualquier parte del mundo con envíos a La Habana, especializado en productos y servicios de las marcas E&E y Alzan.',
+      legalAviso: 'Aviso legal', legalPriv: 'Política de privacidad', legalCookies: 'Política de cookies', legalTerms: 'Condiciones de compra', legalReturns: 'Devoluciones', legalShip: 'Envíos', legalFaq: 'Preguntas frecuentes', cookieSettings: 'Configurar cookies',
+      copyright: '© 2026 Always Plaza. Todos los derechos reservados.', currency: 'Moneda: Euro (€) · Idioma: Español',
+      verTodo: 'Ver todo en',
+      home_offers_title: 'Ofertas de<br />primavera', home_offers_text: 'Los imprescindibles para el último empujón del curso escolar al mejor precio.', home_see_offers: 'Ver ofertas',
+      home_novedades: 'Novedades', home_novedades_card: '¡Descubre más de 20 artículos de la nueva colección de ofimática y papelería!',
+      home_seguir: 'Seguir comprando', home_envases: 'Envases y embalajes', home_whitelabel: 'Marca blanca', home_vertodo: 'Ver todo',
+      home_proyecto: 'Crea tu proyecto', home_alzan_title: 'Dale forma a tu gran proyecto con Alzan', home_alzan_text: '¿Pensando en renovar? Todavía más fácil con nuestros servicios personalizados para reformas y construcciones. Escríbenos a infoproyecto@always.com', home_presupuesto: 'Pide presupuesto gratis para cambiar suelos y paredes',
+    },
+    en: {
+      shipBanner: 'Home delivery only available in Havana', addCp: 'Add ZIP', pickup: 'Pickup point',
+      searchPh: 'What are you looking for?', login: 'Sign in', favAria: 'Favourites', cartAria: 'Shopping cart',
+      cookieTitle: '🍪 We use cookies',
+      cookieText: 'We use our own and third-party cookies to run the site, analyse traffic and personalise content. You can accept all, reject them or configure them. More information in our ',
+      cookiePolicy: 'Cookie Policy', cReject: 'Reject', cConfig: 'Configure', cAccept: 'Accept all',
+      cpTitle: 'Add your postal code',
+      cpText1: 'We deliver to your door across Havana. For orders outside Havana we have <em>Always Points</em> pickup locations.',
+      cpText2: 'When you add your postal code you will see your nearest pickup point or store.',
+      cpLabel: 'Enter your postal code (Example: 28012)', cpConfirm: 'Confirm',
+      fBuy: 'Shop', fServices: 'Services', fArea: 'My account', fInfo: 'Information',
+      fOffers: 'Offers', fReturns: 'Returns', fShipping: 'Shipping', fPickup: 'Pickup points', fFaq: 'FAQ',
+      fContact: 'Contact', fProfile: 'My profile', fLists: 'My lists', fBilling: 'Payments & invoices',
+      fEmpresas: 'Business services', fPlan: 'Planning & consulting', fReformas: 'Renovations & construction', fPersonaliz: 'Product customisation', fImprenta: 'Printing & reprography',
+      fTagline: 'Always Plaza is part of Grupo Empresarial Alzara. Always Plaza is the marketplace to shop from anywhere in the world with delivery to Havana, specialising in products and services from the E&E and Alzan brands.',
+      legalAviso: 'Legal notice', legalPriv: 'Privacy policy', legalCookies: 'Cookie policy', legalTerms: 'Terms of purchase', legalReturns: 'Returns', legalShip: 'Shipping', legalFaq: 'FAQ', cookieSettings: 'Cookie settings',
+      copyright: '© 2026 Always Plaza. All rights reserved.', currency: 'Currency: Euro (€) · Language: English',
+      verTodo: 'See all in',
+      home_offers_title: 'Spring<br />offers', home_offers_text: 'The essentials for the final stretch of the school year at the best price.', home_see_offers: 'See offers',
+      home_novedades: 'New arrivals', home_novedades_card: 'Discover more than 20 items from the new office & stationery collection!',
+      home_seguir: 'Keep shopping', home_envases: 'Packaging', home_whitelabel: 'White label', home_vertodo: 'See all',
+      home_proyecto: 'Create your project', home_alzan_title: 'Shape your big project with Alzan', home_alzan_text: 'Thinking of renovating? Even easier with our custom services for renovations and construction. Write to us at infoproyecto@always.com', home_presupuesto: 'Get a free quote to change floors and walls',
+    },
+  };
+  const t = (k) => (T[LANG] && T[LANG][k] != null) ? T[LANG][k] : (T.es[k] != null ? T.es[k] : k);
+  const CAT_EN = { brico: 'DIY & construction', envases: 'Packaging', papeleria: 'Stationery & office', fotografia: 'Photography', hogar: 'Home', servicios: 'Services' };
+  const catName = (c) => (LANG === 'en' && CAT_EN[c.id]) ? CAT_EN[c.id] : c.name;
   // Icono oficial de la cesta (círculo oscuro + bolsa blanca con insignia +).
   const CART_ICON = (cls = 'h-8 w-8') => `<svg class="${cls}" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#070218" d="M23,0h0c12.7,0,23,10.3,23,23h0c0,12.7-10.3,23-23,23h0C10.3,46,0,35.7,0,23h0C0,10.3,10.3,0,23,0Z"/><path fill="#fff" d="M30.4,33.3h-14.8c-.39,0-.73-.29-.79-.67l-2.1-13c-.04-.23.03-.47.18-.65.15-.18.38-.28.61-.28h19c.23,0,.46.1.61.28.15.18.22.42.18.65l-2.1,13c-.06.39-.4.67-.79.67ZM16.28,31.7h13.44l1.84-11.4H14.44l1.84,11.4Z"/><path fill="#fff" d="M28.5,20.3c-.44,0-.8-.36-.8-.8,0-2.87-2.11-5.2-4.7-5.2s-4.7,2.33-4.7,5.2c0,.44-.36.8-.8.8s-.8-.36-.8-.8c0-3.75,2.83-6.8,6.3-6.8s6.3,3.05,6.3,6.8c0,.44-.36.8-.8.8Z"/><path fill="#070218" d="M30.5,26h0c3.04,0,5.5,2.46,5.5,5.5h0c0,3.04-2.46,5.5-5.5,5.5h0c-3.04,0-5.5-2.46-5.5-5.5h0c0-3.04,2.46-5.5,5.5-5.5Z"/><path fill="#fff" d="M30.51,35.51h0c-.44,0-.8-.36-.8-.8v-6.42c0-.44.37-.8.81-.8h0c.44,0,.8.36.8.8v6.42c0,.44-.37.8-.81.8Z"/><path fill="#fff" d="M33.71,32.3h-6.42c-.44,0-.8-.36-.8-.8s.36-.8.8-.8h6.42c.44,0,.8.36.8.8s-.36.8-.8.8Z"/></svg>`;
   // Navegación: usa el router de la vista previa (artifact) si existe; si no, navega de verdad.
@@ -40,7 +95,7 @@
       <div class="relative shrink-0">
         <button id="langBtn" class="flex items-center gap-2 py-1.5 text-[13px] transition-colors hover:text-white/70" aria-haspopup="true" aria-expanded="false">
           ${oi('globe','h-4 w-4')}
-          <span id="langLabel">Español</span>
+          <span id="langLabel">${LANG==='en'?'English':'Español'}</span>
         </button>
         <div id="langMenu" class="absolute left-0 top-full mt-2 hidden w-36 overflow-hidden rounded-xl bg-white text-night shadow-softlg">
           <button data-lang="es" class="flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-lowgrey">🇪🇸 Español</button>
@@ -49,16 +104,16 @@
       </div>
       <div class="hidden min-w-0 flex-1 items-center justify-center gap-2 md:flex">
         ${oi('truck','h-4 w-4 shrink-0 text-white/70')}
-        <p class="truncate text-[13px] text-white/90">Envío a domicilio solo disponible en La Habana</p>
+        <p class="truncate text-[13px] text-white/90">${t('shipBanner')}</p>
       </div>
       <div class="flex shrink-0 items-center gap-4">
         <button id="cpBtn" class="flex items-center gap-1.5 text-[13px] text-white/90 transition-colors hover:text-white">
           ${oi('pin','h-4 w-4 shrink-0')}
-          <span id="cpLabel">Añadir CP</span>
+          <span id="cpLabel">${t('addCp')}</span>
         </button>
         <button id="pickupBtn" class="flex items-center gap-1.5 text-[13px] text-white/90 transition-colors hover:text-white">
           ${oi('store','h-4 w-4 shrink-0')}
-          <span id="pickupLabel" class="max-w-[160px] truncate">Punto recogida</span>
+          <span id="pickupLabel" class="max-w-[160px] truncate">${t('pickup')}</span>
         </button>
       </div>
     </div>
@@ -74,15 +129,15 @@
       <a href="index.html" class="logo logo--blue shrink-0" aria-label="Always Plaza — Inicio"></a>
       <form id="searchForm" class="relative mx-auto hidden w-full max-w-xl md:block">
         <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-mediumgrey">${svg('<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>', 'h-5 w-5')}</span>
-        <input id="searchInput" type="search" placeholder="¿Qué estás buscando?" class="w-full rounded-full border border-nicegrey bg-white py-2.5 pl-12 pr-4 text-[15px] text-night placeholder:text-lowvis transition-shadow focus:border-b2b focus:shadow-soft focus:outline-none" aria-label="Buscar productos" />
+        <input id="searchInput" type="search" placeholder="${t('searchPh')}" class="w-full rounded-full border border-nicegrey bg-white py-2.5 pl-12 pr-4 text-[15px] text-night placeholder:text-lowvis transition-shadow focus:border-b2b focus:shadow-soft focus:outline-none" aria-label="Buscar productos" />
       </form>
       <div class="ml-auto flex shrink-0 items-center gap-2 sm:gap-4">
         <button id="mobileSearchBtn" class="grid h-10 w-10 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey md:hidden" aria-label="Buscar">${svg('<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>', 'h-5 w-5')}</button>
         <a href="login.html" class="flex items-center gap-2 text-[14px] font-medium text-night transition-colors hover:text-b2b">
-          ${oi('user','h-5 w-5')}<span class="hidden lg:inline">Inicia sesión</span>
+          ${oi('user','h-5 w-5')}<span class="hidden lg:inline">${t('login')}</span>
         </a>
-        <a href="favoritos.html" class="relative grid h-11 w-11 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="Favoritos">${oi('heart','h-7 w-7')}</a>
-        <a href="carrito.html" class="relative grid h-10 w-10 place-items-center rounded-full transition-transform hover:scale-110" aria-label="Cesta de la compra">
+        <a href="favoritos.html" class="relative grid h-11 w-11 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="${t('favAria')}">${oi('heart','h-7 w-7')}</a>
+        <a href="carrito.html" class="relative grid h-10 w-10 place-items-center rounded-full transition-transform hover:scale-110" aria-label="${t('cartAria')}">
           ${CART_ICON('h-8 w-8')}
           <span class="js-cart-count absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-b2b px-1 text-[11px] font-bold leading-none text-white ring-2 ring-white">10</span>
         </a>
@@ -91,7 +146,7 @@
     <form id="mobileSearch" class="hidden px-4 pb-3 md:hidden">
       <div class="relative">
         <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-mediumgrey">${svg('<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>', 'h-5 w-5')}</span>
-        <input type="search" placeholder="¿Qué estás buscando?" class="w-full rounded-full border border-nicegrey bg-white py-2.5 pl-12 pr-4 text-[15px] placeholder:text-lowvis focus:border-b2b focus:outline-none" aria-label="Buscar productos" />
+        <input type="search" placeholder="${t('searchPh')}" class="w-full rounded-full border border-nicegrey bg-white py-2.5 pl-12 pr-4 text-[15px] placeholder:text-lowvis focus:border-b2b focus:outline-none" aria-label="Buscar productos" />
       </div>
     </form>
     <nav class="hidden border-y border-lowgrey lg:block">
@@ -109,13 +164,13 @@
     <div class="absolute inset-0 bg-night/40" data-cp-close></div>
     <aside id="cpPanel" class="absolute right-0 top-0 flex h-full w-[90%] max-w-md translate-x-full flex-col bg-white p-8 transition-transform duration-300 md:p-10">
       <button data-cp-close class="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full text-darkgrey hover:bg-lowgrey" aria-label="Cerrar">${svg('<path d="M6 6l12 12M18 6 6 18"/>', 'h-5 w-5')}</button>
-      <h2 class="mt-6 text-2xl font-bold text-night">Añade tu código postal</h2>
-      <p class="mt-4 text-[14px] text-darkgrey">Enviamos pedidos a domicilio en toda La Habana. Para pedidos fuera de La Habana disponemos de puntos de recogida <em>Always Points</em>.</p>
-      <p class="mt-3 text-[14px] text-darkgrey">Al añadir tu código postal verás tu punto de recogida o tienda más cercana.</p>
-      <label for="cpInput" class="mt-8 block text-[13px] text-mediumgrey">Introduce tu código postal (Ejemplo: 28012)</label>
+      <h2 class="mt-6 text-2xl font-bold text-night">${t('cpTitle')}</h2>
+      <p class="mt-4 text-[14px] text-darkgrey">${t('cpText1')}</p>
+      <p class="mt-3 text-[14px] text-darkgrey">${t('cpText2')}</p>
+      <label for="cpInput" class="mt-8 block text-[13px] text-mediumgrey">${t('cpLabel')}</label>
       <input id="cpInput" inputmode="numeric" maxlength="5" class="mt-3 w-full rounded-full bg-lowgrey px-5 py-3.5 text-[15px] text-night placeholder:text-lowvis focus:outline-none focus:ring-2 focus:ring-b2b" placeholder="28012" />
       <p id="cpResult" class="mt-4 hidden items-center gap-2 rounded-xl bg-secondary px-4 py-3 text-[14px] font-medium text-night"></p>
-      <button id="cpConfirm" class="mt-6 flex items-center justify-center gap-2 rounded-full bg-b2b py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#0089d1]">Confirmar</button>
+      <button id="cpConfirm" class="mt-6 flex items-center justify-center gap-2 rounded-full bg-b2b py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#0089d1]">${t('cpConfirm')}</button>
     </aside>
   </div>
   <div id="mobileDrawer" class="fixed inset-0 z-[60] hidden">
@@ -133,13 +188,13 @@
     <div class="pointer-events-auto mx-auto m-3 max-w-3xl rounded-xl2 border border-lowgrey bg-white p-5 shadow-softlg md:m-4 md:p-6">
       <div class="flex flex-col gap-4 md:flex-row md:items-center">
         <div class="flex-1">
-          <h3 class="text-[15px] font-bold text-night">🍪 Usamos cookies</h3>
-          <p class="mt-1 text-[13px] text-mediumgrey">Utilizamos cookies propias y de terceros para el funcionamiento del sitio, analizar el tráfico y personalizar el contenido. Puedes aceptarlas todas, rechazarlas o configurarlas. Más información en nuestra <a href="cookies.html" class="text-b2b hover:underline">Política de cookies</a>.</p>
+          <h3 class="text-[15px] font-bold text-night">${t('cookieTitle')}</h3>
+          <p class="mt-1 text-[13px] text-mediumgrey">${t('cookieText')}<a href="cookies.html" class="text-b2b hover:underline">${t('cookiePolicy')}</a>.</p>
         </div>
         <div class="flex flex-col gap-2 sm:flex-row md:shrink-0">
-          <button data-cookie="reject" class="rounded-full border border-nicegrey px-5 py-2.5 text-[14px] font-semibold text-night transition-colors hover:bg-secondary">Rechazar</button>
-          <a href="cookies.html" class="rounded-full border border-nicegrey px-5 py-2.5 text-center text-[14px] font-semibold text-night transition-colors hover:bg-secondary">Configurar</a>
-          <button data-cookie="all" class="rounded-full bg-b2b px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#0089d1]">Aceptar todas</button>
+          <button data-cookie="reject" class="rounded-full border border-nicegrey px-5 py-2.5 text-[14px] font-semibold text-night transition-colors hover:bg-secondary">${t('cReject')}</button>
+          <a href="cookies.html" class="rounded-full border border-nicegrey px-5 py-2.5 text-center text-[14px] font-semibold text-night transition-colors hover:bg-secondary">${t('cConfig')}</a>
+          <button data-cookie="all" class="rounded-full bg-b2b px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#0089d1]">${t('cAccept')}</button>
         </div>
       </div>
     </div>
@@ -151,60 +206,60 @@
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-6">
         <div class="lg:col-span-2">
           <span class="logo logo--blue"></span>
-          <p class="mt-4 max-w-xs text-[15px] font-light text-mediumgrey">Always Plaza pertenece a Grupo Empresarial Alzara. Always Plaza es el Marketplace para comprar desde cualquier parte del mundo con envíos a La Habana, especializado en productos y servicios de las marcas E&amp;E y Alzan.</p>
+          <p class="mt-4 max-w-xs text-[15px] font-light text-mediumgrey">${t('fTagline')}</p>
         </div>
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Comprar</h3>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">${t('fBuy')}</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="ofertas-primavera.html" class="transition-colors hover:text-night">Ofertas</a></li>
-            <li><a href="categoria-brico.html" class="transition-colors hover:text-night">Bricolaje y construcción</a></li>
-            <li><a href="categoria-envases.html" class="transition-colors hover:text-night">Envases y embalajes</a></li>
-            <li><a href="categoria-papeleria.html" class="transition-colors hover:text-night">Papelería y ofimática</a></li>
-            <li><a href="categoria-fotografia.html" class="transition-colors hover:text-night">Fotografía</a></li>
-            <li><a href="categoria-hogar.html" class="transition-colors hover:text-night">Hogar</a></li>
+            <li><a href="ofertas-primavera.html" class="transition-colors hover:text-night">${t('fOffers')}</a></li>
+            <li><a href="categoria-brico.html" class="transition-colors hover:text-night">${LANG==='en'?CAT_EN.brico:'Bricolaje y construcción'}</a></li>
+            <li><a href="categoria-envases.html" class="transition-colors hover:text-night">${LANG==='en'?CAT_EN.envases:'Envases y embalajes'}</a></li>
+            <li><a href="categoria-papeleria.html" class="transition-colors hover:text-night">${LANG==='en'?CAT_EN.papeleria:'Papelería y ofimática'}</a></li>
+            <li><a href="categoria-fotografia.html" class="transition-colors hover:text-night">${LANG==='en'?CAT_EN.fotografia:'Fotografía'}</a></li>
+            <li><a href="categoria-hogar.html" class="transition-colors hover:text-night">${LANG==='en'?CAT_EN.hogar:'Hogar'}</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Servicios</h3>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">${t('fServices')}</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="servicios.html#empresas" class="transition-colors hover:text-night">Servicios para empresas</a></li>
-            <li><a href="servicios.html#planificacion" class="transition-colors hover:text-night">Planificación y asesoramiento</a></li>
-            <li><a href="servicios.html#reformas" class="transition-colors hover:text-night">Reformas y construcciones</a></li>
-            <li><a href="personalizacion.html" class="transition-colors hover:text-night">Personalización de productos</a></li>
-            <li><a href="servicios.html#imprenta" class="transition-colors hover:text-night">Imprenta y reprografía</a></li>
+            <li><a href="servicios.html#empresas" class="transition-colors hover:text-night">${t('fEmpresas')}</a></li>
+            <li><a href="servicios.html#planificacion" class="transition-colors hover:text-night">${t('fPlan')}</a></li>
+            <li><a href="servicios.html#reformas" class="transition-colors hover:text-night">${t('fReformas')}</a></li>
+            <li><a href="personalizacion.html" class="transition-colors hover:text-night">${t('fPersonaliz')}</a></li>
+            <li><a href="servicios.html#imprenta" class="transition-colors hover:text-night">${t('fImprenta')}</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Área personal</h3>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">${t('fArea')}</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="perfil.html" class="transition-colors hover:text-night">Mi perfil</a></li>
-            <li><a href="favoritos.html" class="transition-colors hover:text-night">Mis listas</a></li>
-            <li><a href="perfil.html" class="transition-colors hover:text-night">Pagos y facturas</a></li>
+            <li><a href="perfil.html" class="transition-colors hover:text-night">${t('fProfile')}</a></li>
+            <li><a href="favoritos.html" class="transition-colors hover:text-night">${t('fLists')}</a></li>
+            <li><a href="perfil.html" class="transition-colors hover:text-night">${t('fBilling')}</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">Información</h3>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-darkgrey">${t('fInfo')}</h3>
           <ul class="mt-4 space-y-2 text-[14px] text-mediumgrey">
-            <li><a href="contacta.html" class="transition-colors hover:text-night">Contacta</a></li>
-            <li><a href="envios.html" class="transition-colors hover:text-night">Envíos</a></li>
-            <li><a href="puntos-recogida.html" class="transition-colors hover:text-night">Puntos de recogida</a></li>
-            <li><a href="faq.html" class="transition-colors hover:text-night">Preguntas frecuentes</a></li>
+            <li><a href="contacta.html" class="transition-colors hover:text-night">${t('fContact')}</a></li>
+            <li><a href="envios.html" class="transition-colors hover:text-night">${t('fShipping')}</a></li>
+            <li><a href="puntos-recogida.html" class="transition-colors hover:text-night">${t('fPickup')}</a></li>
+            <li><a href="faq.html" class="transition-colors hover:text-night">${t('fFaq')}</a></li>
           </ul>
         </div>
       </div>
       <nav class="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-lowgrey pt-6 text-[13px] text-mediumgrey">
-        <a href="aviso-legal.html" class="transition-colors hover:text-night">Aviso legal</a>
-        <a href="privacidad.html" class="transition-colors hover:text-night">Política de privacidad</a>
-        <a href="cookies.html" class="transition-colors hover:text-night">Política de cookies</a>
-        <a href="terminos.html" class="transition-colors hover:text-night">Condiciones de compra</a>
-        <a href="devoluciones.html" class="transition-colors hover:text-night">Devoluciones</a>
+        <a href="aviso-legal.html" class="transition-colors hover:text-night">${t('legalAviso')}</a>
+        <a href="privacidad.html" class="transition-colors hover:text-night">${t('legalPriv')}</a>
+        <a href="cookies.html" class="transition-colors hover:text-night">${t('legalCookies')}</a>
+        <a href="terminos.html" class="transition-colors hover:text-night">${t('legalTerms')}</a>
+        <a href="devoluciones.html" class="transition-colors hover:text-night">${t('legalReturns')}</a>
         <a href="envios.html" class="transition-colors hover:text-night">Envíos</a>
         <a href="faq.html" class="transition-colors hover:text-night">Preguntas frecuentes</a>
-        <button id="cookieSettingsLink" class="transition-colors hover:text-night">Configurar cookies</button>
+        <button id="cookieSettingsLink" class="transition-colors hover:text-night">${t('cookieSettings')}</button>
       </nav>
       <div class="mt-6 flex flex-col items-center justify-between gap-4 border-t border-lowgrey pt-6 text-[13px] text-lowvis sm:flex-row">
-        <p>© 2026 Always Plaza. Todos los derechos reservados.</p>
-        <p>Moneda: Euro (€) · Idioma: Español</p>
+        <p>${t('copyright')}</p>
+        <p>${t('currency')}</p>
       </div>
     </div>
   </footer>`;
@@ -229,7 +284,7 @@
   /* ---------- Idioma ---------- */
   const langBtn = $('#langBtn'), langMenu = $('#langMenu'), langLabel = $('#langLabel');
   langBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('hidden'); });
-  $$('#langMenu [data-lang]').forEach((b) => b.addEventListener('click', () => { langLabel.textContent = b.dataset.lang === 'en' ? 'English' : 'Español'; langMenu.classList.add('hidden'); }));
+  $$('#langMenu [data-lang]').forEach((b) => b.addEventListener('click', () => { try { localStorage.setItem('ap_lang', b.dataset.lang); } catch (e) {} location.reload(); }));
   document.addEventListener('click', () => langMenu.classList.add('hidden'));
 
   /* ---------- Modal CP ---------- */
@@ -272,7 +327,7 @@
 
   megaNav.innerHTML = CATEGORIES.map((c) => `
     <li data-cat="${c.id}">
-      <a href="${catHref(c.id)}" class="mega-tab flex items-center py-3.5 text-[15px] transition-colors hover:text-b2b ${PAGE === c.id ? 'font-semibold text-b2b' : 'text-night'}">${c.name}</a>
+      <a href="${catHref(c.id)}" class="mega-tab flex items-center py-3.5 text-[15px] transition-colors hover:text-b2b ${PAGE === c.id ? 'font-semibold text-b2b' : 'text-night'}">${catName(c)}</a>
     </li>`).join('');
 
   function renderSubContent(sub, href) {
@@ -280,7 +335,7 @@
     const actions = sub.actions ? `<div class="flex flex-col gap-3 pr-8">${sub.actions.map((a) => `<a href="${a === 'Personalizar' ? 'personalizacion.html' : href}" class="text-[15px] font-bold text-night transition-colors hover:text-b2b">${a}</a>`).join('')}</div>` : '';
     const groups = sub.groups
       ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-semibold text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="${href}" class="text-[15px] text-darkgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`
-      : `<div class="flex flex-1 items-start"><a href="${sub.name === 'Always Market' ? 'always-market.html' : sub.name === 'Always Sanguar' ? 'always-sanguar.html' : href}" class="text-[15px] font-bold text-night hover:text-b2b">Ver todo en ${sub.name}</a></div>`;
+      : `<div class="flex flex-1 items-start"><a href="${sub.name === 'Always Market' ? 'always-market.html' : sub.name === 'Always Sanguar' ? 'always-sanguar.html' : href}" class="text-[15px] font-bold text-night hover:text-b2b">${t('verTodo')} ${sub.name}</a></div>`;
     return `<div class="flex gap-4">${actions}${groups}</div>`;
   }
   function renderPanel(cat) {
@@ -332,9 +387,9 @@
   $('#mobileNav').innerHTML = CATEGORIES.map((c) => `
     <li>${c.subs.length ? `
       <details class="group rounded-xl">
-        <summary class="flex cursor-pointer items-center justify-between rounded-xl px-3 py-3 text-[16px] font-medium text-night hover:bg-secondary">${c.name}${svg('<path d="m6 9 6 6 6-6"/>', 'h-4 w-4 text-lowvis transition-transform group-open:rotate-180')}</summary>
+        <summary class="flex cursor-pointer items-center justify-between rounded-xl px-3 py-3 text-[16px] font-medium text-night hover:bg-secondary">${catName(c)}${svg('<path d="m6 9 6 6 6-6"/>', 'h-4 w-4 text-lowvis transition-transform group-open:rotate-180')}</summary>
         <ul class="ml-3 mt-1 flex flex-col gap-0.5 border-l border-lowgrey pl-3">${c.subs.map((s) => `<li><a href="${catHref(c.id)}" class="block rounded-lg px-3 py-2 text-[15px] text-darkgrey hover:bg-secondary hover:text-night">${s.name}</a></li>`).join('')}</ul>
-      </details>` : `<a href="${catHref(c.id)}" class="flex items-center rounded-xl px-3 py-3 text-[16px] font-medium text-night hover:bg-secondary">${c.name}</a>`}</li>`).join('');
+      </details>` : `<a href="${catHref(c.id)}" class="flex items-center rounded-xl px-3 py-3 text-[16px] font-medium text-night hover:bg-secondary">${catName(c)}</a>`}</li>`).join('');
   $('#mobileMenuBtn').addEventListener('click', () => { drawer.classList.remove('hidden'); requestAnimationFrame(() => drawerPanel.style.transform = 'translateX(0)'); });
   $$('#mobileDrawer [data-close]').forEach((el) => el.addEventListener('click', () => { drawerPanel.style.transform = 'translateX(-100%)'; setTimeout(() => drawer.classList.add('hidden'), 300); }));
 
@@ -555,6 +610,10 @@
   window.__apReveal = reveal;
   reveal();
 
+  /* ---------- Traducción de nodos marcados con data-i18n ---------- */
+  $$('[data-i18n]').forEach((el) => { const k = el.getAttribute('data-i18n'); if (T[LANG] && T[LANG][k] != null) el.innerHTML = t(k); });
+  if (LANG === 'en') document.documentElement.lang = 'en';
+
   /* Expose helpers for page scripts */
-  window.AP = Object.assign(window.AP || {}, { svg, $, $$, toast, addToCart });
+  window.AP = Object.assign(window.AP || {}, { svg, $, $$, toast, addToCart, t, lang: LANG });
 })();
