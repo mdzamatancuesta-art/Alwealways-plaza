@@ -81,7 +81,7 @@
         <a href="login.html" class="flex items-center gap-2 text-[14px] font-medium text-night transition-colors hover:text-b2b">
           ${oi('user','h-5 w-5')}<span class="hidden lg:inline">Inicia sesión</span>
         </a>
-        <a href="favoritos.html" class="relative grid h-10 w-10 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="Favoritos">${oi('heart','h-5 w-5')}</a>
+        <a href="favoritos.html" class="relative grid h-11 w-11 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey" aria-label="Favoritos">${oi('heart','h-7 w-7')}</a>
         <a href="carrito.html" class="relative grid h-10 w-10 place-items-center rounded-full transition-transform hover:scale-110" aria-label="Cesta de la compra">
           ${CART_ICON('h-8 w-8')}
           <span class="js-cart-count absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-b2b px-1 text-[11px] font-bold leading-none text-white ring-2 ring-white">10</span>
@@ -279,7 +279,7 @@
     if (sub.links) return `<ul class="flex flex-col gap-3">${sub.links.map((l) => { const lab = typeof l === 'string' ? l : l.label; const lh = typeof l === 'string' ? href : l.href; return `<li><a href="${lh}" class="text-[15px] text-night transition-colors hover:text-b2b">${lab}</a></li>`; }).join('')}</ul>`;
     const actions = sub.actions ? `<div class="flex flex-col gap-3 pr-8">${sub.actions.map((a) => `<a href="${a === 'Personalizar' ? 'personalizacion.html' : href}" class="text-[15px] font-bold text-night transition-colors hover:text-b2b">${a}</a>`).join('')}</div>` : '';
     const groups = sub.groups
-      ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-semibold text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="${href}" class="text-[13px] text-darkgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`
+      ? `<div class="grid flex-1 grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-3">${sub.groups.map((g) => `<div><h4 class="mb-2 text-[15px] font-semibold text-night">${g.title}</h4><ul class="flex flex-col gap-1.5">${g.items.map((i) => `<li><a href="${href}" class="text-[15px] text-darkgrey transition-colors hover:text-night">${i}</a></li>`).join('')}</ul></div>`).join('')}</div>`
       : `<div class="flex flex-1 items-start"><a href="${sub.name === 'Always Market' ? 'always-market.html' : sub.name === 'Always Sanguar' ? 'always-sanguar.html' : href}" class="text-[15px] font-bold text-night hover:text-b2b">Ver todo en ${sub.name}</a></div>`;
     return `<div class="flex gap-4">${actions}${groups}</div>`;
   }
