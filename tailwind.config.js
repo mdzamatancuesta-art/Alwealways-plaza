@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         main: '#FAFAFB',      // Fondo principal (Dark White)
         secondary: '#F5F5F7', // Fondo secundario
-        b2b: '#01A3F4',       // Negocios / B2B
+        b2b: '#0019FF',       // Negocios / B2B
         promo: '#FFC919',     // Promociones
         novedad: '#E3562B',   // Novedades
         exito: '#D10037',     // Éxito / detalles importantes

@@ -92,7 +92,7 @@
 
   /* ---------- Markup ---------- */
   const headerHTML = `
-  <div id="topbar" class="fixed inset-x-0 top-0 z-50 h-[65px] bg-night text-white transition-transform duration-300">
+  <div id="topbar" class="fixed inset-x-0 top-0 z-50 h-[46px] bg-night text-white transition-transform duration-300">
     <div class="mx-auto flex h-full max-w-[1400px] items-center justify-between gap-4 px-4 md:px-8">
       <div class="relative shrink-0">
         <button id="langBtn" class="flex items-center gap-2 py-1.5 text-[13px] transition-colors hover:text-white/70" aria-haspopup="true" aria-expanded="false">
@@ -121,9 +121,9 @@
     </div>
   </div>
 
-  <div class="h-[65px]" aria-hidden="true"></div>
+  <div class="h-[46px]" aria-hidden="true"></div>
 
-  <header id="header" class="sticky top-0 z-40 bg-white transition-[top] duration-300" style="top:65px">
+  <header id="header" class="sticky top-0 z-40 bg-white transition-[top] duration-300" style="top:46px">
     <div class="mx-auto flex max-w-[1400px] items-center gap-4 px-4 py-3.5 md:px-8">
       <button id="mobileMenuBtn" class="grid h-10 w-10 shrink-0 place-items-center rounded-full text-night transition-colors hover:bg-lowgrey lg:hidden" aria-label="Abrir menú">
         ${oi('menu','h-6 w-6')}
@@ -172,7 +172,7 @@
       <label for="cpInput" class="mt-8 block text-[13px] text-mediumgrey">${t('cpLabel')}</label>
       <input id="cpInput" inputmode="numeric" maxlength="5" class="mt-3 w-full rounded-full bg-lowgrey px-5 py-3.5 text-[15px] text-night placeholder:text-lowvis focus:outline-none focus:ring-2 focus:ring-b2b" placeholder="28012" />
       <p id="cpResult" class="mt-4 hidden items-center gap-2 rounded-xl bg-secondary px-4 py-3 text-[14px] font-medium text-night"></p>
-      <button id="cpConfirm" class="mt-6 flex items-center justify-center gap-2 rounded-full bg-b2b py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#0089d1]">${t('cpConfirm')}</button>
+      <button id="cpConfirm" class="mt-6 flex items-center justify-center gap-2 rounded-full bg-b2b py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#0014cc]">${t('cpConfirm')}</button>
     </aside>
   </div>
   <div id="mobileDrawer" class="fixed inset-0 z-[60] hidden">
@@ -196,7 +196,7 @@
         <div class="flex flex-col gap-2 sm:flex-row md:shrink-0">
           <button data-cookie="reject" class="rounded-full border border-nicegrey px-5 py-2.5 text-[14px] font-semibold text-night transition-colors hover:bg-secondary">${t('cReject')}</button>
           <a href="cookies.html" class="rounded-full border border-nicegrey px-5 py-2.5 text-center text-[14px] font-semibold text-night transition-colors hover:bg-secondary">${t('cConfig')}</a>
-          <button data-cookie="all" class="rounded-full bg-b2b px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#0089d1]">${t('cAccept')}</button>
+          <button data-cookie="all" class="rounded-full bg-b2b px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#0014cc]">${t('cAccept')}</button>
         </div>
       </div>
     </div>
@@ -278,7 +278,7 @@
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     if (y > lastY && y > 80) { topbar.style.transform = 'translateY(-100%)'; header.style.top = '0px'; }
-    else { topbar.style.transform = 'translateY(0)'; header.style.top = '65px'; }
+    else { topbar.style.transform = 'translateY(0)'; header.style.top = '46px'; }
     lastY = y;
     if (openId) closeMega();
   }, { passive: true });
@@ -324,10 +324,14 @@
 
   /* ---------- Nav + Mega menú ---------- */
   const catHref = (id) => id === 'servicios' ? 'servicios.html' : `categoria-${id}.html`;
+  // Orden del menú (envases, papelería, bricolaje, hogar, fotografía, servicios).
+  const NAV_ORDER = ['envases', 'papeleria', 'brico', 'hogar', 'fotografia', 'servicios'];
+  const NAV_CATS = NAV_ORDER.map((id) => CATEGORIES.find((c) => c.id === id)).filter(Boolean)
+    .concat(CATEGORIES.filter((c) => NAV_ORDER.indexOf(c.id) === -1));
   const megaNav = $('#megaNav'), wrap = $('#megaPanelWrap'), panel = $('#megaPanel'), backdrop = $('#megaBackdrop');
   let openId = null, closeTimer = null;
 
-  megaNav.innerHTML = CATEGORIES.map((c) => `
+  megaNav.innerHTML = NAV_CATS.map((c) => `
     <li data-cat="${c.id}">
       <a href="${catHref(c.id)}" class="mega-tab flex items-center py-3.5 text-[15px] transition-colors hover:text-b2b ${PAGE === c.id ? 'font-semibold text-b2b' : 'text-night'}">${catName(c)}</a>
     </li>`).join('');
@@ -386,7 +390,7 @@
 
   /* ---------- Menú móvil ---------- */
   const drawer = $('#mobileDrawer'), drawerPanel = $('#drawerPanel');
-  $('#mobileNav').innerHTML = CATEGORIES.map((c) => `
+  $('#mobileNav').innerHTML = NAV_CATS.map((c) => `
     <li>${c.subs.length ? `
       <details class="group rounded-xl">
         <summary class="flex cursor-pointer items-center justify-between rounded-xl px-3 py-3 text-[16px] font-medium text-night hover:bg-secondary">${catName(c)}${svg('<path d="m6 9 6 6 6-6"/>', 'h-4 w-4 text-lowvis transition-transform group-open:rotate-180')}</summary>
@@ -494,7 +498,7 @@
       <div id="apChatChips" class="flex flex-wrap gap-2 border-t border-lowgrey bg-white px-4 pt-3"></div>
       <form id="apChatForm" class="flex items-center gap-2 border-t border-lowgrey bg-white p-3">
         <input id="apChatInput" type="text" placeholder="Escribe tu mensaje…" class="flex-1 rounded-full border border-nicegrey px-4 py-2.5 text-[14px] focus:border-b2b focus:outline-none" />
-        <button type="submit" class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-b2b text-white hover:bg-[#0089d1]" aria-label="Enviar">${svg('<path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/>', 'h-5 w-5')}</button>
+        <button type="submit" class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-b2b text-white hover:bg-[#0014cc]" aria-label="Enviar">${svg('<path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/>', 'h-5 w-5')}</button>
       </form>
     </div>`;
   document.body.insertAdjacentHTML('beforeend', chatHTML);
