@@ -96,7 +96,7 @@
     <div class="mx-auto flex h-full max-w-[1400px] items-center justify-between gap-4 px-4 md:px-8">
       <div class="relative shrink-0">
         <button id="langBtn" class="flex items-center gap-2 py-1.5 text-[13px] transition-colors hover:text-white/70" aria-haspopup="true" aria-expanded="false">
-          ${oi('globe','h-4 w-4')}
+          ${oi('globe','h-[17px] w-[17px]')}
           <span id="langLabel">${LANG==='en'?'English':'Español'}</span>
         </button>
         <div id="langMenu" class="absolute left-0 top-full mt-2 hidden w-36 overflow-hidden rounded-xl bg-white text-night shadow-softlg">
@@ -105,16 +105,16 @@
         </div>
       </div>
       <div class="hidden min-w-0 flex-1 items-center justify-center gap-2 md:flex">
-        ${oi('truck','h-4 w-4 shrink-0 text-white/70')}
+        ${oi('truck','h-7 w-7 shrink-0 text-white/70')}
         <p class="truncate text-[13px] text-white/90">${t('shipBanner')}</p>
       </div>
       <div class="flex shrink-0 items-center gap-4">
         <button id="cpBtn" class="flex items-center gap-1.5 text-[13px] text-white/90 transition-colors hover:text-white">
-          ${oi('pin','h-4 w-4 shrink-0')}
+          ${oi('pin','h-5 w-5 shrink-0')}
           <span id="cpLabel">${t('addCp')}</span>
         </button>
         <button id="pickupBtn" class="flex items-center gap-1.5 text-[13px] text-white/90 transition-colors hover:text-white">
-          ${oi('store','h-4 w-4 shrink-0')}
+          ${oi('store','h-7 w-7 shrink-0')}
           <span id="pickupLabel" class="max-w-[160px] truncate">${t('pickup')}</span>
         </button>
       </div>
