@@ -19,7 +19,7 @@
       <a href="index.html" class="hover:text-night">Inicio</a> / <a href="categoria.html" class="hover:text-night">Catálogo</a> / <span class="text-night" id="pdCrumb">Producto</span>
     </nav>
 
-    <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <div class="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
       <!-- Galería -->
       <div>
         <p class="mb-3 text-[13px] text-mediumgrey">Vendido por <strong class="text-night">ALZAN</strong></p>
@@ -49,14 +49,14 @@
           <div class="flex flex-wrap items-center gap-4">
             <div class="flex items-center gap-4 rounded-full border border-nicegrey px-2 py-1.5">
               <button id="minus" class="grid h-8 w-8 place-items-center rounded-full hover:bg-lowgrey" aria-label="Menos">–</button>
-              <span id="qty" class="w-8 text-center text-[15px] font-semibold">10</span>
+              <span id="qty" class="w-8 text-center text-[15px] font-semibold">1</span>
               <button id="plus" class="grid h-8 w-8 place-items-center rounded-full bg-night text-white hover:bg-b2b" aria-label="Más">+</button>
             </div>
-            <button type="button" data-add class="flex-1 rounded-full bg-night px-10 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-b2b">Añadir</button>
+            <button type="button" data-add class="rounded-full bg-night px-12 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-b2b">Añadir</button>
           </div>
         </div>
 
-        <div class="mt-8 divide-y divide-lowgrey border-y border-lowgrey">
+        <div class="mt-8 divide-y divide-lowgrey border-y border-lowgrey lg:max-w-[52%]">
           <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between text-[15px] font-medium">Dimensiones y material<svg class="h-4 w-4 text-lowvis transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary><p class="mt-3 text-[14px] text-mediumgrey">Cabezal de acero al carbono, mango de madera de fresno. Longitud 33 cm. Peso 450 g.</p></details>
           <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between text-[15px] font-medium">Más información<svg class="h-4 w-4 text-lowvis transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary><p class="mt-3 text-[14px] text-mediumgrey">Garantía de 2 años. Envío a domicilio en La Habana o recogida en punto Always Point.</p></details>
         </div>
@@ -78,10 +78,10 @@
             <div class="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-lg bg-secondary text-nicegrey" id="packB"></div>
             <div><p class="text-[14px] font-semibold">Llave inglesa con mango de silicona</p><p class="text-[12px] text-mediumgrey">Información sobre la llave inglesa maravillosa</p><p class="mt-1 text-[16px] font-extrabold">29,99€</p></div>
           </div>
-          <div class="flex flex-col justify-center rounded-xl2 bg-secondary p-6 text-left">
+          <div class="flex flex-col items-start justify-center rounded-xl2 bg-secondary p-6 text-left">
             <p class="text-[13px] text-mediumgrey">Ambos productos por:</p>
-            <p class="mt-1 text-[24px] font-extrabold">55,99€</p>
-            <button type="button" data-add class="mt-4 w-full rounded-2xl bg-night py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-b2b">Añadir</button>
+            <p class="mt-1 text-[22px] font-extrabold">55,99€</p>
+            <button type="button" data-add class="mt-3 rounded-full bg-night px-10 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-b2b">Añadir</button>
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@
       b.classList.add('border-night'); b.classList.remove('border-nicegrey', 'text-darkgrey');
     }));
     // Stepper
-    let q = 10; const qEl = document.getElementById('qty');
+    let q = 1; const qEl = document.getElementById('qty');
     document.getElementById('plus').addEventListener('click', () => { q++; qEl.textContent = q; });
     document.getElementById('minus').addEventListener('click', () => { if (q > 1) { q--; qEl.textContent = q; } });
   </script>

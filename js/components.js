@@ -6,6 +6,9 @@
   const svg = (p, cls = 'h-6 w-6') =>
     `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
 
+  // Icono de "añadir a la cesta" (círculo oscuro + bolsa blanca con +), para el botón de todas las tarjetas.
+  const CESTA_ICON = (cls = 'h-11 w-11') => `<svg class="${cls}" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#070218" d="M23,0h0c12.7,0,23,10.3,23,23h0c0,12.7-10.3,23-23,23h0C10.3,46,0,35.7,0,23h0C0,10.3,10.3,0,23,0Z"/><path fill="#fff" d="M30.4,33.3h-14.8c-.39,0-.73-.29-.79-.67l-2.1-13c-.04-.23.03-.47.18-.65.15-.18.38-.28.61-.28h19c.23,0,.46.1.61.28.15.18.22.42.18.65l-2.1,13c-.06.39-.4.67-.79.67ZM16.28,31.7h13.44l1.84-11.4H14.44l1.84,11.4Z"/><path fill="#fff" d="M28.5,20.3c-.44,0-.8-.36-.8-.8,0-2.87-2.11-5.2-4.7-5.2s-4.7,2.33-4.7,5.2c0,.44-.36.8-.8.8s-.8-.36-.8-.8c0-3.75,2.83-6.8,6.3-6.8s6.3,3.05,6.3,6.8c0,.44-.36.8-.8.8Z"/><path fill="#070218" d="M30.5,26h0c3.04,0,5.5,2.46,5.5,5.5h0c0,3.04-2.46,5.5-5.5,5.5h0c-3.04,0-5.5-2.46-5.5-5.5h0c0-3.04,2.46-5.5,5.5-5.5Z"/><path fill="#fff" d="M30.51,35.51h0c-.44,0-.8-.36-.8-.8v-6.42c0-.44.37-.8.81-.8h0c.44,0,.8.36.8.8v6.42c0,.44-.37.8-.81.8Z"/><path fill="#fff" d="M33.71,32.3h-6.42c-.44,0-.8-.36-.8-.8s.36-.8.8-.8h6.42c.44,0,.8.36.8.8s-.36.8-.8.8Z"/></svg>`;
+
   // Precio "59,99" → 59<sup>,99</sup>€
   function fmtPrice(price) {
     const [ent, dec] = String(price).split(',');
@@ -20,7 +23,7 @@
         : '';
     const discount = p.discount ? `<span class="absolute right-3 top-3 z-10 rounded-md bg-night px-2 py-1 text-[11px] font-bold text-white">${p.discount}</span>` : '';
     const price = p.old
-      ? `<div class="flex flex-col leading-tight"><span class="text-[12px] text-lowvis line-through">${p.old}€</span><span class="w-fit rounded bg-promo px-1.5 text-[18px] font-extrabold text-night">${fmtPrice(p.price)}</span></div>`
+      ? `<div class="flex flex-col gap-2 leading-none"><span class="text-[13px] text-lowvis line-through">${p.old}€</span><span class="w-fit rounded bg-promo px-1.5 py-0.5 text-[18px] font-extrabold text-night">${fmtPrice(p.price)}</span></div>`
       : `<span class="text-[18px] font-extrabold text-night">${fmtPrice(p.price)}</span>`;
     // Imagen: ocupa todo el ancho y llega hasta arriba de la tarjeta (250px).
     const media = p.img
@@ -43,7 +46,7 @@
           <p class="mt-1 line-clamp-2 text-[13px] text-mediumgrey">${p.desc || ''}</p>
           <div class="mt-auto flex items-end justify-between pt-3">
             <div class="flex flex-col gap-1">${badge}${price}</div>
-            <button type="button" data-add class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-night text-white transition-colors hover:bg-b2b" aria-label="Añadir a la cesta">${svg('<path d="M6 8h12l-1 10H7zM9 8V6a3 3 0 0 1 6 0v2M12 11v4M10 13h4"/>', 'h-6 w-6')}</button>
+            <button type="button" data-add class="shrink-0 rounded-full transition-transform hover:scale-105" aria-label="Añadir a la cesta">${CESTA_ICON('h-11 w-11')}</button>
           </div>
         </div>
       </article>`;

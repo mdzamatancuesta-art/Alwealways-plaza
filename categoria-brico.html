@@ -19,8 +19,12 @@
       <p class="mt-2 max-w-2xl text-[15px] text-mediumgrey catDesc"></p>
     </header>
     <div class="sectionCards mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4"></div>
+    <div class="ordenarBar mt-8 flex items-center justify-between border-b border-lowgrey pb-3 text-[13px] font-semibold text-darkgrey">
+      <button type="button" class="ordenar flex items-center gap-1.5 transition-colors hover:text-night">Ordenar <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/></svg></button>
+      <button type="button" class="filtrar flex items-center gap-1.5 transition-colors hover:text-night" data-demo="Panel de filtros">Filtrar <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h14M4 12h9M4 17h5"/></svg></button>
+    </div>
     <section class="mt-12">
-      <div class="mb-5 flex items-center justify-between gap-3"><h2 class="text-xl font-bold text-night gridTitle">Todos los productos</h2><button class="clearFilter hidden text-[13px] font-semibold text-b2b hover:underline">Ver todo</button></div>
+      <div class="mb-5 flex items-center justify-between gap-3"><h2 class="text-xl font-bold text-night gridTitle">Todos los productos</h2></div>
       <div class="grid2 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"></div>
     </section>
   </main>
@@ -53,17 +57,17 @@
         var key=name.toLowerCase().replace('envases ','').split(' ')[0].replace(/s$/,'');
         var list=all.filter(function(p){ return (p.name+' '+(p.desc||'')).toLowerCase().indexOf(key)>=0; });
         if(!list.length) list=all;
-        renderGrid(list); gridTitle.textContent=name; clearBtn.classList.remove('hidden');
+        renderGrid(list); gridTitle.textContent=name; clearBtn&&clearBtn.classList.remove('hidden');
         root.querySelector('.grid2').scrollIntoView({behavior:'smooth',block:'start'});
       }
       AP.$$('.secCard',cardsEl).forEach(function(btn){
         btn.addEventListener('click',function(){
           var i=Number(btn.dataset.i);
-          if(active===i){ active=null; setActive(null); renderGrid(all); gridTitle.textContent='Todos los productos'; clearBtn.classList.add('hidden'); return; }
+          if(active===i){ active=null; setActive(null); renderGrid(all); gridTitle.textContent='Todos los productos'; clearBtn&&clearBtn.classList.add('hidden'); return; }
           active=i; setActive(btn); filterBy(cards[i].name);
         });
       });
-      clearBtn.addEventListener('click',function(){ active=null; setActive(null); renderGrid(all); gridTitle.textContent='Todos los productos'; clearBtn.classList.add('hidden'); });
+      if(clearBtn)clearBtn.addEventListener('click',function(){ active=null; setActive(null); renderGrid(all); gridTitle.textContent='Todos los productos'; clearBtn&&clearBtn.classList.add('hidden'); });
     })();
   </script>
 </body>
