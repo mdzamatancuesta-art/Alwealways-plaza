@@ -1118,6 +1118,8 @@
     'Cuenco kraft biodegradable': 'Biodegradable kraft bowl',
     'Cumple de Ana': 'Ana’s birthday',
     'Papelería y ofimática': 'Stationery & office',
+    'Proyectos de imprenta': 'Printing projects',
+    'Envío a domicilio y recogida en tienda': 'Home delivery & store pickup',
     'Archivador de palanca A4': 'A4 lever arch file',
     'El presente aviso legal regula el uso del sitio web Always Plaza (en adelante, «el Sitio»), un marketplace que permite la compra de productos de bricolaje, envases y embalajes, papelería y ofimática, fotografía, hogar y servicios, con envío o recogida en La Habana (Cuba). La moneda de compra es el euro (€) y el idioma principal es el español.': 'This legal notice governs the use of the Always Plaza website (hereinafter, “the Site”), a marketplace for purchasing DIY, packaging, stationery & office, photography, home and services products, with shipping or collection in Havana (Cuba). The purchase currency is the euro (€) and the main language is Spanish.',
     'El acceso y uso del Sitio atribuye la condición de usuario e implica la aceptación plena de este aviso legal. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios y a no emplearlos para actividades ilícitas o contrarias a la buena fe.': 'Accessing and using the Site grants user status and implies full acceptance of this legal notice. The user undertakes to make appropriate use of the content and services and not to use them for unlawful activities or activities contrary to good faith.',
