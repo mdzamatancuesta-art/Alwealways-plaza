@@ -40,7 +40,7 @@
 <p>El consentimiento otorgado se conserva en tu navegador. Puedes retirarlo o modificarlo cuando quieras desde esta página o desde «Configurar cookies» en el pie.</p>
 <script>
   (function(){
-    var set=function(v){try{localStorage.setItem('ap_cookies',v);}catch(e){}; var b=document.getElementById('cookieBanner'); if(b)b.classList.add('hidden'); alert('Preferencia guardada: '+(v==='all'?'Aceptar todas':'Solo esenciales'));};
+    var set=function(v){try{localStorage.setItem('ap_cookies',v);}catch(e){}; var b=document.getElementById('cookieBanner'); if(b)b.classList.add('hidden'); var en=window.AP&&AP.lang==='en'; alert((en?'Preference saved: ':'Preferencia guardada: ')+(v==='all'?(en?'Accept all':'Aceptar todas'):(en?'Essential only':'Solo esenciales')));};
     var a=document.getElementById('cookieAcceptAll'), r=document.getElementById('cookieRejectAll');
     if(a)a.addEventListener('click',function(){set('all');});
     if(r)r.addEventListener('click',function(){set('reject');});

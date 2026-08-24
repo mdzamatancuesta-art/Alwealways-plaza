@@ -34,6 +34,9 @@
       legalAviso: 'Aviso legal', legalPriv: 'Política de privacidad', legalCookies: 'Política de cookies', legalTerms: 'Condiciones de compra', legalReturns: 'Devoluciones', legalShip: 'Envíos', legalFaq: 'Preguntas frecuentes', cookieSettings: 'Configurar cookies',
       copyright: '© 2026 Always Plaza. Todos los derechos reservados.', currency: 'Moneda: Euro (€) · Idioma: Español',
       verTodo: 'Ver todo en',
+      tCart: '✓ Añadido a la cesta', tSortUp: 'Ordenado: precio ↑', tSortDown: 'Ordenado: precio ↓',
+      tFavOn: '♥ Añadido a favoritos', tFavOff: 'Quitado de favoritos', tDemo: 'Función de demostración', tDone: 'Hecho',
+      cpNearest: 'Tu punto más cercano: ', cpOutside: 'Este código postal no es de La Habana. Solo realizamos envíos dentro de Cuba (La Habana).', cpPrefix: 'CP ',
       home_offers_title: 'Ofertas de<br />primavera', home_offers_text: 'Los imprescindibles para el último empujón del curso escolar al mejor precio.', home_see_offers: 'Ver ofertas',
       home_offers_badge: 'Hasta -30%', home_offers_text2: 'Renueva tu hogar, tu oficina y tus proyectos esta primavera con descuentos en miles de productos.',
       home_novedades: 'Novedades', home_novedades_card: '¡Descubre más de 20 artículos de la nueva colección de ofimática y papelería!',
@@ -58,6 +61,9 @@
       legalAviso: 'Legal notice', legalPriv: 'Privacy policy', legalCookies: 'Cookie policy', legalTerms: 'Terms of purchase', legalReturns: 'Returns', legalShip: 'Shipping', legalFaq: 'FAQ', cookieSettings: 'Cookie settings',
       copyright: '© 2026 Always Plaza. All rights reserved.', currency: 'Currency: Euro (€) · Language: English',
       verTodo: 'See all in',
+      tCart: '✓ Added to cart', tSortUp: 'Sorted: price ↑', tSortDown: 'Sorted: price ↓',
+      tFavOn: '♥ Added to favourites', tFavOff: 'Removed from favourites', tDemo: 'Demo feature', tDone: 'Done',
+      cpNearest: 'Your nearest point: ', cpOutside: 'This postal code is not in Havana. We only ship within Cuba (Havana).', cpPrefix: 'ZIP ',
       home_offers_title: 'Spring<br />offers', home_offers_text: 'The essentials for the final stretch of the school year at the best price.', home_see_offers: 'See offers',
       home_offers_badge: 'Up to -30%', home_offers_text2: 'Refresh your home, office and projects this spring with discounts on thousands of products.',
       home_novedades: 'New arrivals', home_novedades_card: 'Discover more than 20 items from the new office & stationery collection!',
@@ -298,21 +304,22 @@
     const zip = cpInput.value.trim();
     if (!zip) { cpResult.classList.add('hidden'); return null; }
     const pickup = pickupForZip(zip);
+    const pickShow = (LANG === 'en' && trES(pickup)) || pickup;
     cpResult.classList.remove('hidden');
     if (pickup) {
       cpResult.className = 'mt-4 flex items-center gap-2 rounded-xl bg-secondary px-4 py-3 text-[14px] font-medium text-night';
-      cpResult.innerHTML = svg('<path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/>', 'h-4 w-4 shrink-0 text-b2b') + `Tu punto más cercano: <strong class="ml-1">${pickup}</strong>`;
+      cpResult.innerHTML = svg('<path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/>', 'h-4 w-4 shrink-0 text-b2b') + `${t('cpNearest')}<strong class="ml-1">${pickShow}</strong>`;
     } else {
       // Alerta: código postal fuera de cobertura (no cubano / fuera de La Habana).
       cpResult.className = 'mt-4 flex items-center gap-2 rounded-xl bg-exito/10 px-4 py-3 text-[14px] font-medium text-exito';
-      cpResult.innerHTML = svg('<path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>', 'h-4 w-4 shrink-0') + 'Este código postal no es de La Habana. Solo realizamos envíos dentro de Cuba (La Habana).';
+      cpResult.innerHTML = svg('<path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>', 'h-4 w-4 shrink-0') + t('cpOutside');
     }
-    return pickup;
+    return pickShow;
   }
   $('#cpBtn').addEventListener('click', openCp);
   $('#pickupBtn').addEventListener('click', () => { nav('puntos-recogida.html'); });
   cpInput.addEventListener('input', () => { cpInput.value = cpInput.value.replace(/\D/g, '').slice(0, 5); evalCp(); });
-  $('#cpConfirm').addEventListener('click', () => { const p = evalCp(); if (p) { cpLabel.textContent = 'CP ' + cpInput.value; pickupLabel.textContent = p; try { localStorage.setItem('ap_cp', cpInput.value); } catch (e) {} closeCp(); } });
+  $('#cpConfirm').addEventListener('click', () => { const p = evalCp(); if (p) { cpLabel.textContent = t('cpPrefix') + cpInput.value; pickupLabel.textContent = p; try { localStorage.setItem('ap_cp', cpInput.value); } catch (e) {} closeCp(); } });
   $$('#cpModal [data-cp-close]').forEach((el) => el.addEventListener('click', closeCp));
 
   /* ---------- Buscador móvil ---------- */
@@ -457,14 +464,14 @@
         const dir = ord.dataset.dir === 'asc' ? 1 : -1;
         const price = (a) => { const el = a.querySelector('.font-extrabold'); const m = ((el ? el.textContent : a.textContent) || '').match(/(\d+)(?:,(\d+))?/); return m ? parseFloat(m[1] + '.' + (m[2] || '0')) : 0; };
         Array.from(grid.querySelectorAll('article')).sort((a, b) => (price(a) - price(b)) * dir).forEach((a) => grid.appendChild(a));
-        toast(dir === 1 ? 'Ordenado: precio ↑' : 'Ordenado: precio ↓');
+        toast(dir === 1 ? t('tSortUp') : t('tSortDown'));
       }
       return;
     }
     const add = e.target.closest('[data-add]');
-    if (add) { e.preventDefault(); addToCart(1); toast('✓ Añadido a la cesta'); return; }
+    if (add) { e.preventDefault(); addToCart(1); toast(t('tCart')); return; }
     const demo = e.target.closest('[data-demo]');
-    if (demo) { e.preventDefault(); toast(demo.dataset.demo || 'Función de demostración'); return; }
+    if (demo) { e.preventDefault(); toast(demo.dataset.demo || t('tDemo')); return; }
     const fav = e.target.closest('[data-fav]');
     if (fav) {
       e.preventDefault();
@@ -473,7 +480,7 @@
       fav.classList.toggle('text-night', on);
       const path = fav.querySelector('svg path');
       if (path) path.setAttribute('fill', on ? 'currentColor' : 'none');
-      toast(on ? '♥ Añadido a favoritos' : 'Quitado de favoritos');
+      toast(on ? t('tFavOn') : t('tFavOff'));
       return;
     }
     // Enlaces de demostración (href="#"): evitar el salto al inicio
@@ -489,7 +496,7 @@
     if (btn && !btn.disabled && !btn.id && !btn.closest('form') && !btn.matches(wired)
         && !btn.closest('#apChat, #megaPanelWrap, #mobileDrawer, #cpModal')) {
       e.preventDefault();
-      toast('✓ ' + ((btn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40) || 'Hecho'));
+      toast('✓ ' + ((btn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40) || t('tDone')));
     }
   });
 
@@ -1120,6 +1127,32 @@
     'Papelería y ofimática': 'Stationery & office',
     'Proyectos de imprenta': 'Printing projects',
     'Envío a domicilio y recogida en tienda': 'Home delivery & store pickup',
+    // data-demo (avisos de demostración)
+    'Añadir dirección (demo)': 'Add address (demo)',
+    'Descargando guía de impresión…': 'Downloading printing guide…',
+    'Descargando plantilla de diseño…': 'Downloading design template…',
+    'Diseño profesional añadido (+60€)': 'Professional design added (+€60)',
+    'Editar dirección (demo)': 'Edit address (demo)',
+    'Gestión de suscripción (demo)': 'Subscription management (demo)',
+    'Nueva lista creada': 'New list created',
+    'Panel de filtros': 'Filters panel',
+    'Punto seleccionado (demo)': 'Point selected (demo)',
+    'Solicitud enviada (demo)': 'Request sent (demo)',
+    'Suscripción activada (demo)': 'Subscription activated (demo)',
+    'Te enviaremos un correo para adjuntar tu diseño': 'We’ll email you to attach your design',
+    // Perfil / listados generados en línea
+    'Transacciones y métodos de pago': 'Transactions & payment methods',
+    'Seguridad y privacidad': 'Security & privacy',
+    'Cerrar cuenta': 'Close account',
+    'Contáctanos': 'Contact us',
+    'Mostrar menos': 'Show less',
+    'Producto de la selección Always Plaza. Calidad garantizada y envío a La Habana.': 'Product from the Always Plaza selection. Guaranteed quality and delivery to Havana.',
+    'La herramienta indispensable para cualquier caja de herramientas doméstica: cabezal pulido, agarre de alta tracción y diseño ligero pero resistente.': 'The essential tool for any home toolbox: polished head, high-traction grip and a light yet sturdy design.',
+    'Objetivo 50 mm f/1.8': 'Lens 50 mm f/1.8',
+    'Vajilla 12 piezas': 'Dinnerware set 12 pieces',
+    'Bolígrafos punta fina (pack)': 'Fine-tip pens (pack)',
+    'Rotuladores fluorescentes': 'Fluorescent markers',
+    'Juego de toallas': 'Towel set',
     'Archivador de palanca A4': 'A4 lever arch file',
     'El presente aviso legal regula el uso del sitio web Always Plaza (en adelante, «el Sitio»), un marketplace que permite la compra de productos de bricolaje, envases y embalajes, papelería y ofimática, fotografía, hogar y servicios, con envío o recogida en La Habana (Cuba). La moneda de compra es el euro (€) y el idioma principal es el español.': 'This legal notice governs the use of the Always Plaza website (hereinafter, “the Site”), a marketplace for purchasing DIY, packaging, stationery & office, photography, home and services products, with shipping or collection in Havana (Cuba). The purchase currency is the euro (€) and the main language is Spanish.',
     'El acceso y uso del Sitio atribuye la condición de usuario e implica la aceptación plena de este aviso legal. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios y a no emplearlos para actividades ilícitas o contrarias a la buena fe.': 'Accessing and using the Site grants user status and implies full acceptance of this legal notice. The user undertakes to make appropriate use of the content and services and not to use them for unlawful activities or activities contrary to good faith.',
@@ -1353,6 +1386,10 @@
       const cur = el.getAttribute('placeholder');
       const tr = DICT_PH[cur.trim()] != null ? DICT_PH[cur.trim()] : trES(cur);
       if (tr != null) el.setAttribute('placeholder', tr);
+    });
+    document.querySelectorAll('[data-demo]').forEach((el) => {
+      const tr = trES(el.getAttribute('data-demo'));
+      if (tr != null) el.setAttribute('data-demo', tr);
     });
     const tt = trES(document.title); if (tt != null) document.title = tt;
   }

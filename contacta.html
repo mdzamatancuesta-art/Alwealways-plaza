@@ -78,7 +78,7 @@
     document.getElementById('contactForm').addEventListener('submit', function (e) {
       e.preventDefault();
       document.getElementById('contactOk').classList.remove('hidden');
-      if (window.AP && AP.toast) AP.toast('✓ Mensaje enviado');
+      if (window.AP && AP.toast) AP.toast(AP.lang === 'en' ? '✓ Message sent' : '✓ Mensaje enviado');
       this.reset();
     });
   </script>

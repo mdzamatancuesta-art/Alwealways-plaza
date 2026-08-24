@@ -167,7 +167,7 @@
       }
       renderQty(1);
       document.getElementById('moreTiers').addEventListener('click',function(){
-        showAll=!showAll; this.textContent = showAll ? 'Mostrar menos' : 'Mostrar más'; renderQty();
+        showAll=!showAll; var en=window.AP&&AP.lang==='en'; this.textContent = showAll ? (en?'Show less':'Mostrar menos') : (en?'Show more':'Mostrar más'); renderQty();
       });
 
       // Relacionados (fotos reales de envases)

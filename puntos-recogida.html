@@ -68,8 +68,10 @@
         input.value=input.value.replace(/\D/g,'').slice(0,5);
         var pk=input.value?pickupForZip(input.value):null;
         if(!input.value){ res.textContent=''; render(null); return; }
-        if(pk){ res.innerHTML='Tu punto más cercano: <span class="text-b2b">'+pk+'</span>'; render(pk); }
-        else { res.textContent='Aún no cubrimos ese código postal.'; render(null); }
+        var en=window.AP&&AP.lang==='en';
+        var pkT=en?pk.replace(/^Punto (\d+)/,'Point $1'):pk;
+        if(pk){ res.innerHTML=(en?'Your nearest point: ':'Tu punto más cercano: ')+'<span class="text-b2b">'+pkT+'</span>'; render(pk); }
+        else { res.textContent=en?'We don’t cover that postal code yet.':'Aún no cubrimos ese código postal.'; render(null); }
       });
       // Prefill desde el CP guardado
       try { var saved=localStorage.getItem('ap_cp'); if(saved){ input.value=saved; input.dispatchEvent(new Event('input')); } } catch(e){}

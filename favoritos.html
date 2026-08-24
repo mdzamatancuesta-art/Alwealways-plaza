@@ -51,7 +51,7 @@
       document.getElementById('favSug').innerHTML = genProducts(l.count, { discounts: true }).map(AP.productCard).join('');
       var h = document.getElementById('favSugTitle');
       if (h) h.textContent = 'Lista: ' + l.name + ' (' + l.count + ' productos)';
-      if (window.AP && AP.toast) AP.toast('Abriendo «' + l.name + '»');
+      if (window.AP && AP.toast) AP.toast((AP.lang === 'en' ? 'Opening «' : 'Abriendo «') + l.name + '»');
       document.getElementById('favSug').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     AP.$$('[data-list]').forEach(function (b) { b.addEventListener('click', function () { openList(Number(b.dataset.list)); }); });
